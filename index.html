@@ -223,9 +223,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .case-card:last-child{border-bottom:none;}
 .case-card:hover{background:var(--bg);}
 .case-card.active{background:var(--bg);border-left:3px solid var(--red);}
-.cc-top{display:flex;align-items:baseline;gap:6px;margin-bottom:2px;}
-.cc-num{font-family:var(--mono);font-size:10px;color:var(--grey2);flex-shrink:0;}
-.cc-act{font-size:13px;font-weight:400;color:var(--ink);line-height:1.3;flex:1;}
+.cc-top{display:flex;flex-direction:column;gap:2px;margin-bottom:2px;}
+.cc-num{font-family:var(--mono);font-size:10px;color:var(--grey2);}
+.cc-act{font-size:13px;font-weight:400;color:var(--ink);line-height:1.3;}
 .cc-client{font-size:12px;font-weight:400;color:var(--grey);margin-bottom:5px;}
 .cc-ref{font-family:var(--mono);font-size:10px;color:var(--grey2);margin-bottom:5px;}
 .cc-tags{display:flex;gap:4px;flex-wrap:wrap;}
@@ -248,8 +248,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vb-list-scroll{max-height:195px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
 .vb-list-scroll::-webkit-scrollbar{display:none;}
 .vb-spacer{height:24px;}
-.vb-detail{border:1px solid var(--rule);min-height:520px;display:flex;flex-direction:column;background:var(--white);}
-.vb-empty{flex:1;min-height:520px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--grey2);font-size:13px;font-weight:300;padding:48px;}
+.vb-detail{border:1px solid var(--rule);height:560px;display:flex;flex-direction:column;background:var(--white);}
+.vb-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--grey2);font-size:13px;font-weight:300;padding:48px;}
 .vb-empty-glyph{font-family:var(--serif);font-size:36px;color:var(--rule);}
 
 /* ══ SORT CONTROLS ══ */
@@ -291,14 +291,14 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .notif-refresh:hover{border-color:var(--white);}
 .card-pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;margin-left:6px;animation:pulse 1.4s ease-in-out infinite;vertical-align:middle;opacity:0;transition:opacity 0.3s;}
 .card-pulse-dot.show{opacity:1;}
-.vb-open{display:none;flex-direction:column;}
+.vb-open{display:none;flex-direction:column;flex:1;min-height:0;}
 .vb-open.show{display:flex;}
-.vb-dh{padding:18px 28px 16px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:start;}
+.vb-dh{padding:18px 28px 16px;border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;align-items:start;flex-shrink:0;}
 .vb-dh-ref{font-family:var(--mono);font-size:10px;color:var(--grey);margin-bottom:4px;}
 .vb-dh-name{font-family:var(--serif);font-size:24px;color:var(--ink);line-height:1;margin-bottom:6px;}
 .vb-dh-tags{display:flex;gap:6px;flex-wrap:wrap;}
-.vb-db{display:grid;grid-template-columns:1fr 280px;}
-.vb-db-col{padding:20px 24px;overflow-y:auto;max-height:480px;scrollbar-width:none;-ms-overflow-style:none;}
+.vb-db{display:grid;grid-template-columns:1fr 280px;flex:1;min-height:0;overflow:hidden;}
+.vb-db-col{padding:20px 24px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .vb-db-col::-webkit-scrollbar{display:none;}
 .vb-db-col:first-child{border-right:1px solid var(--rule);}
 
@@ -1097,11 +1097,12 @@ setTimeout(showNewCaseNotif,10000);
 // ══ CHART ══
 // 6 historical months only — no projection axis
 const MONTHS_H=['Nov','Dec','Ian','Feb','Mar','Apr'],ACT_V=[16,13,18,17,20,20],ACT_F=[13,11,15,14,17,17];
+const AVG_V=ACT_V.reduce((a,b)=>a+b,0)/ACT_V.length; // historical avg ≈ 17.3
 let volChart,sv=20,sw=4,sr=85;
-// Line = projected finalization of the historical registered volumes at current slider settings
+// Line = projected finalization: scales each month's volume by (sv/AVG_V), then applies efficiency
 function buildLineData(){
   const eff=Math.max(0.6,1-(sw-1)*0.04)*(sr/100);
-  return ACT_V.map(v=>Math.round(v*eff));
+  return ACT_V.map(v=>Math.round(v*(sv/AVG_V)*eff));
 }
 
 window.addEventListener('load',()=>{
