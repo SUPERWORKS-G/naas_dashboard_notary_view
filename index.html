@@ -90,6 +90,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 /* ══ RULE + LABELS ══ */
 .rule-hr{border:none;border-top:1px solid var(--rule);margin:48px 0;}
 .section-label{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey2);margin-bottom:20px;}
+.vol-toggle-btn{font-family:var(--mono);font-size:22px;font-weight:300;line-height:1;color:var(--grey2);background:none;border:none;cursor:pointer;padding:0;width:22px;text-align:center;transition:color 0.15s;flex-shrink:0;}
+.vol-toggle-btn:hover{color:var(--ink);}
 
 /* ══ VOLUME EXPLORER ══ */
 .vol-tabs-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
@@ -207,8 +209,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .btn-confirm:active{transform:scale(0.98);}
 
 /* Close button */
-.close-btn{width:27px;height:27px;border:1px solid var(--rule);border-radius:50%;background:none;cursor:pointer;color:var(--grey);font-size:13px;display:flex;align-items:center;justify-content:center;transition:all 0.15s;flex-shrink:0;line-height:1;}
-.close-btn:hover{border-color:var(--ink);color:var(--ink);transform:rotate(90deg);}
+.close-btn{font-family:var(--mono);font-size:22px;font-weight:300;line-height:1;color:var(--grey2);background:none;border:none;cursor:pointer;padding:0;width:22px;text-align:center;transition:color 0.15s;flex-shrink:0;}
+.close-btn:hover{color:var(--ink);}
 
 /* ══ VIEW A — SIDE BY SIDE ══ */
 .va-wrap{display:grid;grid-template-columns:268px 1fr;border:1px solid var(--rule);height:680px;}
@@ -434,7 +436,10 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 <hr class="rule-hr">
 
 <!-- ══ VOLUME EXPLORER ══ -->
-<div class="section-label">Volum dosare — explorator</div>
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+  <div class="section-label" style="margin-bottom:0;">Volum dosare — explorator</div>
+  <button class="vol-toggle-btn" id="vol-toggle" onclick="toggleVolExplorer()" aria-expanded="false">+</button>
+</div>
 <div class="vol-tabs-row">
   <span class="vol-tabs-label">Tip act</span>
   <div class="vol-tabs">
@@ -446,34 +451,36 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
     <button class="vol-tab" onclick="setFilter('imputerniciri',this)">Împuterniciri</button>
   </div>
 </div>
-<div class="vol-desc">
-  <span class="vd-name" id="vd-name">Toate tipurile</span>
-  <span class="vd-body" id="vd-body">Volum total al biroului. Ajustați parametrii pentru a vedea proiecția.</span>
-</div>
-<div class="controls">
-  <div class="ctrl-group">
-    <div class="ctrl-header"><span class="ctrl-label">Dosare / lună</span><span class="ctrl-val" id="v-vol">20</span></div>
-    <input type="range" id="s-vol" min="5" max="60" step="1" value="20">
-    <div class="ctrl-hint">Volumul lunar țintă. Media națională: ~18 dosare/lună per birou urban.</div>
+<div id="vol-explorer" style="display:none;margin-top:20px;">
+  <div class="vol-desc">
+    <span class="vd-name" id="vd-name">Toate tipurile</span>
+    <span class="vd-body" id="vd-body">Volum total al biroului. Ajustați parametrii pentru a vedea proiecția.</span>
   </div>
-  <div class="ctrl-group">
-    <div class="ctrl-header"><span class="ctrl-label">Zile până la programare</span><span class="ctrl-val" id="v-wait">4</span></div>
-    <input type="range" id="s-wait" min="1" max="14" step="1" value="4">
-    <div class="ctrl-hint">Timp mediu de așteptare din momentul înregistrării până la programare.</div>
+  <div class="controls">
+    <div class="ctrl-group">
+      <div class="ctrl-header"><span class="ctrl-label">Dosare / lună</span><span class="ctrl-val" id="v-vol">20</span></div>
+      <input type="range" id="s-vol" min="5" max="60" step="1" value="20">
+      <div class="ctrl-hint">Volumul lunar țintă. Media națională: ~18 dosare/lună per birou urban.</div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-header"><span class="ctrl-label">Zile până la programare</span><span class="ctrl-val" id="v-wait">4</span></div>
+      <input type="range" id="s-wait" min="1" max="14" step="1" value="4">
+      <div class="ctrl-hint">Timp mediu de așteptare din momentul înregistrării până la programare.</div>
+    </div>
+    <div class="ctrl-group">
+      <div class="ctrl-header"><span class="ctrl-label">Rată finalizare (%)</span><span class="ctrl-val" id="v-rate">85</span></div>
+      <input type="range" id="s-rate" min="50" max="100" step="1" value="85">
+      <div class="ctrl-hint">Procentul dosarelor programate care ajung la semnare.</div>
+    </div>
   </div>
-  <div class="ctrl-group">
-    <div class="ctrl-header"><span class="ctrl-label">Rată finalizare (%)</span><span class="ctrl-val" id="v-rate">85</span></div>
-    <input type="range" id="s-rate" min="50" max="100" step="1" value="85">
-    <div class="ctrl-hint">Procentul dosarelor programate care ajung la semnare.</div>
+  <div class="chart-legend">
+    <span class="leg"><span class="leg-bar" style="background:var(--ink)"></span>Dosare înregistrate</span>
+    <span class="leg"><span class="leg-bar" style="background:#cccccc"></span>Dosare finalizate</span>
+    <span class="leg"><span class="leg-line dashed"></span>Tendință & proiecție</span>
   </div>
+  <div class="chart-wrap" style="margin-bottom:8px;"><canvas id="volChart"></canvas></div>
+  <p class="chart-note" id="vol-chart-note">—</p>
 </div>
-<div class="chart-legend">
-  <span class="leg"><span class="leg-bar" style="background:var(--ink)"></span>Dosare înregistrate</span>
-  <span class="leg"><span class="leg-bar" style="background:#cccccc"></span>Dosare finalizate</span>
-  <span class="leg"><span class="leg-line dashed"></span>Tendință & proiecție</span>
-</div>
-<div class="chart-wrap" style="margin-bottom:8px;"><canvas id="volChart"></canvas></div>
-<p class="chart-note" id="vol-chart-note">—</p>
 
 <hr class="rule-hr">
 
@@ -1052,7 +1059,21 @@ function markDone(id,btn){
   }
 }
 
-// ══ CONFIRM PROGRAMARE ══
+// ══ VOLUME EXPLORER TOGGLE ══
+let volChartInited=false;
+function toggleVolExplorer(){
+  const btn=document.getElementById('vol-toggle');
+  const panel=document.getElementById('vol-explorer');
+  const open=panel.style.display==='none';
+  panel.style.display=open?'block':'none';
+  btn.textContent=open?'−':'+';
+  btn.setAttribute('aria-expanded',open);
+  // Init chart on first open so canvas has dimensions
+  if(open&&!volChartInited){
+    volChartInited=true;
+    initVolChart();
+  }
+}
 function confirmProgramare(){soundConfirm();showToast('Programare salvată');}
 
 // ══ CI MODAL ══
@@ -1106,51 +1127,7 @@ function buildLineData(){
 }
 
 window.addEventListener('load',()=>{
-  const ctx=document.getElementById('volChart');
-  if(ctx){
-    volChart=new Chart(ctx,{
-      data:{
-        labels:MONTHS_H,
-        datasets:[
-          {type:'bar',label:'Înregistrate',data:[...ACT_V],backgroundColor:'#0d0d0d',barPercentage:0.7,categoryPercentage:0.65,order:2},
-          {type:'bar',label:'Finalizate',data:[...ACT_F],backgroundColor:'#cccccc',barPercentage:0.7,categoryPercentage:0.65,order:2},
-          {type:'line',label:'Tendință & proiecție',data:buildLineData(),borderColor:'#d42b2b',borderWidth:2.5,borderDash:[5,4],pointBackgroundColor:'#d42b2b',pointBorderColor:'#fafaf8',pointBorderWidth:2,pointRadius:4,tension:0.35,fill:false,order:0}
-        ]
-      },
-      options:{
-        responsive:true,maintainAspectRatio:false,
-        interaction:{mode:'index',intersect:false},
-        plugins:{
-          legend:{display:false},
-          tooltip:{
-            backgroundColor:'#0d0d0d',
-            titleFont:{family:"'IBM Plex Mono',monospace",size:11},
-            bodyFont:{family:"'IBM Plex Mono',monospace",size:11},
-            padding:10,cornerRadius:2,
-            callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y}
-          }
-        },
-        scales:{
-          x:{
-            stacked:false,
-            grid:{display:false},
-            ticks:{font:{family:"'IBM Plex Mono',monospace",size:10},color:'#555'},
-            border:{display:false}
-          },
-          y:{
-            stacked:false,
-            grid:{color:'#e8e7e3'},
-            ticks:{font:{family:"'IBM Plex Mono',monospace",size:10},color:'#555',stepSize:5},
-            border:{display:false}
-          }
-        }
-      }
-    });
-    updateChartNote();
-    document.getElementById('s-vol').addEventListener('input',function(){sv=+this.value;document.getElementById('v-vol').textContent=sv;soundSlider();updateChart();});
-    document.getElementById('s-wait').addEventListener('input',function(){sw=+this.value;document.getElementById('v-wait').textContent=sw;soundSlider();updateChart();});
-    document.getElementById('s-rate').addEventListener('input',function(){sr=+this.value;document.getElementById('v-rate').textContent=sr;soundSlider();updateChart();});
-  }
+  // chart inits lazily on first open of vol explorer
   switchView(currentView);
   rebuildAllLists();
   selA(1);
@@ -1160,6 +1137,43 @@ window.addEventListener('load',()=>{
     if(el)el.addEventListener('scroll',soundScroll,{passive:true});
   });
 });
+
+function initVolChart(){
+  const ctx=document.getElementById('volChart');
+  if(!ctx)return;
+  volChart=new Chart(ctx,{
+    data:{
+      labels:MONTHS_H,
+      datasets:[
+        {type:'bar',label:'Înregistrate',data:[...ACT_V],backgroundColor:'#0d0d0d',barPercentage:0.7,categoryPercentage:0.65,order:2},
+        {type:'bar',label:'Finalizate',data:[...ACT_F],backgroundColor:'#cccccc',barPercentage:0.7,categoryPercentage:0.65,order:2},
+        {type:'line',label:'Tendință & proiecție',data:buildLineData(),borderColor:'#d42b2b',borderWidth:2.5,borderDash:[5,4],pointBackgroundColor:'#d42b2b',pointBorderColor:'#fafaf8',pointBorderWidth:2,pointRadius:4,tension:0.35,fill:false,order:0}
+      ]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          backgroundColor:'#0d0d0d',
+          titleFont:{family:"'IBM Plex Mono',monospace",size:11},
+          bodyFont:{family:"'IBM Plex Mono',monospace",size:11},
+          padding:10,cornerRadius:2,
+          callbacks:{label:ctx=>' '+ctx.dataset.label+': '+ctx.parsed.y}
+        }
+      },
+      scales:{
+        x:{stacked:false,grid:{display:false},ticks:{font:{family:"'IBM Plex Mono',monospace",size:10},color:'#555'},border:{display:false}},
+        y:{stacked:false,grid:{color:'#e8e7e3'},ticks:{font:{family:"'IBM Plex Mono',monospace",size:10},color:'#555',stepSize:5},border:{display:false}}
+      }
+    }
+  });
+  updateChartNote();
+  document.getElementById('s-vol').addEventListener('input',function(){sv=+this.value;document.getElementById('v-vol').textContent=sv;soundSlider();updateChart();});
+  document.getElementById('s-wait').addEventListener('input',function(){sw=+this.value;document.getElementById('v-wait').textContent=sw;soundSlider();updateChart();});
+  document.getElementById('s-rate').addEventListener('input',function(){sr=+this.value;document.getElementById('v-rate').textContent=sr;soundSlider();updateChart();});
+}
 
 function updateChart(){
   if(!volChart)return;
