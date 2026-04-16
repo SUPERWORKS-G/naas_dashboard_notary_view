@@ -11,7 +11,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --ink:#111827; --white:#fafaf8; --red:#d42b2b; --red-lt:#f5e0e0;
+  --ink:#000000; --white:#fafaf8; --red:#d42b2b; --red-lt:#f5e0e0;
   --grey:#555; --grey2:#999; --rule:#dddbd5; --bg:#f3f2ef;
   --mono:'IBM Plex Mono',monospace; --sans:'IBM Plex Sans',sans-serif; --serif:'DM Serif Display',Georgia,serif;
 }
@@ -189,20 +189,24 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .sub-lbl-spaced{margin-top:16px;}
 .party-divider{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);padding:12px 0 8px;border-top:1px solid var(--rule);margin-top:8px;margin-bottom:2px;}
 .party-divider:first-child{border-top:none;margin-top:0;padding-top:0;}
-.ci-link{display:inline-block;font-family:var(--mono);font-size:11px;color:var(--red);text-decoration:none;cursor:pointer;margin-top:14px;transition:opacity 0.15s;}
-.ci-link:hover{opacity:0.6;}
-.disc-block{margin-top:16px;border:1px solid var(--rule);}
-.disc-hdr{padding:7px 12px;background:var(--bg);border-bottom:1px solid var(--rule);display:flex;justify-content:space-between;}
-.disc-hdr-label{font-family:var(--mono);font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--red);}
-.disc-hdr-count{font-family:var(--mono);font-size:10px;color:var(--red);opacity:0.6;}
-.disc-row{display:grid;grid-template-columns:80px 1fr auto;padding:8px 12px;border-bottom:1px solid var(--rule);align-items:center;gap:8px;transition:opacity 0.35s;}
-.disc-row:last-child{border-bottom:none;}
-.disc-row.accepted{opacity:0.3;}
-.disc-field{font-family:var(--mono);font-size:10px;color:var(--grey);text-transform:uppercase;}
-.disc-old{font-size:13px;color:var(--grey2);text-decoration:line-through;}
-.disc-new{font-family:var(--mono);font-size:13px;color:var(--ink);}
-.disc-accept{font-family:var(--mono);font-size:10px;color:var(--ink);text-decoration:underline;text-underline-offset:2px;cursor:pointer;background:none;border:none;padding:0;transition:opacity 0.15s;}
-.disc-accept:hover{opacity:0.4;}
+.ci-link{display:inline-flex;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;background:var(--red);color:var(--white);border:1px solid var(--red);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;}
+.ci-link:hover{opacity:0.85;}
+.ci-link-neutral{display:inline-flex;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;background:var(--ink);color:var(--white);border:1px solid var(--ink);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;}
+.ci-link-neutral:hover{opacity:0.75;}
+/* CI modal diff row */
+.ci-diff{margin-top:6px;margin-bottom:14px;padding:10px 12px;background:var(--bg);border-left:2px solid var(--red);}
+.ci-diff-row{display:flex;flex-direction:column;gap:2px;margin-bottom:8px;}
+.ci-diff-mini-lbl{font-family:var(--mono);font-size:9px;letter-spacing:0.5px;text-transform:uppercase;color:var(--grey2);}
+.ci-diff-old{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--grey2);text-decoration:line-through;}
+.ci-diff-old.mono{font-family:var(--mono);font-size:13px;}
+.ci-diff-new{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);}
+.ci-diff-new.mono{font-family:var(--mono);font-size:13px;}
+.ci-diff-actions{display:flex;gap:8px;margin-top:4px;}
+.ci-diff-accept{font-family:var(--mono);font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;background:var(--ink);color:var(--white);border:none;cursor:pointer;flex-shrink:0;border-radius:0;}
+.ci-diff-reject{font-family:var(--mono);font-size:9px;letter-spacing:0.5px;text-transform:uppercase;padding:3px 8px;background:none;color:var(--grey);border:1px solid var(--rule);cursor:pointer;flex-shrink:0;border-radius:0;}
+.ci-diff-accept:hover{opacity:0.8;}
+.ci-diff-reject:hover{color:var(--ink);border-color:var(--ink);}
+/* disc CSS removed — block replaced by modal inline diffs */
 
 /* Scheduling */
 .pref-box{font-size:13px;font-weight:300;color:var(--grey);padding:9px 11px;background:var(--bg);border:1px solid var(--rule);margin-bottom:18px;line-height:1.6;}
@@ -249,7 +253,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 /* ══ URGENCY DOT on case cards ══ */
 .urgency-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0;margin-left:5px;vertical-align:middle;animation:pulse 1.4s ease-in-out infinite;}
 .cc-act-row{display:flex;align-items:center;}
-.va-wrap{display:grid;grid-template-columns:268px 1fr;border:1px solid var(--rule);height:760px;}
+.va-wrap{display:grid;grid-template-columns:268px 1fr;border:1px solid var(--rule);height:560px;}
 .va-list{border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow:hidden;}
 .va-list-hdr{background:var(--bg);border-bottom:1px solid var(--rule);padding:10px 20px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;}
 .va-list-hdr-label{font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);}
@@ -282,9 +286,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .va-db-col:first-child{border-right:1px solid var(--rule);}
 
 /* ══ VIEW B — LIST + BELOW ══ */
-.vb-wrap{height:760px;display:flex;flex-direction:column;}
+.vb-wrap{height:560px;display:flex;flex-direction:column;}
 .vb-list-wrap{border:1px solid var(--rule);border-bottom:none;flex-shrink:0;}
-.vb-list-scroll{max-height:195px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
+.vb-list-scroll{max-height:160px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
 .vb-list-scroll::-webkit-scrollbar{display:none;}
 .vb-spacer{height:16px;flex-shrink:0;}
 .vb-detail{border:1px solid var(--rule);flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;}
@@ -335,7 +339,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vb-db-col:first-child{border-right:1px solid var(--rule);}
 
 /* ══ VIEW C — DRAWER ══ */
-.vc-list-wrap{border:1px solid var(--rule);height:760px;display:flex;flex-direction:column;}
+.vc-list-wrap{border:1px solid var(--rule);height:560px;display:flex;flex-direction:column;}
 .vc-list-scroll{height:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .vc-list-scroll::-webkit-scrollbar{display:none;}
 .vc-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.3);opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:100;}
@@ -555,7 +559,6 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
         <div class="va-db">
           <div class="va-db-col">
             <div id="va-fields"></div>
-            <a class="ci-link" id="va-ci" href="#" style="display:none">Verifică CI încărcat →</a>
             <div id="va-disc"></div>
           </div>
           <div class="va-db-col">
@@ -597,7 +600,6 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
         <div class="vb-db">
           <div class="vb-db-col">
             <div id="vb-fields"></div>
-            <a class="ci-link" id="vb-ci" href="#" style="display:none">Verifică CI încărcat →</a>
             <div id="vb-disc"></div>
           </div>
           <div class="vb-db-col">
@@ -646,7 +648,6 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
   <div class="vc-body">
     <div class="vc-col">
       <div id="vc-fields"></div>
-      <a class="ci-link" id="vc-ci" href="#" style="display:none">Verifică CI încărcat →</a>
       <div id="vc-disc"></div>
     </div>
     <div class="vc-col">
@@ -697,9 +698,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
       </div>
     </div>
     <div class="ci-fields-pane">
-      <div class="ci-fields-title">Verificați și corectați dacă este necesar</div>
+      <div class="ci-fields-title">Act de identitate · Date client</div>
       <div id="ci-fields-edit"></div>
-      <button class="btn-confirm" style="margin-top:20px;" onclick="saveCICorrections()">Aplică corecțiile →</button>
+      <button class="btn-confirm" id="ci-save-btn" style="margin-top:20px;display:none;" onclick="saveCICorrections()">Salvează →</button>
     </div>
   </div>
 </div>
@@ -792,7 +793,7 @@ const CASES=[
    pref:'24 apr, după-amiaza',prefDate:'2026-04-24',prefSlot:'după-amiaza',alt:'alternativ: 26 apr, dimineața',
    date:'2026-04-24',time:'14:00',notes:'',created:'10 apr',urgent:true,
    hist:['10 apr — creat (sistem)','11 apr — CI verificat, diferențe identificate'],
-   disc:[{f:'Prenume',o:'Maria Elena',n:'Maria-Elena'},{f:'CNP',o:'2780415350041',n:'2780415350042'}],
+   disc:[{f:'Nume complet',party:'Mandant',o:'Popescu Maria Elena',n:'Popescu Maria-Elena'},{f:'CNP',party:'Mandant',o:'2780415350041',n:'2780415350042'}],
    parties:[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Popescu Maria-Elena',m:false,cp:'Popescu Maria-Elena'},{l:'CNP',v:'2 780 415 350 042',m:true,cp:'2780415350042'},{l:'Serie CI',v:'IF 123456',m:true,cp:'IF123456'},{l:'Data nașterii',v:'15.04.1978',m:false,cp:'15.04.1978'},{l:'Domiciliu',v:'Str. Mihai Eminescu nr. 12, ap. 4, sector 2',m:false,cp:'Str. Mihai Eminescu nr. 12'},{l:'Telefon',v:'0722 345 678',m:false,cp:'0722345678'}]},
      {role:'Mandatar',fields:[{l:'Nume complet',v:'Popescu Alexandru',m:false,cp:'Popescu Alexandru'},{l:'CNP',v:'1 750 820 350 011',m:true,cp:'1750820350011'},{l:'Serie CI',v:'IF 654321',m:true,cp:'IF654321'},{l:'Data nașterii',v:'20.08.1975',m:false,cp:'20.08.1975'},{l:'Domiciliu',v:'Str. Victoriei nr. 3, sector 1',m:false,cp:'Str. Victoriei nr. 3'},{l:'Telefon',v:'0744 111 222',m:false,cp:'0744111222'}]}
@@ -924,10 +925,7 @@ function renderParties(c){
   }).join('');
 }
 
-function renderDisc(disc,prefix,caseId){
-  if(!disc.length)return '';
-  return '<div class="disc-block" style="margin-top:14px;"><div class="disc-hdr"><span class="disc-hdr-label">Diferențe CI</span><span class="disc-hdr-count">'+disc.length+' câmpuri</span></div>'+disc.map(function(d,i){return '<div class="disc-row" id="'+prefix+'-'+i+'"><div class="disc-field">'+d.f+'</div><div><div class="disc-old">'+d.o+'</div><div class="disc-new">'+d.n+'</div></div><button class="disc-accept" onclick="acceptD(\''+prefix+'-'+i+'\',this,'+caseId+','+i+')">Acceptă</button></div>';}).join('')+'</div>';
-}
+function renderDisc(disc,prefix,caseId){return '';}
 
 function statusSelHTML(prefix,status){
   var states=['nou','in-lucru','programat'];
@@ -973,6 +971,9 @@ function populateView(prefix,c){
 
   // Left column: Date dosar (category) + copyable fields + Date părți (category) + parties
   const partiesLabel=c.parties&&c.parties.length>1?'Date părți':null;
+  const ciAlert=c.flag
+    ?'<a class="ci-link" id="'+prefix+'-ci-inline" href="#">! Carte identitate — Verifică</a>'
+    :'<a class="ci-link-neutral" id="'+prefix+'-ci-inline" href="#">Carte identitate →</a>';
   const dosarBlock=
     '<div class="detail-category">Date dosar</div>'
     +'<div class="field-stacked" onclick="cp(\''+c.ref+'\',\'Număr dosar copiat\')">'
@@ -981,12 +982,11 @@ function populateView(prefix,c){
     +'<div class="field-stacked" onclick="cp(\''+c.act+'\',\'Tip act copiat\')">'
     +'<div class="field-stacked-inner"><span class="fs-lbl">Tip act</span><span class="fs-val">'+c.act+'</span></div>'
     +'</div>'
+    +ciAlert
     +(partiesLabel?'<div class="detail-category detail-category-spaced">'+partiesLabel+'</div>':'<div style="height:8px;"></div>')
     +renderParties(c);
   document.getElementById(prefix+'-fields').innerHTML=dosarBlock;
 
-  const ciEl=document.getElementById(prefix+'-ci');
-  if(ciEl)ciEl.style.display=c.flag?'inline-block':'none';
   document.getElementById(prefix+'-disc').innerHTML=renderDisc(c.disc,prefix+'-d-'+c.id,c.id);
 
   document.getElementById(prefix+'-pref').innerHTML='preferă <strong>'+c.pref+'</strong>'+(c.alt?' — '+c.alt:'');
@@ -1178,44 +1178,6 @@ function markDirty(dotId){const d=document.getElementById(dotId);if(d)d.classLis
 function saveNotes(dotId,el){const d=document.getElementById(dotId);if(d)d.classList.remove('show');showToast('Notițe salvate');}
 
 // ══ DISC BLOCK AUTO-REMOVE + FIELD APPLY ══
-function acceptD(id,btn,caseId,discIdx){
-  var row=document.getElementById(id);
-  if(!row)return;
-  row.classList.add('accepted');
-  btn.textContent='Acceptat';btn.onclick=null;
-  if(caseId!=null&&discIdx!=null){
-    var c=CASES.find(function(x){return x.id===caseId;});
-    if(c&&c.disc[discIdx]){
-      var d=c.disc[discIdx];
-      // Find and update the field across all parties
-      if(c.parties){c.parties.forEach(function(p){
-        var field=p.fields.find(function(f){return f.l===d.f;});
-        if(field){field.v=d.n;field.cp=d.n.replace(/\s/g,'');}
-      });}
-      // Re-render the open detail panel
-      ['va','vb','vc'].forEach(function(pfx){
-        var el=document.getElementById(pfx+'-fields');
-        if(el&&el.innerHTML)populateView(pfx,c);
-      });
-    }
-  }
-  // Auto-remove block when all accepted
-  const block=row.closest('.disc-block');
-  if(block){
-    const all=block.querySelectorAll('.disc-row');
-    const done=block.querySelectorAll('.disc-row.accepted');
-    if(all.length===done.length){
-      setTimeout(()=>{
-        block.style.transition='opacity 0.5s, max-height 0.6s';
-        block.style.overflow='hidden';block.style.maxHeight=block.offsetHeight+'px';
-        requestAnimationFrame(()=>{block.style.opacity='0';block.style.maxHeight='0';});
-        setTimeout(()=>block.remove(),600);
-      },300);
-    }
-  }
-  showToast('Valoare acceptată');
-}
-
 // ══ DE FINALIZAT + COLLAPSE ══
 let finN=2;
 function markDone(id,btn){
@@ -1256,60 +1218,116 @@ let currentOpenCase=null;
 function openCI(caseId){
   var c=CASES.find(function(x){return x.id===caseId;});
   if(!c)return;
-  var allFields=[];
-  if(c.parties){c.parties.forEach(function(p){p.fields.forEach(function(f){allFields.push(f);});});}
-  document.getElementById('ci-fields-edit').innerHTML=allFields.map(function(f){
-    return '<div style="margin-bottom:14px;">'
-      +'<span class="inp-lbl">'+f.l+'</span>'
-      +'<input class="inp-field" value="'+f.v+'" style="margin-bottom:0;" data-field="'+f.l+'">'
-      +'</div>';
-  }).join('');
+  var hasDisc=c.disc&&c.disc.length>0;
+  var html='';
+  if(c.parties){c.parties.forEach(function(p){
+    if(c.parties.length>1){
+      html+='<div class="tag tag-role" style="margin:16px 0 12px;display:inline-block;">'+p.role+'</div>';
+    }
+    p.fields.forEach(function(f){
+      // Match disc by field label AND party (if party-scoped)
+      var disc=c.disc?c.disc.find(function(d){
+        return d.f===f.l&&(!d.party||d.party===p.role);
+      }):null;
+      var monoClass=f.m?' mono':'';
+      var diffHtml='';
+      if(disc){
+        diffHtml='<div class="ci-diff">'
+          +'<div class="ci-diff-row"><span class="ci-diff-mini-lbl">Înregistrat de client</span><span class="ci-diff-old'+monoClass+'">'+disc.o+'</span></div>'
+          +'<div class="ci-diff-row"><span class="ci-diff-mini-lbl">Detectat în CI</span><span class="ci-diff-new'+monoClass+'">'+disc.n+'</span></div>'
+          +'<div class="ci-diff-actions">'
+          +'<button class="ci-diff-accept" onclick="applyDisc(this,\''+p.role+'\',\''+f.l+'\',\''+disc.n+'\')">Acceptă (din CI)</button>'
+          +'<button class="ci-diff-reject" onclick="rejectDisc(this,\''+p.role+'\',\''+f.l+'\',\''+disc.o+'\')">Respinge</button>'
+          +'</div>'
+          +'</div>';
+      }
+      // Always editable — modal is the only place to correct client data
+      html+='<div style="margin-bottom:'+(disc?'4':'14')+'px;">'
+        +'<span class="inp-lbl">'+f.l+'</span>'
+        +'<input class="inp-field" value="'+f.v+'" style="margin-bottom:0;" data-field="'+f.l+'" data-party="'+p.role+'" oninput="ciMarkDirty()">'
+        +'</div>'
+        +diffHtml;
+    });
+  });}
+  document.getElementById('ci-fields-edit').innerHTML=html;
+  // Show/hide Salvează button
+  var saveBtn=document.getElementById('ci-save-btn');
+  if(saveBtn)saveBtn.style.display=hasDisc?'block':'none';
   document.getElementById('ci-overlay').classList.add('show');
   document.getElementById('ci-modal').classList.add('show');
   document.body.style.overflow='hidden';
+}
+function ciMarkDirty(){
+  var saveBtn=document.getElementById('ci-save-btn');
+  if(saveBtn)saveBtn.style.display='block';
 }
 function closeCI(){
   document.getElementById('ci-overlay').classList.remove('show');
   document.getElementById('ci-modal').classList.remove('show');
   document.body.style.overflow='';
 }
+function applyDisc(btn,role,fieldLabel,newVal){
+  var inp=document.querySelector('#ci-fields-edit input[data-party="'+role+'"][data-field="'+fieldLabel+'"]');
+  if(inp){inp.value=newVal;inp.style.transition='background 0.3s';inp.style.background='var(--bg)';setTimeout(function(){inp.style.background='';},600);}
+  var row=btn.closest('.ci-diff');
+  if(row){row.style.transition='opacity 0.3s';row.style.opacity='0';setTimeout(function(){row.remove();},300);}
+  ciMarkDirty();
+}
+function rejectDisc(btn,role,fieldLabel,origVal){
+  var inp=document.querySelector('#ci-fields-edit input[data-party="'+role+'"][data-field="'+fieldLabel+'"]');
+  if(inp){inp.value=origVal;inp.style.transition='background 0.3s';inp.style.background='var(--bg)';setTimeout(function(){inp.style.background='';},600);}
+  var row=btn.closest('.ci-diff');
+  if(row){row.style.transition='opacity 0.3s';row.style.opacity='0';setTimeout(function(){row.remove();},300);}
+}
 function saveCICorrections(){
   if(!currentOpenCase)return;
   var c=CASES.find(function(x){return x.id===currentOpenCase;});
   if(!c)return;
-  // Read all edited inputs from the modal
   var inputs=document.querySelectorAll('#ci-fields-edit .inp-field');
   inputs.forEach(function(inp){
     var label=inp.getAttribute('data-field');
+    var role=inp.getAttribute('data-party');
     var newVal=inp.value.trim();
     if(!label||!newVal)return;
-    // Update matching field across all parties
     if(c.parties){c.parties.forEach(function(p){
+      if(role&&p.role!==role)return;
       var field=p.fields.find(function(f){return f.l===label;});
       if(field){field.v=newVal;field.cp=newVal.replace(/\s/g,'');}
     });}
   });
-  // Mark all discrepancies as resolved and clear flag
-  c.disc=[];
-  c.flag=false;
-  // Add history entry
+  c.disc=[];c.flag=false;
   var now=new Date();
   var months=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
-  var dateStr=now.getDate()+' '+months[now.getMonth()];
-  c.hist.push(dateStr+' \u2014 CI verificat, corecții salvate');
-  // Re-render all open detail panels for this case
+  c.hist.push(now.getDate()+' '+months[now.getMonth()]+' \u2014 CI verificat, corecții aplicate');
+  closeCI();
+  soundFinalizat();
   ['va','vb','vc'].forEach(function(pfx){
     var nameEl=document.getElementById(pfx+'-name');
-    if(nameEl&&nameEl.textContent===c.client)populateView(pfx,c);
+    if(nameEl&&nameEl.textContent===c.client){
+      var ciLink=document.getElementById(pfx+'-ci-inline');
+      if(ciLink){
+        ciLink.style.transition='opacity 0.3s';ciLink.style.opacity='0';
+        setTimeout(function(){
+          ciLink.className='ci-link-neutral';
+          ciLink.textContent='Carte identitate →';
+          ciLink.style.opacity='1';
+        },350);
+      }
+      var tagsEl=document.getElementById(pfx+'-tags');
+      if(tagsEl)tagsEl.innerHTML=TAGS[c.status];
+      populateView(pfx,c);
+      var detailView=document.getElementById(pfx+'-view');if(detailView)detailView.classList.add('show');
+      var openEl=document.getElementById(pfx+'-open');if(openEl)openEl.classList.add('show');
+      var emptyEl=document.getElementById(pfx+'-empty');if(emptyEl)emptyEl.style.display='none';
+    }
   });
-  // Rebuild lists to update CI flags
   rebuildAllLists();
-  showToast('Corecții salvate și aplicate');
-  closeCI();
+  showToast('CI verificat \u2014 corecții aplicate');
 }
+
 // Wire all ci-link clicks to openCI
 document.addEventListener('click',e=>{
-  if(e.target.closest('.ci-link')){e.preventDefault();if(currentOpenCase)openCI(currentOpenCase);}
+  if(e.target.closest('.ci-link,.ci-link-neutral')){e.preventDefault();if(currentOpenCase)openCI(currentOpenCase);}
 });
 
 // ══ NEW CASE NOTIFICATION ══
@@ -1358,7 +1376,7 @@ function initVolChart(){
     data:{
       labels:MONTHS_H,
       datasets:[
-        {type:'bar',label:'Înregistrate',data:[...d.v],backgroundColor:'#111827',barPercentage:0.7,categoryPercentage:0.65,order:2},
+        {type:'bar',label:'Înregistrate',data:[...d.v],backgroundColor:'#000000',barPercentage:0.7,categoryPercentage:0.65,order:2},
         {type:'bar',label:'Finalizate',data:[...d.f],backgroundColor:'#dddbd5',barPercentage:0.7,categoryPercentage:0.65,order:2},
         {type:'line',label:'Tendință & proiecție',data:buildLineData(),borderColor:'#d42b2b',borderWidth:2.5,borderDash:[5,4],pointBackgroundColor:'#d42b2b',pointBorderColor:'#fafaf8',pointBorderWidth:2,pointRadius:4,tension:0.35,fill:false,order:0}
       ]
@@ -1369,7 +1387,7 @@ function initVolChart(){
       plugins:{
         legend:{display:false},
         tooltip:{
-          backgroundColor:'#111827',
+          backgroundColor:'#000000',
           titleFont:{family:"'IBM Plex Mono',monospace",size:11},
           bodyFont:{family:"'IBM Plex Mono',monospace",size:11},
           padding:10,cornerRadius:2,
