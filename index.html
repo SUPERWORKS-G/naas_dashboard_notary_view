@@ -1,55 +1,26 @@
 <!DOCTYPE html>
 <!--
-  notariat.co — Dashboard v42
+  notariat.co — Dashboard v48 · CANONICAL
   ───────────────────────────────────────────────────────────────
-  v41 → v42 changelog (minor alignment + breathing):
-  • "STATUS" header in Sus-jos/Panou grids: added
-    padding-left:40px on the 6th span (matches the content
-    padding on .l-status). Header now aligns horizontally
-    with the status values below it (was flush-left while
-    content was shifted +40px right in v41).
-  • Slider controls (.ctrl-group): gap 10 → 24px.
-    10px was an orphan value (not on the ladder); 24px moves
-    it to the between-section ladder step. Each control now
-    has 24px above the slider (header → slider) and 24px
-    below (slider → hint), giving the sliders clear
-    breathing room and matching the rhythm used across the
-    rest of the dashboard.
+  v47 → v48 changelog (single polish):
+  • Documente modal height bumped from min(620px, 88vh) to
+    min(780px, 88vh) for visual congruency with the CI modal.
+    The CI modal uses max-height:88vh with min-height:400px on
+    the image pane, landing at ~500-700px depending on content.
+    The Documente modal's fixed 620px was visibly shorter.
+    780px matches the CI modal's typical rendered height while
+    still capping growth so long lists scroll internally
+    (preserving the v43 scroll-inside-fixed-modal behavior).
 
-  Rollback snapshots in /home/claude:
-  - notariat_dashboard_v41_baseline.html (full v41)
-  - notariat_dashboard_v40_baseline.html (full v40)
+  All v47 behaviors preserved. All audit invariants pass.
 
-  v40 → v41: overflow fix — grid reverted 7→6 columns;
-  rebalanced widths; status column internal padding-left 40
-  replaces fixed spacer column.
+  Rollback: notariat_dashboard_v47_baseline.html
 
-  v39 → v40: slider hints tightened; (7-col grid caused
-  overflow — reverted in v41); Finalizat arrow ⟶.
-
-  v38 → v39: today count right-aligned; grid gap 16→24;
-  Sus-jos list 230→238; Paralel 560→544 trim.
-
-  v37 → v38: brand 14→11px; "ieșire"→"Ieșire"; →⟶;
-  Ionescu→Andreea Frumoasa; clock adds year; Today list
-  restructured; act bodies <60 chars; hero 24px label gap;
-  Sus-jos 5-row window; missing-draft red-border; Panou dynamic.
-
-  v36 → v37: upper section balance, modal clarity, Panou
-  independent column scroll.
-
-  v35 → v36: typography 56→40 hero, brand mono, live clock,
-  announcement bar removed.
-
-  v34 → v35: 6-column grid; Serie C.I.; modal field-group.
-
-  v33 → v34: Cabinet Notarial 24px; action bar removed.
-
-  v32 → v33: CI discrepancy inline, ink Respinge, red dot.
-
-  v31 → v32: font tiers consolidated.
-
-  v30 → v31: 1-click Pregătește act doc generator.
+  ─── v46 → v47 headline ───
+  Act name simplification global; ! C.I. tags solid red + white
+  across all three surfaces; Documente buttons replaced with
+  inline solid chips under Subtip (separate Documente category
+  removed).
 -->
 <html lang="ro">
 <head>
@@ -217,7 +188,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .l-num{font-family:var(--mono);font-size:14px;color:var(--grey2);}
 .l-act{font-size:14px;font-weight:400;color:var(--ink);line-height:1.3;}
 .l-ref{font-family:var(--mono);font-size:14px;color:var(--grey2);}
-.l-flag{font-family:var(--mono);font-size:11px;color:var(--red);margin-left:5px;text-transform:none;}
+.l-flag{font-family:var(--mono);font-size:11px;color:var(--white);background:var(--red);margin-left:8px;text-transform:none;border:1px solid var(--red);padding:2px 6px;display:inline-flex;align-items:center;line-height:1.2;letter-spacing:0.3px;}
 .l-client{font-size:14px;color:var(--ink);}
 .l-date{font-family:var(--mono);font-size:14px;color:var(--grey2);text-align:left;line-height:1.4;white-space:nowrap;}
 .l-date-main{color:var(--ink);}
@@ -261,6 +232,41 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .ci-link:hover{opacity:0.85;}
 .ci-link-neutral{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
 .ci-link-neutral:hover{opacity:0.75;}
+
+/* ══ DOCUMENTE CHIPS (v47) ══ */
+/* Tag-sized solid chips placed inline under Subtip, not in a separate
+   full-width grid. Physically separates the reveal actions from the
+   terminating action (Pregătește act), preserving solid fill. */
+.doc-chip-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+.doc-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);cursor:pointer;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
+.doc-chip:hover{opacity:0.85;}
+.doc-chip-alert{background:var(--red);color:var(--white);border-color:var(--red);}
+
+/* Documente modal variant: fixed height so list scrolls independently of content */
+.ci-modal.ci-modal-docs{height:min(780px,88vh);max-height:88vh;}
+
+.doc-row{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:14px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;border-left:3px solid transparent;align-items:center;position:relative;}
+.doc-row:last-child{border-bottom:none;}
+.doc-row:hover{background:var(--bg);}
+.doc-row:hover .doc-row-menu{opacity:1;}
+.doc-row.active{background:var(--bg);border-left:3px solid var(--ink);}
+.doc-row.active .doc-row-menu{opacity:1;}
+.doc-row-num{font-family:var(--mono);font-size:11px;color:var(--grey2);letter-spacing:0.5px;}
+.doc-row-label{font-size:14px;font-weight:400;color:var(--ink);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:24px;}
+.doc-row-menu{position:absolute;right:16px;top:50%;transform:translateY(-50%);font-family:var(--sans);font-size:18px;font-weight:400;color:var(--grey2);background:none;border:none;cursor:pointer;padding:0 4px;line-height:1;opacity:0;transition:opacity 0.15s,color 0.15s;letter-spacing:1px;}
+.doc-row-menu:hover{color:var(--ink);}
+.doc-menu-pop{position:absolute;right:8px;top:calc(50% + 14px);background:var(--white);border:1px solid var(--rule);box-shadow:0 2px 8px rgba(0,0,0,0.08);z-index:10;min-width:140px;display:none;}
+.doc-menu-pop.show{display:block;}
+.doc-menu-item{display:block;width:100%;text-align:left;padding:10px 14px;font-family:var(--sans);font-size:13px;color:var(--ink);background:none;border:none;cursor:pointer;transition:background 0.15s;}
+.doc-menu-item:hover{background:var(--bg);}
+.doc-row-label-edit{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);background:var(--white);border:1px solid var(--ink);padding:4px 8px;margin:-5px -9px;width:calc(100% - 24px);outline:none;line-height:1.3;}
+
+.doc-preview-empty{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
+.doc-preview-placeholder{text-align:center;color:var(--grey2);}
+.doc-preview-placeholder-glyph{font-family:var(--serif);font-size:56px;color:var(--grey);line-height:1;}
+.doc-preview-placeholder-meta{font-family:var(--mono);font-size:11px;color:var(--grey2);letter-spacing:1px;text-transform:uppercase;margin-top:24px;}
+/* ══ /DOCUMENTE ══ */
+
 /* CI modal diff row */
 .ci-diff{padding:32px 0 0 16px;}
 .ci-diff-row{display:flex;flex-direction:column;gap:4px;margin-top:16px;}
@@ -355,7 +361,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .cc-act{font-size:14px;font-weight:400;color:var(--ink);line-height:1.3;}
 .cc-client{font-size:14px;font-weight:400;color:var(--ink);margin-bottom:6px;}
 .cc-status{font-family:var(--mono);font-size:14px;color:var(--grey2);text-transform:lowercase;}
-.cc-flag{font-family:var(--mono);font-size:11px;color:var(--red);text-transform:none;}
+.cc-flag{font-family:var(--mono);font-size:11px;color:var(--white);background:var(--red);text-transform:none;border:1px solid var(--red);padding:2px 6px;display:inline-flex;align-items:center;line-height:1.2;letter-spacing:0.3px;}
 .va-detail{display:flex;flex-direction:column;overflow:hidden;background:var(--white);}
 .va-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--grey2);font-size:14px;font-weight:300;}
 .va-empty-glyph{font-family:var(--serif);font-size:36px;color:var(--rule);}
@@ -372,7 +378,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 /* ══ VIEW B — LIST + BELOW ══ */
 .vb-wrap{height:760px;display:flex;flex-direction:column;}
-.vb-list-wrap{border:1px solid var(--rule);flex-shrink:0;}
+.vb-list-wrap{border:1px solid var(--rule);border-bottom:none;flex-shrink:0;}
 .vb-list-scroll{max-height:238px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
 .vb-list-scroll::-webkit-scrollbar{display:none;}
 .vb-spacer{height:24px;flex-shrink:0;}
@@ -418,7 +424,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vb-db-col:first-child{border-right:1px solid var(--rule);}
 
 /* ══ VIEW C — DRAWER ══ */
-.vc-list-wrap{border:1px solid var(--rule);max-height:560px;display:flex;flex-direction:column;}
+.vc-list-wrap{border:1px solid var(--rule);border-bottom:none;max-height:560px;display:flex;flex-direction:column;}
 .vc-list-scroll{max-height:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .vc-list-scroll::-webkit-scrollbar{display:none;}
 .vc-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.3);opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:100;}
@@ -505,8 +511,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
       <div class="today-scroll-wrap" id="today-wrap">
         <div class="today-scroll" id="today-scroll">
           <div class="today-row"><span class="today-num">01</span><span class="today-act">Împuternicire</span><span class="today-name">Dumitrescu Ion</span><span class="today-time">10:00</span></div>
-          <div class="today-row"><span class="today-num">02</span><span class="today-act">Acord notarial</span><span class="today-name">Popa Daniela</span><span class="today-time">11:30</span></div>
-          <div class="today-row"><span class="today-num">03</span><span class="today-act">Procură notarială</span><span class="today-name">Popescu Maria-Elena</span><span class="today-time">14:00</span></div>
+          <div class="today-row"><span class="today-num">02</span><span class="today-act">Acord</span><span class="today-name">Popa Daniela</span><span class="today-time">11:30</span></div>
+          <div class="today-row"><span class="today-num">03</span><span class="today-act">Procură</span><span class="today-name">Popescu Maria-Elena</span><span class="today-time">14:00</span></div>
           <div class="today-row"><span class="today-num">04</span><span class="today-act">Legalizare</span><span class="today-name">Moldovan Cristian</span><span class="today-time">16:00</span></div>
         </div>
       </div>
@@ -756,7 +762,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
   <p class="fin-note">Dosare cu programare trecută, în așteptarea confirmării semnării și achitării onorariului. <strong>Marcați manual</strong> după ce clientul a semnat și a plătit.</p>
   <div class="fin-tbl-hdr"><span></span><span>Act · Dosar</span><span>Client</span><span></span><span>Programat</span><span></span></div>
   <div class="fin-row" id="fr-3"><div class="fin-num">03</div><div><div class="fin-act">Împuternicire</div></div><div class="fin-client">Dumitrescu Ion</div><div></div><div class="fin-date">14 apr · 10:00</div><div><button class="fin-btn" onclick="markDone('fr-3',this)">Finalizat ⟶</button></div></div>
-  <div class="fin-row" id="fr-7"><div class="fin-num">07</div><div><div class="fin-act">Acord notarial</div></div><div class="fin-client">Popa Daniela</div><div></div><div class="fin-date">14 apr · 11:30</div><div><button class="fin-btn" onclick="markDone('fr-7',this)">Finalizat ⟶</button></div></div>
+  <div class="fin-row" id="fr-7"><div class="fin-num">07</div><div><div class="fin-act">Acord</div></div><div class="fin-client">Popa Daniela</div><div></div><div class="fin-date">14 apr · 11:30</div><div><button class="fin-btn" onclick="markDone('fr-7',this)">Finalizat ⟶</button></div></div>
 </div>
 
 <!-- ══ CI MODAL ══ -->
@@ -781,6 +787,27 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
       <div class="ci-fields-title">Act de identitate · Date client</div>
       <div id="ci-fields-edit"></div>
       <button class="btn-confirm" id="ci-save-btn" style="margin-top:20px;display:none;" onclick="saveCICorrections()">Salvează →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DOCUMENTE MODAL (v43) ══ -->
+<div class="ci-modal-overlay" id="doc-overlay" onclick="onDocOverlayClick(event)"></div>
+<div class="ci-modal ci-modal-docs" id="doc-modal">
+  <div class="ci-modal-hdr">
+    <span class="ci-modal-title">Alte documente</span>
+    <div class="ci-modal-actions">
+      <button class="ci-download-btn" id="doc-dl-btn" disabled onclick="downloadActiveDoc()">↓ Descarcă</button>
+      <button class="ci-download-btn" onclick="downloadAllDocs()">↓ Descarcă tot</button>
+      <button class="close-btn" onclick="closeDocModal()">−</button>
+    </div>
+  </div>
+  <div class="ci-modal-body">
+    <div class="ci-img-pane" id="doc-preview-pane">
+      <div class="doc-preview-empty">Selectați un document</div>
+    </div>
+    <div class="ci-fields-pane">
+      <div id="doc-list"></div>
     </div>
   </div>
 </div>
@@ -825,21 +852,21 @@ var FIELD_REGISTRY = [
 ];
 
 var SEEDED_DRAFTS = [
-  {id:'s1', actType:'procuri',      subtype:'Procură vânzare imobil',            name:'Procură — vânzare imobil'},
-  {id:'s2', actType:'procuri',      subtype:'Procură cumpărare imobil',          name:'Procură — cumpărare imobil'},
-  {id:'s3', actType:'procuri',      subtype:'Procură vânzare auto',              name:'Procură — vânzare auto'},
-  {id:'s4', actType:'procuri',      subtype:'Procură bancară',                   name:'Procură — bancară'},
-  {id:'s5', actType:'procuri',      subtype:'Procură generală',                  name:'Procură — generală'},
-  {id:'s6', actType:'declaratii',   subtype:'Declarație acceptare succesiune',   name:'Declarație — acceptare succesiune'},
-  {id:'s7', actType:'declaratii',   subtype:'Declarație renunțare succesiune',   name:'Declarație — renunțare succesiune'},
-  {id:'s8', actType:'declaratii',   subtype:'Declarație luare în spațiu',        name:'Declarație — luare în spațiu'},
-  {id:'s9', actType:'declaratii',   subtype:'Declarație de notorietate',         name:'Declarație — de notorietate'},
-  {id:'s10',actType:'imputerniciri',subtype:'Împuternicire generală',            name:'Împuternicire — generală'},
-  {id:'s11',actType:'imputerniciri',subtype:'Împuternicire bancară',             name:'Împuternicire — bancară'},
-  {id:'s12',actType:'acorduri',     subtype:'Acord partaj bunuri',               name:'Acord — partaj bunuri'},
-  {id:'s13',actType:'acorduri',     subtype:'Acord între soți (divorț notarial)',name:'Acord — divorț notarial'},
-  {id:'s14',actType:'legalizari',   subtype:'Legalizare semnătură',              name:'Legalizare — semnătură'},
-  {id:'s15',actType:'legalizari',   subtype:'Legalizare copie',                  name:'Legalizare — copie'}
+  {id:'s1', actType:'procuri',      subtype:'Vânzare imobil',            name:'Procură — Vânzare imobil'},
+  {id:'s2', actType:'procuri',      subtype:'Cumpărare imobil',          name:'Procură — Cumpărare imobil'},
+  {id:'s3', actType:'procuri',      subtype:'Vânzare auto',              name:'Procură — Vânzare auto'},
+  {id:'s4', actType:'procuri',      subtype:'Bancară',                   name:'Procură — Bancară'},
+  {id:'s5', actType:'procuri',      subtype:'Generală',                  name:'Procură — Generală'},
+  {id:'s6', actType:'declaratii',   subtype:'Acceptare succesiune',   name:'Declarație — Acceptare succesiune'},
+  {id:'s7', actType:'declaratii',   subtype:'Renunțare succesiune',   name:'Declarație — Renunțare succesiune'},
+  {id:'s8', actType:'declaratii',   subtype:'Luare în spațiu',        name:'Declarație — Luare în spațiu'},
+  {id:'s9', actType:'declaratii',   subtype:'De notorietate',         name:'Declarație — De notorietate'},
+  {id:'s10',actType:'imputerniciri',subtype:'Generală',            name:'Împuternicire — Generală'},
+  {id:'s11',actType:'imputerniciri',subtype:'Bancară',             name:'Împuternicire — Bancară'},
+  {id:'s12',actType:'acorduri',     subtype:'Partaj bunuri',               name:'Acord — Partaj bunuri'},
+  {id:'s13',actType:'acorduri',     subtype:'Între soți — divorț',name:'Acord — Între soți'},
+  {id:'s14',actType:'legalizari',   subtype:'Semnătură',              name:'Legalizare — Semnătură'},
+  {id:'s15',actType:'legalizari',   subtype:'Copie',                  name:'Legalizare — Copie'}
 ];
 
 var DRAFT_BLOBS = {}; // id -> ArrayBuffer
@@ -1089,7 +1116,7 @@ function fmtDateShort(iso){if(!iso)return null;const[y,m,d]=iso.split('-');retur
 // parties: array of {role, fields[]}  — used for multi-party acts (procuri, acorduri, imputerniciri)
 // fields: flat array — used for single-party acts (declaratii, legalizari)
 const CASES=[
-  {id:1,type:'procuri',subtype:'Procură vânzare imobil',act:'Procură notarială',ref:'NOT-2026-0041',client:'Popescu Maria-Elena',status:'nou',flag:true,
+  {id:1,type:'procuri',subtype:'Vânzare imobil',act:'Procură',ref:'NOT-2026-0041',client:'Popescu Maria-Elena',status:'nou',flag:true,
    pref:'24 apr, după-amiaza',prefDate:'2026-04-24',prefSlot:'după-amiaza',alt:'alternativ: 26 apr, dimineața',
    date:'2026-04-24',time:'14:00',notes:'',created:'10 apr',urgent:true,
    hist:['10 apr — creat (sistem)','11 apr — CI verificat, diferențe identificate'],
@@ -1098,14 +1125,14 @@ const CASES=[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Popescu Maria Elena',m:false,cp:'Popescu Maria Elena'},{l:'CNP',v:'2 780 415 350 041',m:true,cp:'2780415350041'},{l:'Serie C.I.',v:'IF 123456',m:true,cp:'IF123456'},{l:'Data nașterii',v:'15.04.1978',m:false,cp:'15.04.1978'},{l:'Domiciliu',v:'Str. Mihai Eminescu nr. 12, ap. 4, sector 2',m:false,cp:'Str. Mihai Eminescu nr. 12'},{l:'Telefon',v:'0722 345 678',m:false,cp:'0722345678'}]},
      {role:'Mandatar',fields:[{l:'Nume complet',v:'Popescu Alexandru',m:false,cp:'Popescu Alexandru'},{l:'CNP',v:'1 750 820 350 011',m:true,cp:'1750820350011'},{l:'Serie C.I.',v:'IF 654321',m:true,cp:'IF654321'},{l:'Data nașterii',v:'20.08.1975',m:false,cp:'20.08.1975'},{l:'Domiciliu',v:'Str. Victoriei nr. 3, sector 1',m:false,cp:'Str. Victoriei nr. 3'},{l:'Telefon',v:'0744 111 222',m:false,cp:'0744111222'}]}
    ]},
-  {id:2,type:'declaratii',subtype:'Declarație luare în spațiu',act:'Declarație notarială',ref:'NOT-2026-0039',client:'Gheorghe Andrei',status:'in-lucru',flag:false,
+  {id:2,type:'declaratii',subtype:'Luare în spațiu',act:'Declarație',ref:'NOT-2026-0039',client:'Gheorghe Andrei',status:'in-lucru',flag:false,
    pref:'22 apr, dimineața',prefDate:'2026-04-22',prefSlot:'dimineața',alt:'',date:'2026-04-22',time:'09:30',
    notes:'Aduce certificatul de deces original.',created:'9 apr',urgent:false,
    hist:['9 apr — creat (sistem)','12 apr — status: Activ'],disc:[],
    parties:[
      {role:'Declarant',fields:[{l:'Nume complet',v:'Gheorghe Andrei',m:false,cp:'Gheorghe Andrei'},{l:'CNP',v:'1 650 823 210 045',m:true,cp:'1650823210045'},{l:'Serie C.I.',v:'B 543210',m:true,cp:'B543210'},{l:'Data nașterii',v:'23.08.1965',m:false,cp:'23.08.1965'},{l:'Domiciliu',v:'Bd. Unirii nr. 45, bl. D2, ap. 18, sector 4',m:false,cp:'Bd. Unirii nr. 45'},{l:'Telefon',v:'0744 112 233',m:false,cp:'0744112233'},{l:'Email',v:'andrei.gheorghe@gmail.com',m:false,cp:'andrei.gheorghe@gmail.com'}]}
    ]},
-  {id:3,type:'imputerniciri',subtype:'Împuternicire bancară',act:'Împuternicire',ref:'NOT-2026-0037',client:'Dumitrescu Ion',status:'programat',flag:false,
+  {id:3,type:'imputerniciri',subtype:'Bancară',act:'Împuternicire',ref:'NOT-2026-0037',client:'Dumitrescu Ion',status:'programat',flag:false,
    pref:'14 apr, 10:00',prefDate:'2026-04-14',prefSlot:'10:00',alt:'',date:'2026-04-14',time:'10:00',
    notes:'',created:'8 apr',urgent:false,
    hist:['8 apr — creat (sistem)','11 apr — programat: 14 apr 10:00'],disc:[],
@@ -1113,27 +1140,27 @@ const CASES=[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Dumitrescu Ion',m:false,cp:'Dumitrescu Ion'},{l:'CNP',v:'1 550 312 440 033',m:true,cp:'1550312440033'},{l:'Serie C.I.',v:'CJ 987654',m:true,cp:'CJ987654'},{l:'Data nașterii',v:'12.03.1955',m:false,cp:'12.03.1955'},{l:'Domiciliu',v:'Str. Florilor nr. 3, Cluj-Napoca',m:false,cp:'Str. Florilor nr. 3'},{l:'Telefon',v:'0766 987 001',m:false,cp:'0766987001'}]},
      {role:'Împuternicit',fields:[{l:'Nume complet',v:'Dumitrescu Elena',m:false,cp:'Dumitrescu Elena'},{l:'CNP',v:'2 580 714 440 044',m:true,cp:'2580714440044'},{l:'Serie C.I.',v:'CJ 112233',m:true,cp:'CJ112233'},{l:'Data nașterii',v:'14.07.1958',m:false,cp:'14.07.1958'},{l:'Domiciliu',v:'Str. Florilor nr. 3, Cluj-Napoca',m:false,cp:'Str. Florilor nr. 3'},{l:'Telefon',v:'0755 321 001',m:false,cp:'0755321001'}]}
    ]},
-  {id:4,type:'acorduri',subtype:'Acord partaj bunuri',act:'Acord notarial',ref:'NOT-2026-0036',client:'Stancu Ioana',status:'nou',flag:false,
+  {id:4,type:'acorduri',subtype:'Partaj bunuri',act:'Acord',ref:'NOT-2026-0036',client:'Stancu Ioana',status:'nou',flag:false,
    pref:'flexibil',prefDate:null,prefSlot:'21–25 apr',alt:'',date:'',time:'',notes:'',created:'11 apr',urgent:true,
    hist:['11 apr — creat (sistem)'],disc:[],
    parties:[
      {role:'Parte I',fields:[{l:'Nume complet',v:'Stancu Ioana',m:false,cp:'Stancu Ioana'},{l:'CNP',v:'2 900 719 350 088',m:true,cp:'2900719350088'},{l:'Serie C.I.',v:'MM 445566',m:true,cp:'MM445566'},{l:'Data nașterii',v:'19.07.1990',m:false,cp:'19.07.1990'},{l:'Domiciliu',v:'Str. Victoriei nr. 88, sector 1',m:false,cp:'Str. Victoriei nr. 88'},{l:'Telefon',v:'0733 009 876',m:false,cp:'0733009876'}]},
      {role:'Parte II',fields:[{l:'Nume complet',v:'Stancu Radu',m:false,cp:'Stancu Radu'},{l:'CNP',v:'1 880 314 350 022',m:true,cp:'1880314350022'},{l:'Serie C.I.',v:'MM 778899',m:true,cp:'MM778899'},{l:'Data nașterii',v:'14.03.1988',m:false,cp:'14.03.1988'},{l:'Domiciliu',v:'Str. Victoriei nr. 88, sector 1',m:false,cp:'Str. Victoriei nr. 88'},{l:'Telefon',v:'0722 445 001',m:false,cp:'0722445001'}]}
    ]},
-  {id:5,type:'legalizari',subtype:'Legalizare semnătură',act:'Legalizare semnătură',ref:'NOT-2026-0034',client:'Moldovan Cristian',status:'in-lucru',flag:false,
+  {id:5,type:'legalizari',subtype:'Semnătură',act:'Legalizare',ref:'NOT-2026-0034',client:'Moldovan Cristian',status:'in-lucru',flag:false,
    pref:'17 apr, dimineața',prefDate:'2026-04-17',prefSlot:'dimineața',alt:'',date:'2026-04-17',time:'09:00',
    notes:'',created:'7 apr',urgent:false,
    hist:['7 apr — creat (sistem)','10 apr — status: Activ'],disc:[],
    parties:[
      {role:'Semnatar',fields:[{l:'Nume complet',v:'Moldovan Cristian',m:false,cp:'Moldovan Cristian'},{l:'CNP',v:'1 880 517 260 077',m:true,cp:'1880517260077'},{l:'Serie C.I.',v:'CJ 334455',m:true,cp:'CJ334455'},{l:'Data nașterii',v:'17.05.1988',m:false,cp:'17.05.1988'},{l:'Domiciliu',v:'Aleea Mureșului nr. 7, Cluj-Napoca',m:false,cp:'Aleea Mureșului nr. 7'},{l:'Telefon',v:'0756 441 220',m:false,cp:'0756441220'},{l:'Email',v:'cristian.moldovan@gmail.com',m:false,cp:'cristian.moldovan@gmail.com'}]}
    ]},
-  {id:6,type:'declaratii',subtype:'Declarație pierdere act',act:'Declarație notarială',ref:'NOT-2026-0033',client:'Niculescu Vasile',status:'nou',flag:false,
+  {id:6,type:'declaratii',subtype:'Pierdere act',act:'Declarație',ref:'NOT-2026-0033',client:'Niculescu Vasile',status:'nou',flag:false,
    pref:'flexibil',prefDate:null,prefSlot:'orice zi',alt:'',date:'',time:'',notes:'',created:'12 apr',urgent:true,
    hist:['12 apr — creat (sistem)'],disc:[],
    parties:[
      {role:'Declarant',fields:[{l:'Nume complet',v:'Niculescu Vasile',m:false,cp:'Niculescu Vasile'},{l:'CNP',v:'1 470 302 350 061',m:true,cp:'1470302350061'},{l:'Serie C.I.',v:'BV 221133',m:true,cp:'BV221133'},{l:'Data nașterii',v:'02.03.1947',m:false,cp:'02.03.1947'},{l:'Domiciliu',v:'Str. Republicii nr. 22, Brașov',m:false,cp:'Str. Republicii nr. 22'},{l:'Telefon',v:'0722 001 002',m:false,cp:'0722001002'}]}
    ]},
-  {id:7,type:'acorduri',subtype:'Acord între soți (divorț notarial)',act:'Acord notarial',ref:'NOT-2026-0031',client:'Popa Daniela',status:'programat',flag:false,
+  {id:7,type:'acorduri',subtype:'Între soți — divorț',act:'Acord',ref:'NOT-2026-0031',client:'Popa Daniela',status:'programat',flag:false,
    pref:'14 apr, 11:30',prefDate:'2026-04-14',prefSlot:'11:30',alt:'',date:'2026-04-14',time:'11:30',
    notes:'',created:'9 apr',urgent:false,
    hist:['9 apr — creat (sistem)','11 apr — programat: 14 apr 11:30'],disc:[],
@@ -1141,7 +1168,7 @@ const CASES=[
      {role:'Parte I',fields:[{l:'Nume complet',v:'Popa Daniela',m:false,cp:'Popa Daniela'},{l:'CNP',v:'2 830 614 180 099',m:true,cp:'2830614180099'},{l:'Serie C.I.',v:'IS 556677',m:true,cp:'IS556677'},{l:'Data nașterii',v:'14.06.1983',m:false,cp:'14.06.1983'},{l:'Domiciliu',v:'Str. Lăpușneanu nr. 14, Iași',m:false,cp:'Str. Lăpușneanu nr. 14'},{l:'Telefon',v:'0788 345 001',m:false,cp:'0788345001'}]},
      {role:'Parte II',fields:[{l:'Nume complet',v:'Popa Gheorghe',m:false,cp:'Popa Gheorghe'},{l:'CNP',v:'1 810 220 180 033',m:true,cp:'1810220180033'},{l:'Serie C.I.',v:'IS 998877',m:true,cp:'IS998877'},{l:'Data nașterii',v:'20.02.1981',m:false,cp:'20.02.1981'},{l:'Domiciliu',v:'Str. Lăpușneanu nr. 14, Iași',m:false,cp:'Str. Lăpușneanu nr. 14'},{l:'Telefon',v:'0744 002 003',m:false,cp:'0744002003'}]}
    ]},
-  {id:8,type:'imputerniciri',subtype:'Împuternicire generală',act:'Împuternicire',ref:'NOT-2026-0029',client:'Bălan Mihai',status:'in-lucru',flag:false,
+  {id:8,type:'imputerniciri',subtype:'Generală',act:'Împuternicire',ref:'NOT-2026-0029',client:'Bălan Mihai',status:'in-lucru',flag:false,
    pref:'14 apr, după-amiaza',prefDate:'2026-04-14',prefSlot:'după-amiaza',alt:'',date:'2026-04-14',time:'15:00',
    notes:'',created:'13 apr',urgent:false,
    hist:['13 apr — creat (sistem)','14 apr — status: Activ'],disc:[],
@@ -1150,6 +1177,44 @@ const CASES=[
      {role:'Împuternicit',fields:[{l:'Nume complet',v:'Bălan Ana',m:false,cp:'Bălan Ana'},{l:'CNP',v:'2 010 915 400 066',m:true,cp:'2010915400066'},{l:'Serie C.I.',v:'PH 334455',m:true,cp:'PH334455'},{l:'Data nașterii',v:'15.09.2001',m:false,cp:'15.09.2001'},{l:'Domiciliu',v:'Str. Gării nr. 5, Ploiești',m:false,cp:'Str. Gării nr. 5'},{l:'Telefon',v:'0755 667 001',m:false,cp:'0755667001'}]}
    ]},
 ];
+
+// ══ DOCUMENTE — per-case supporting documents (stub; live version reads from Supabase `uploads` table) ══
+// Keyed by case id. Empty array = "C.I. only" case → Alte documente button hidden.
+// Each entry: {file: original filename, kind: preview type, label: custom rename | null}
+const DOCS_EXTRA={
+  1:[{file:'extras_cf.pdf',kind:'PDF preview',label:null},{file:'contract_vanzare_draft.pdf',kind:'PDF preview',label:null},{file:'IMG_3872.jpg',kind:'Imagine preview',label:null}],
+  2:[{file:'certificat_deces.pdf',kind:'PDF preview',label:null},{file:'certificat_casatorie.pdf',kind:'PDF preview',label:null}],
+  3:[{file:'extras_cont_bancar.pdf',kind:'PDF preview',label:null}],
+  4:[{file:'certificat_casatorie.pdf',kind:'PDF preview',label:null},{file:'acord_prealabil.pdf',kind:'PDF preview',label:null},{file:'scan_0004.pdf',kind:'PDF preview',label:null},{file:'anexa_partaj.pdf',kind:'PDF preview',label:null},{file:'IMG_2210.jpg',kind:'Imagine preview',label:null},{file:'proces_verbal.pdf',kind:'PDF preview',label:null},{file:'cerere_semnata.pdf',kind:'PDF preview',label:null}],
+  5:[],
+  6:[{file:'declaratie_pierdere.jpg',kind:'Imagine preview',label:null},{file:'copie_vechi_act.pdf',kind:'PDF preview',label:null}],
+  7:[{file:'acord_soti.pdf',kind:'PDF preview',label:null},{file:'certificat_casatorie.pdf',kind:'PDF preview',label:null}],
+  8:[{file:'procura_generala_template.pdf',kind:'PDF preview',label:null},{file:'IMG_4421.jpg',kind:'Imagine preview',label:null}]
+};
+
+CASES.forEach(function(c){
+  c.docs=(DOCS_EXTRA[c.id]||[]).slice();
+});
+
+// ══ DEMO BLOBS — a real 1-page PDF and a 1×1 PNG used for all stub downloads ══
+var DEMO_PDF_B64='JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1NiA+PgpzdHJlYW0KQlQgL0YxIDEyIFRmIDcyIDcyMCBUZCAobm90YXJpYXQuY28gZGVtbyBkb2N1bWVudCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0NvdXJpZXIgPj4KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzQ3IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNDE1CiUlRU9GCg==';
+var DEMO_PNG_B64='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGNgAAAAAAUAAQ0KLbQAAAAASUVORK5CYII=';
+
+function b64ToBytes(b64){
+  var bin=atob(b64);
+  var arr=new Uint8Array(bin.length);
+  for(var i=0;i<bin.length;i++)arr[i]=bin.charCodeAt(i);
+  return arr;
+}
+
+function blobForDoc(d){
+  var isImg=d.kind && d.kind.toLowerCase().indexOf('imagine')>-1;
+  if(isImg){
+    return new Blob([b64ToBytes(DEMO_PNG_B64)],{type:'image/png'});
+  }
+  return new Blob([b64ToBytes(DEMO_PDF_B64)],{type:'application/pdf'});
+}
+
 
 // Per-type historical chart data [Nov–Apr]
 const CHART_DATA={
@@ -1277,11 +1342,19 @@ function populateView(prefix,c){
       :'<div class="missing-draft">Șablon indisponibil</div>';
   }
 
-  // Left column: Date dosar (category) + copyable fields + Date părți (category) + parties
+  // Left column: Date dosar (category) + copyable fields + Date părți (category) + parties + Documente (category)
   const partiesLabel=c.parties&&c.parties.length>1?'Date părți':null;
-  const ciAlert=c.flag
-    ?'<a class="ci-link" id="'+prefix+'-ci-inline" href="#">! Carte identitate — Verifică</a>'
-    :'<a class="ci-link-neutral" id="'+prefix+'-ci-inline" href="#">Carte identitate →</a>';
+  const hasOther=c.docs && c.docs.length>0;
+  const ciChipClass=c.flag?'doc-chip doc-chip-alert':'doc-chip';
+  const ciChipLabel=c.flag?'! Carte identitate ⟶':'Carte identitate ⟶';
+  const alteChip=hasOther
+    ?'<button class="doc-chip" onclick="openDocModal('+c.id+')">Alte documente ⟶</button>'
+    :'';
+  const chipsBlock=
+    '<div class="doc-chip-row">'
+    +'<button class="'+ciChipClass+'" id="'+prefix+'-ci-inline">'+ciChipLabel+'</button>'
+    +alteChip
+    +'</div>';
   const dosarBlock=
     '<div class="detail-category">Date dosar</div>'
     +'<div class="field-stacked" onclick="cp(\''+c.ref+'\',\'Număr dosar copiat\')">'
@@ -1293,7 +1366,7 @@ function populateView(prefix,c){
     +'<div class="field-stacked" onclick="cp(\''+c.subtype+'\',\'Subtip copiat\')">'
     +'<div class="field-stacked-inner"><span class="fs-lbl">Subtip</span><span class="fs-val">'+c.subtype+'</span></div>'
     +'</div>'
-    +ciAlert
+    +chipsBlock
     +(partiesLabel?'<div class="detail-category detail-category-spaced">'+partiesLabel+'</div>':'<div style="height:8px;"></div>')
     +renderParties(c);
   document.getElementById(prefix+'-fields').innerHTML=dosarBlock;
@@ -1598,6 +1671,168 @@ function closeCI(){
   document.getElementById('ci-modal').classList.remove('show');
   document.body.style.overflow='';
 }
+
+// ══ DOCUMENTE MODAL (v43) ══
+var currentDocCase=null;
+var currentDocs=[];
+var activeDocIdx=-1;
+var openDocMenuIdx=-1;
+var editingDocIdx=-1;
+
+function pad2(n){return n<10?'0'+n:''+n;}
+function labelForDoc(i){
+  var d=currentDocs[i];
+  return d && d.label && d.label.length ? d.label : 'Document';
+}
+
+function renderDocList(){
+  var rows=currentDocs.map(function(d,i){
+    var act=i===activeDocIdx?' active':'';
+    var isEditing=i===editingDocIdx;
+    var labelBlock=isEditing
+      ? '<input class="doc-row-label-edit" id="doc-edit-input-'+i+'" type="text" value="'+(d.label||'')+'" placeholder="Document" onclick="event.stopPropagation()" onkeydown="onDocEditKey(event,'+i+')" onblur="commitDocEdit('+i+')" />'
+      : '<div class="doc-row-label">'+labelForDoc(i)+'</div>';
+    var menuShown=i===openDocMenuIdx;
+    var menu=menuShown
+      ? '<div class="doc-menu-pop show" onclick="event.stopPropagation()">'
+        +'<button class="doc-menu-item" onclick="startDocEdit('+i+');event.stopPropagation()">Redenumește</button>'
+        +(d.label?('<button class="doc-menu-item" onclick="resetDocLabel('+i+');event.stopPropagation()">Restabilește</button>'):'')
+        +'</div>'
+      : '';
+    return '<div class="doc-row'+act+'" onclick="selectDoc('+i+')">'
+      +'<div class="doc-row-num">'+pad2(i+1)+'</div>'
+      +labelBlock
+      +'<button class="doc-row-menu" onclick="toggleDocMenu('+i+',event)">⋯</button>'
+      +menu
+      +'</div>';
+  }).join('');
+  document.getElementById('doc-list').innerHTML=rows;
+  if(editingDocIdx>=0){
+    var inp=document.getElementById('doc-edit-input-'+editingDocIdx);
+    if(inp){inp.focus();inp.select();}
+  }
+}
+
+function selectDoc(i){
+  if(editingDocIdx>=0)return;
+  activeDocIdx=i;
+  openDocMenuIdx=-1;
+  renderDocList();
+  var d=currentDocs[i];
+  document.getElementById('doc-preview-pane').innerHTML=''
+    +'<div class="doc-preview-placeholder">'
+    +'<div class="doc-preview-placeholder-glyph">—</div>'
+    +'<div class="doc-preview-placeholder-meta">'+d.kind+'</div>'
+    +'</div>';
+  document.getElementById('doc-dl-btn').disabled=false;
+}
+
+function toggleDocMenu(i,e){
+  e.stopPropagation();
+  openDocMenuIdx=openDocMenuIdx===i?-1:i;
+  renderDocList();
+}
+
+function startDocEdit(i){
+  editingDocIdx=i;
+  openDocMenuIdx=-1;
+  renderDocList();
+}
+
+function onDocEditKey(e,i){
+  if(e.key==='Enter'){e.preventDefault();commitDocEdit(i);}
+  else if(e.key==='Escape'){e.preventDefault();editingDocIdx=-1;renderDocList();}
+}
+
+function commitDocEdit(i){
+  var inp=document.getElementById('doc-edit-input-'+i);
+  if(!inp)return;
+  var v=inp.value.trim();
+  currentDocs[i].label=v.length?v:null;
+  editingDocIdx=-1;
+  renderDocList();
+}
+
+function resetDocLabel(i){
+  currentDocs[i].label=null;
+  openDocMenuIdx=-1;
+  renderDocList();
+}
+
+function downloadActiveDoc(){
+  if(activeDocIdx<0)return;
+  var d=currentDocs[activeDocIdx];
+  var blob=blobForDoc(d);
+  saveAs(blob, d.file);
+  showToast('Descărcat: '+d.file);
+}
+
+function downloadAllDocs(){
+  if(!currentDocs.length)return;
+  if(typeof JSZip==='undefined'){showToast('JSZip indisponibil');return;}
+  var zip=new JSZip();
+  currentDocs.forEach(function(d){
+    zip.file(d.file, blobForDoc(d));
+  });
+  var caseRef=currentDocCase?currentDocCase.ref:'dosar';
+  var zipName=caseRef+' · documente.zip';
+  zip.generateAsync({type:'blob'}).then(function(zipBlob){
+    saveAs(zipBlob, zipName);
+    showToast('Descărcat '+currentDocs.length+' fișiere');
+  }).catch(function(err){
+    showToast('Eroare la arhivare');
+    console.error(err);
+  });
+}
+
+function openDocModal(caseId){
+  var c=CASES.find(function(x){return x.id===caseId;});
+  if(!c||!c.docs||!c.docs.length)return;
+  currentDocCase=c;
+  currentDocs=c.docs;
+  activeDocIdx=-1;
+  openDocMenuIdx=-1;
+  editingDocIdx=-1;
+  renderDocList();
+  document.getElementById('doc-preview-pane').innerHTML='<div class="doc-preview-empty">Selectați un document</div>';
+  document.getElementById('doc-dl-btn').disabled=true;
+  document.getElementById('doc-overlay').classList.add('show');
+  document.getElementById('doc-modal').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+
+function closeDocModal(){
+  document.getElementById('doc-overlay').classList.remove('show');
+  document.getElementById('doc-modal').classList.remove('show');
+  document.body.style.overflow='';
+  currentDocCase=null;
+}
+
+function onDocOverlayClick(e){
+  if(editingDocIdx>=0)commitDocEdit(editingDocIdx);
+  openDocMenuIdx=-1;
+  closeDocModal();
+}
+
+// Close ⋯ menu when clicking outside any row
+document.addEventListener('click',function(e){
+  if(openDocMenuIdx<0)return;
+  var row=e.target.closest('.doc-row');
+  if(!row){
+    openDocMenuIdx=-1;
+    renderDocList();
+  }
+});
+
+// Esc handling: edit > menu > modal (innermost first)
+document.addEventListener('keydown',function(e){
+  if(e.key!=='Escape')return;
+  if(!document.getElementById('doc-modal').classList.contains('show'))return;
+  if(editingDocIdx>=0){editingDocIdx=-1;renderDocList();return;}
+  if(openDocMenuIdx>=0){openDocMenuIdx=-1;renderDocList();return;}
+  closeDocModal();
+});
+
 function applyDisc(btn,role,fieldLabel,newVal){
   var inp=document.querySelector('#ci-fields-edit input[data-party="'+role+'"][data-field="'+fieldLabel+'"]');
   if(inp){inp.value=newVal;inp.style.transition='background 0.3s';inp.style.background='var(--bg)';setTimeout(function(){inp.style.background='';},600);}
@@ -1640,8 +1875,8 @@ function saveCICorrections(){
       if(ciLink){
         ciLink.style.transition='opacity 0.3s';ciLink.style.opacity='0';
         setTimeout(function(){
-          ciLink.className='ci-link-neutral';
-          ciLink.textContent='Carte identitate →';
+          ciLink.className='doc-chip';
+          ciLink.textContent='Carte identitate ⟶';
           ciLink.style.opacity='1';
         },350);
       }
@@ -1657,9 +1892,10 @@ function saveCICorrections(){
   showToast('CI verificat \u2014 corecții aplicate');
 }
 
-// Wire all ci-link clicks to openCI
+// Wire CI-button clicks (by id suffix so we don't also trigger Alte documente)
 document.addEventListener('click',e=>{
-  if(e.target.closest('.ci-link,.ci-link-neutral')){e.preventDefault();if(currentOpenCase)openCI(currentOpenCase);}
+  var t=e.target.closest('[id$="-ci-inline"]');
+  if(t){e.preventDefault();if(currentOpenCase)openCI(currentOpenCase);}
 });
 
 // ══ CHART ══
