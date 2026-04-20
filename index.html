@@ -2,7 +2,8 @@
 <!--
   notariat.co — Dashboard v48 · CANONICAL
   ───────────────────────────────────────────────────────────────
-  v47 → v48 changelog (single polish):
+  v47 → v48 changelog (two cosmetic fixes):
+
   • Documente modal height bumped from min(620px, 88vh) to
     min(780px, 88vh) for visual congruency with the CI modal.
     The CI modal uses max-height:88vh with min-height:400px on
@@ -12,15 +13,22 @@
     still capping growth so long lists scroll internally
     (preserving the v43 scroll-inside-fixed-modal behavior).
 
+  • .vol-desc — the description strip that sits below the Dosare
+    explorator filter tabs (showing "Volum total · Media națională:
+    15-20 dosare/lună urban" etc.) — had a `border-top:2px solid
+    var(--ink)` accent line. That heavy black line read as out of
+    character with the rest of the dashboard's light rule weight.
+    Removed. The 1px rule border around the box is retained (as
+    everywhere else). Visual noise dropped, zero functional impact.
+
   All v47 behaviors preserved. All audit invariants pass.
 
   Rollback: notariat_dashboard_v47_baseline.html
 
   ─── v46 → v47 headline ───
-  Act name simplification global; ! C.I. tags solid red + white
-  across all three surfaces; Documente buttons replaced with
-  inline solid chips under Subtip (separate Documente category
-  removed).
+  Act name simplification global (Procură notarială → Procură,
+  etc.); ! C.I. tags solid red + white; Documente buttons
+  replaced with inline solid chips under Subtip.
 -->
 <html lang="ro">
 <head>
@@ -130,7 +138,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vol-tab:last-child{border-right:none;}
 .vol-tab.active{background:none;color:var(--ink);border-bottom-color:var(--ink);}
 .vol-tab:hover:not(.active){background:none;color:var(--grey);}
-.vol-desc{background:var(--bg);border:1px solid var(--rule);border-top:2px solid var(--ink);padding:16px 20px;margin-bottom:28px;display:flex;gap:32px;align-items:baseline;}
+.vol-desc{background:var(--bg);border:1px solid var(--rule);padding:16px 20px;margin-bottom:28px;display:flex;gap:32px;align-items:baseline;}
 .vd-name{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);min-width:130px;}
 .vd-body{font-size:14px;font-weight:300;color:var(--grey2);line-height:1.5;flex:1;}
 .vd-body strong{color:var(--ink);font-weight:500;}
