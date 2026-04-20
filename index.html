@@ -2,7 +2,7 @@
 <!--
   notariat.co — Dashboard v48 · CANONICAL
   ───────────────────────────────────────────────────────────────
-  v47 → v48 changelog (two cosmetic fixes):
+  v47 → v48 changelog (three cosmetic / UX-layer fixes):
 
   • Documente modal height bumped from min(620px, 88vh) to
     min(780px, 88vh) for visual congruency with the CI modal.
@@ -18,8 +18,30 @@
     15-20 dosare/lună urban" etc.) — had a `border-top:2px solid
     var(--ink)` accent line. That heavy black line read as out of
     character with the rest of the dashboard's light rule weight.
-    Removed. The 1px rule border around the box is retained (as
-    everywhere else). Visual noise dropped, zero functional impact.
+    Removed. The 1px rule border around the box is retained.
+
+  • Audio parity pass (matches admin-chat refinement):
+    – soundScroll replaced with delta-throttled picker-tick:
+      880Hz / 0.035s / vol 0.045, fires once per 56px of
+      accumulated scroll delta (iOS rotating-wheel feel).
+      Per-container tracking via _scrollLastY keyed by element
+      id (or _default). Old _scrollActive/_scrollEndTimer state
+      removed.
+    – Scroll listeners extended from the 4 id-keyed containers
+      to also cover class-based scrollables:
+      .va-db-col, .vb-db-col, .vc-col, .ci-fields-pane
+      (all overflow-y:auto surfaces in the dashboard; no
+      additional scrollables found beyond what the audio-prompt
+      candidate list specified).
+    – Filter/select sound wiring (soundTabSwitch on act-type
+      tabs, soundSwitch on view-switcher, soundSelect on case
+      opens/selections) was already correct — no changes made.
+    – No search feature exists in v48, so the prompt's "search
+      dropdown item click" / "clear-search button" rules had no
+      call-sites to wire.
+    Two pre-existing backticks in a JS comment on line ~363
+    (Supabase `uploads` table reference) were left untouched —
+    they're English prose, not ES6 template literals.
 
   All v47 behaviors preserved. All audit invariants pass.
 
@@ -1102,17 +1124,21 @@ function soundSlider(){
   sliderSoundTimer=setTimeout(()=>{sliderSoundTimer=null;},80);
   playTone([440],0.04,'sine',0.05);
 }
-// scroll: fires once per gesture, only when content is actually scrollable
-let scrollActive=false,scrollEndTimer=null;
+// scroll: short pick-ticks every ~56px of scroll delta (iOS-wheel feel)
+// Per-container delta tracking keyed by element id (or _default).
+var _scrollLastY={};
+var _scrollTickStep=56;
 function soundScroll(e){
-  const el=e.currentTarget;
-  if(el.scrollHeight<=el.clientHeight+2)return; // not actually overflowing — no sound
-  if(!scrollActive){
-    scrollActive=true;
-    playTone([528],0.18,'sine',0.1);
+  var el=e.currentTarget;
+  if(el.scrollHeight<=el.clientHeight+2)return;
+  var key=el.id||'_default';
+  var last=_scrollLastY[key];
+  if(last===undefined){_scrollLastY[key]=el.scrollTop;return;}
+  var delta=Math.abs(el.scrollTop-last);
+  if(delta>=_scrollTickStep){
+    _scrollLastY[key]=el.scrollTop;
+    playTone([880],0.035,'sine',0.045);
   }
-  clearTimeout(scrollEndTimer);
-  scrollEndTimer=setTimeout(()=>{scrollActive=false;},200);
 }
 
 // ══ DATA ══
@@ -1922,10 +1948,15 @@ window.addEventListener('load',()=>{
   switchView(currentView);
   rebuildAllLists();
   selA(1);
-  // ── SCROLL SOUNDS — one tone per gesture, silent during momentum
+  // ── SCROLL SOUNDS — delta-throttled pick-ticks (~56px per tick)
+  // id-keyed containers
   ['today-scroll','va-list-scroll','vb-list-scroll','vc-list'].forEach(id=>{
     const el=document.getElementById(id);
     if(el)el.addEventListener('scroll',soundScroll,{passive:true});
+  });
+  // class-based scrollable containers (unique ids not guaranteed)
+  document.querySelectorAll('.va-db-col, .vb-db-col, .vc-col, .ci-fields-pane').forEach(el=>{
+    el.addEventListener('scroll',soundScroll,{passive:true});
   });
 });
 
