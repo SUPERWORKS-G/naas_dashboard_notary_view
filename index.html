@@ -1603,6 +1603,7 @@ function sortCases(cases){
   return c;
 }
 function setSort(key,btn){
+  soundTabSwitch();
   currentSort=key;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
