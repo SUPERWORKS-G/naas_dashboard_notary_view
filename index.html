@@ -2,50 +2,57 @@
 <!--
   notariat.co — Dashboard v48 · CANONICAL
   ───────────────────────────────────────────────────────────────
-  v47 → v48 changelog (three cosmetic / UX-layer fixes):
+  v47 → v48 changelog (four passes consolidated under v48):
 
-  • Documente modal height bumped from min(620px, 88vh) to
-    min(780px, 88vh) for visual congruency with the CI modal.
-    The CI modal uses max-height:88vh with min-height:400px on
-    the image pane, landing at ~500-700px depending on content.
-    The Documente modal's fixed 620px was visibly shorter.
-    780px matches the CI modal's typical rendered height while
-    still capping growth so long lists scroll internally
-    (preserving the v43 scroll-inside-fixed-modal behavior).
+  1) Documente modal height bumped from min(620px, 88vh) to
+     min(780px, 88vh) for visual congruency with the CI modal.
 
-  • .vol-desc — the description strip that sits below the Dosare
-    explorator filter tabs (showing "Volum total · Media națională:
-    15-20 dosare/lună urban" etc.) — had a `border-top:2px solid
-    var(--ink)` accent line. That heavy black line read as out of
-    character with the rest of the dashboard's light rule weight.
-    Removed. The 1px rule border around the box is retained.
+  2) .vol-desc border-top:2px solid var(--ink) accent removed
+     from the Dosare explorator description strip.
 
-  • Audio parity pass (matches admin-chat refinement):
-    – soundScroll replaced with delta-throttled picker-tick:
-      880Hz / 0.035s / vol 0.045, fires once per 56px of
-      accumulated scroll delta (iOS rotating-wheel feel).
-      Per-container tracking via _scrollLastY keyed by element
-      id (or _default). Old _scrollActive/_scrollEndTimer state
-      removed.
-    – Scroll listeners extended from the 4 id-keyed containers
-      to also cover class-based scrollables:
-      .va-db-col, .vb-db-col, .vc-col, .ci-fields-pane
-      (all overflow-y:auto surfaces in the dashboard; no
-      additional scrollables found beyond what the audio-prompt
-      candidate list specified).
-    – Filter/select sound wiring (soundTabSwitch on act-type
-      tabs, soundSwitch on view-switcher, soundSelect on case
-      opens/selections) was already correct — no changes made.
-    – No search feature exists in v48, so the prompt's "search
-      dropdown item click" / "clear-search button" rules had no
-      call-sites to wire.
-    Two pre-existing backticks in a JS comment on line ~363
-    (Supabase `uploads` table reference) were left untouched —
-    they're English prose, not ES6 template literals.
+  3) Audio parity pass:
+     – soundScroll replaced with delta-throttled picker-tick
+       (880Hz / 0.035s / vol 0.045, per 56px scroll delta,
+       per-container state keyed by element id).
+     – Scroll listeners extended to cover class-based
+       scrollables (.va-db-col, .vb-db-col, .vc-col,
+       .ci-fields-pane) beyond the four id-keyed containers.
+     – Sort bar (setSort) now fires soundTabSwitch to match
+       the Dosare-explorator act-type tabs.
+     – Two pre-existing backticks in a JS comment on line ~363
+       (Supabase `uploads` table reference) left untouched —
+       English prose, not ES6 template literals.
 
-  All v47 behaviors preserved. All audit invariants pass.
+  4) Border-removal pass — 9 container elements migrated from
+     4-sided borders to top+bottom only. Left/right walls
+     removed; internal dividers (grid gaps, pane seams,
+     horizontal rules between rows) preserved:
+       .cards           — KPI row (4 cards)
+       .vol-desc        — Dosare explorator description strip
+       .controls        — Dosare explorator sliders panel
+       .va-wrap         — Paralel view wrap
+       .vb-list-wrap    — Sus-jos list (top rule only; meets
+                          .vb-detail below it)
+       .vb-detail       — Sus-jos detail pane
+       .vc-list-wrap    — Panou list
+       .fin-tbl-hdr     — De finalizat header
+       .fin-row         — De finalizat rows (migrated from
+                          4-sided + border-top:none stacking
+                          trick to border-bottom per row; last
+                          row keeps its bottom border for a
+                          clean closing rule)
+     Small UI primitives (.card-filter-tag, .doc-menu-pop,
+     .ci-download-btn, .vc-nav-btn) kept their 4-sided borders
+     — those are chips/buttons/popovers, not containers. Modal
+     shells (.ci-modal, .ci-modal-docs) kept too — modals need
+     full enclosure against their dark overlay.
 
-  Rollback: notariat_dashboard_v47_baseline.html
+  All earlier v48 behaviors preserved. All audit invariants pass.
+
+  Rollback: notariat_dashboard_v48_pre_border_removal.html (the
+  v48 snapshot immediately before the border-removal pass; has
+  the first 3 v48 passes applied but 4-sided borders on all 9
+  container elements intact).
 
   ─── v46 → v47 headline ───
   Act name simplification global (Procură notarială → Procură,
@@ -135,7 +142,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .today-time{font-family:var(--mono);font-size:14px;color:var(--grey2);text-align:right;}
 
 /* ══ METRIC CARDS ══ */
-.cards{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);margin-bottom:48px;align-items:stretch;}
+.cards{display:grid;gap:1px;background:var(--rule);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:48px;align-items:stretch;}
 .cards-4{grid-template-columns:repeat(4,1fr);}
 .card{background:var(--white);padding:22px 22px 20px;transition:background 0.15s;display:flex;flex-direction:column;}
 .card:hover{background:var(--bg);}
@@ -160,13 +167,13 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vol-tab:last-child{border-right:none;}
 .vol-tab.active{background:none;color:var(--ink);border-bottom-color:var(--ink);}
 .vol-tab:hover:not(.active){background:none;color:var(--grey);}
-.vol-desc{background:var(--bg);border:1px solid var(--rule);padding:16px 20px;margin-bottom:28px;display:flex;gap:32px;align-items:baseline;}
+.vol-desc{background:var(--bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:16px 20px;margin-bottom:28px;display:flex;gap:32px;align-items:baseline;}
 .vd-name{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey);min-width:130px;}
 .vd-body{font-size:14px;font-weight:300;color:var(--grey2);line-height:1.5;flex:1;}
 .vd-body strong{color:var(--ink);font-weight:500;}
 
 /* Sliders */
-.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 52px;margin-bottom:32px;padding:24px;background:var(--bg);border:1px solid var(--rule);}
+.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 52px;margin-bottom:32px;padding:24px;background:var(--bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .ctrl-group{display:flex;flex-direction:column;gap:24px;}
 .ctrl-header{display:flex;justify-content:space-between;align-items:baseline;}
 .ctrl-label{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);}
@@ -374,7 +381,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 /* ══ URGENCY DOT on case cards ══ */
 .urgency-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0;margin-left:5px;vertical-align:middle;animation:pulse 1.4s ease-in-out infinite;}
 .cc-act-row{display:flex;align-items:center;}
-.va-wrap{display:grid;grid-template-columns:268px 1fr;border:1px solid var(--rule);height:544px;}
+.va-wrap{display:grid;grid-template-columns:268px 1fr;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);height:544px;}
 .va-list{border-right:1px solid var(--rule);display:flex;flex-direction:column;overflow:hidden;}
 .va-list-hdr{background:var(--bg);border-bottom:1px solid var(--rule);padding:10px 20px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;}
 .va-list-hdr-label{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);}
@@ -408,11 +415,11 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 /* ══ VIEW B — LIST + BELOW ══ */
 .vb-wrap{height:760px;display:flex;flex-direction:column;}
-.vb-list-wrap{border:1px solid var(--rule);border-bottom:none;flex-shrink:0;}
+.vb-list-wrap{border-top:1px solid var(--rule);flex-shrink:0;}
 .vb-list-scroll{max-height:238px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
 .vb-list-scroll::-webkit-scrollbar{display:none;}
 .vb-spacer{height:24px;flex-shrink:0;}
-.vb-detail{border:1px solid var(--rule);flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;}
+.vb-detail{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;}
 .vb-empty{flex:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;color:var(--grey2);font-size:14px;font-weight:300;padding:48px;}
 .vb-empty-glyph{font-family:var(--serif);font-size:36px;color:var(--rule);}
 
@@ -454,7 +461,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vb-db-col:first-child{border-right:1px solid var(--rule);}
 
 /* ══ VIEW C — DRAWER ══ */
-.vc-list-wrap{border:1px solid var(--rule);border-bottom:none;max-height:560px;display:flex;flex-direction:column;}
+.vc-list-wrap{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);max-height:560px;display:flex;flex-direction:column;}
 .vc-list-scroll{max-height:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .vc-list-scroll::-webkit-scrollbar{display:none;}
 .vc-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.3);opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:100;}
@@ -482,9 +489,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .fin-badge{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--white);background:var(--red);padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
 .fin-note{font-size:14px;font-weight:300;color:var(--grey);margin-bottom:20px;line-height:1.6;}
 .fin-note strong{font-weight:500;color:var(--ink);}
-.fin-tbl-hdr{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:10px 20px;background:var(--bg);border:1px solid var(--rule);align-items:center;gap:24px;}
+.fin-tbl-hdr{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:10px 20px;background:var(--bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);align-items:center;gap:24px;}
 .fin-tbl-hdr span{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);}
-.fin-row{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:14px 20px;border:1px solid var(--rule);border-top:none;align-items:center;transition:background 0.15s,opacity 0.4s;gap:24px;}
+.fin-row{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:14px 20px;border-bottom:1px solid var(--rule);align-items:center;transition:background 0.15s,opacity 0.4s;gap:24px;}
 .fin-row:hover{background:var(--bg);}
 .fin-num{font-family:var(--mono);font-size:14px;color:var(--grey2);}
 .fin-act{font-size:14px;font-weight:400;color:var(--ink);}
