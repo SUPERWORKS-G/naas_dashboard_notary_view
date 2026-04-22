@@ -169,7 +169,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .today-scroll-wrap{position:relative;}
 .today-scroll{max-height:112px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .today-scroll::-webkit-scrollbar{display:none;}
-.today-row{display:grid;grid-template-columns:30px 1fr 1fr 80px;gap:12px;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--rule);}
+.today-row{display:grid;grid-template-columns:30px 1fr 1fr 80px;gap:12px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--rule);}
 .today-row:last-child{border-bottom:none;}
 .today-num{font-family:var(--mono);font-size:14px;color:var(--grey2);}
 .today-act{font-size:14px;font-weight:400;color:var(--ink);}
@@ -248,10 +248,10 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
    idx | act+ref | client | date (2 lines) | status
    36px | 2fr | 1.4fr | 140px | 100px
 */
-.list-hdr-shared{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:18px 20px 16px;background:transparent;border-bottom:2px solid var(--ink);gap:24px;line-height:30px;}
+.list-hdr-shared{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:10px 20px;background:transparent;border-bottom:2px solid var(--ink);gap:24px;line-height:1;}
 .list-hdr-shared span{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);}
 .list-hdr-shared span:nth-child(6){padding-left:40px;}
-.list-row-shared{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:13px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;align-items:center;border-left:3px solid transparent;gap:24px;}
+.list-row-shared{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:18px 20px;border-bottom:1px solid var(--rule);cursor:pointer;transition:background 0.15s;align-items:center;border-left:3px solid transparent;gap:24px;}
 .list-row-shared:hover{background:var(--bg);}
 .list-row-shared.active{background:var(--bg);border-left:3px solid var(--red);}
 .list-row-shared.filtered-out{display:none;}
@@ -263,7 +263,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .l-flag{font-family:var(--mono);font-size:11px;color:var(--white);background:var(--red);margin-left:8px;text-transform:none;border:1px solid var(--red);padding:2px 6px;display:inline-flex;align-items:center;line-height:1.2;letter-spacing:0.3px;}
 .l-client{font-size:14px;color:var(--ink);}
 .l-date{font-family:var(--mono);font-size:14px;color:var(--grey2);text-align:left;line-height:1.4;white-space:nowrap;}
-.l-date-main{color:var(--ink);}
+.l-date-main{color:var(--grey2);}
 .l-date-slot{color:var(--grey2);}
 .l-status{font-family:var(--mono);font-size:14px;color:var(--grey2);text-align:left;text-transform:lowercase;white-space:nowrap;padding-left:40px;}
 .l-status.nou{color:var(--ink);font-weight:400;}
@@ -390,6 +390,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 /* Close button */
 .close-btn{font-family:var(--mono);font-size:22px;font-weight:300;line-height:1;color:var(--grey2);background:none;border:none;cursor:pointer;padding:0;width:22px;text-align:center;transition:color 0.15s;flex-shrink:0;}
+.va-dh .close-btn{font-size:16px;height:11px;line-height:11px;}
 .close-btn:hover{color:var(--ink);}
 
 /* ══ DETAIL HEADER — unified across all 3 views ══ */
@@ -418,7 +419,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .cc-act-row{display:flex;align-items:center;}
 .va-wrap{display:grid;grid-template-columns:268px 1fr;height:544px;}
 .va-list{display:flex;flex-direction:column;overflow:hidden;border-bottom:1px solid var(--rule);}
-.va-list-hdr{background:transparent;border-bottom:2px solid var(--ink);padding:18px 20px 16px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;line-height:30px;box-sizing:border-box;}
+.va-list-hdr{background:transparent;border-bottom:2px solid var(--ink);padding:10px 20px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;line-height:1;box-sizing:border-box;}
 .va-list-hdr-label{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);}
 .va-list-hdr-count{font-family:var(--mono);font-size:11px;color:var(--grey2);}
 .va-list-scroll{overflow-y:auto;flex:1;border-right:1px solid var(--rule);}
@@ -440,7 +441,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .va-empty-glyph{font-family:var(--serif);font-size:36px;color:var(--rule);}
 .va-detail-view{display:none;flex-direction:column;flex:1;min-height:0;overflow:hidden;}
 .va-detail-view.show{display:flex;}
-.va-dh{padding:18px 24px 16px;border-bottom:2px solid var(--ink);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;line-height:30px;box-sizing:border-box;}
+.va-dh{padding:10px 24px;border-bottom:2px solid var(--ink);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;line-height:1;box-sizing:border-box;}
 .va-name-row{padding:20px 24px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--rule);box-sizing:border-box;}
 .va-name-row .va-dh-name{margin-bottom:0;}
 .va-dh-ref{font-family:var(--mono);font-size:11px;color:var(--grey);margin-bottom:4px;}
@@ -453,8 +454,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 /* ══ VIEW B — LIST + BELOW ══ */
 .vb-wrap{height:760px;display:flex;flex-direction:column;}
-.vb-list-wrap{border-bottom:1px solid var(--rule);flex-shrink:0;}
-.vb-list-scroll{max-height:238px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
+.vb-list-wrap{flex-shrink:0;}
+.vb-list-scroll{max-height:297px;overflow-y:auto;background:var(--white);scrollbar-width:none;-ms-overflow-style:none;}
+.vb-list-scroll::-webkit-scrollbar{width:0;}
 .vb-list-scroll::-webkit-scrollbar{display:none;}
 .vb-spacer{height:24px;flex-shrink:0;}
 .vb-detail{border-bottom:1px solid var(--rule);flex:1;display:flex;flex-direction:column;background:var(--white);min-height:0;}
@@ -499,8 +501,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vb-db-col:first-child{border-right:1px solid var(--rule);}
 
 /* ══ VIEW C — DRAWER ══ */
-.vc-list-wrap{max-height:560px;display:flex;flex-direction:column;border-bottom:1px solid var(--rule);}
-.vc-list-scroll{max-height:100%;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
+.vc-list-wrap{display:flex;flex-direction:column;}
+.vc-list-scroll{max-height:297px;overflow-y:auto;scrollbar-width:none;-ms-overflow-style:none;}
 .vc-list-scroll::-webkit-scrollbar{display:none;}
 .vc-overlay{position:fixed;inset:0;background:rgba(13,13,13,0.3);opacity:0;pointer-events:none;transition:opacity 0.2s;z-index:100;}
 .vc-overlay.show{opacity:1;pointer-events:all;}
@@ -527,9 +529,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .fin-badge{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--white);background:var(--red);padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
 .fin-note{font-size:14px;font-weight:300;color:var(--grey);margin-bottom:20px;line-height:1.6;}
 .fin-note strong{font-weight:500;color:var(--ink);}
-.fin-tbl-hdr{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:18px 20px 16px;background:transparent;border-bottom:2px solid var(--ink);align-items:center;gap:24px;line-height:30px;}
+.fin-tbl-hdr{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:10px 20px;background:transparent;border-bottom:2px solid var(--ink);align-items:center;gap:24px;line-height:1;}
 .fin-tbl-hdr span{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);}
-.fin-row{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:14px 20px;border-bottom:1px solid var(--rule);align-items:center;transition:background 0.15s,opacity 0.4s;gap:24px;}
+.fin-row{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:18px 20px;border-bottom:1px solid var(--rule);align-items:center;transition:background 0.15s,opacity 0.4s;gap:24px;}
 .fin-row:hover{background:var(--bg);}
 .fin-num{font-family:var(--mono);font-size:14px;color:var(--grey2);}
 .fin-act{font-size:14px;font-weight:400;color:var(--ink);}
@@ -696,7 +698,8 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
   <div class="va-wrap">
     <div class="va-list">
       <div class="va-list-hdr">
-        <span class="va-list-hdr-label">Dosare · <span id="va-count">8</span></span>
+        <span class="va-list-hdr-label">Dosare</span>
+        <span class="va-list-hdr-count" id="va-count">8</span>
       </div>
       <div class="va-list-scroll" id="va-list-scroll"></div>
     </div>
@@ -743,7 +746,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
   <div class="vb-wrap">
     <div class="vb-list-wrap">
       <div class="list-hdr-shared">
-        <span></span><span>Act · Dosar</span><span>Client</span><span></span><span>Data preferată</span><span>Status</span>
+        <span>#</span><span>Act</span><span>Client</span><span></span><span>Data preferată</span><span>Status</span>
       </div>
       <div class="vb-list-scroll" id="vb-list-scroll"></div>
     </div>
@@ -786,7 +789,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 <div class="view-container" id="view-c">
   <div class="vc-list-wrap">
     <div class="list-hdr-shared">
-      <span></span><span>Act · Dosar</span><span>Client</span><span></span><span>Data preferată</span><span>Status</span>
+      <span>#</span><span>Act</span><span>Client</span><span></span><span>Data preferată</span><span>Status</span>
     </div>
     <div class="vc-list-scroll" id="vc-list"></div>
   </div>
@@ -838,7 +841,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
     <span class="fin-badge" id="fin-count">2 dosare</span>
   </div>
   <p class="fin-note">Dosare cu programare trecută, în așteptarea confirmării semnării și achitării onorariului. <strong>Marcați manual</strong> după ce clientul a semnat și a plătit.</p>
-  <div class="fin-tbl-hdr"><span></span><span>Act · Dosar</span><span>Client</span><span></span><span>Programat</span><span></span></div>
+  <div class="fin-tbl-hdr"><span>#</span><span>Act</span><span>Client</span><span></span><span>Programat</span><span></span></div>
   <div class="fin-row" id="fr-3"><div class="fin-num">03</div><div><div class="fin-act">Împuternicire</div></div><div class="fin-client">Dumitrescu Ion</div><div></div><div class="fin-date">14 apr · 10:00</div><div><button class="fin-btn" onclick="markDone('fr-3',this)">Finalizat ⟶</button></div></div>
   <div class="fin-row" id="fr-7"><div class="fin-num">07</div><div><div class="fin-act">Acord</div></div><div class="fin-client">Popa Daniela</div><div></div><div class="fin-date">14 apr · 11:30</div><div><button class="fin-btn" onclick="markDone('fr-7',this)">Finalizat ⟶</button></div></div>
 </div>
