@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  notariat.co — Dashboard v49 · CANONICAL
+  acte.legal — Dashboard v52 · CANONICAL
   ───────────────────────────────────────────────────────────────
   v48 → v49 changelog (cosmetic, Dosare-explorator cleanup):
 
@@ -130,7 +130,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>notariat.co — Dashboard</title>
+<title>acte.legal — Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=IBM+Plex+Mono:wght@300;400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -174,10 +174,11 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 /* ══ HEADER ══ */
 .header-strip{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:18px 0;border-bottom:2px solid var(--ink);margin:0;}
 .hs-left{display:flex;align-items:baseline;gap:10px;}
-.brand{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;color:var(--grey);line-height:1;}
+.brand{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;color:var(--grey);line-height:1;text-decoration:none;cursor:pointer;}
+.brand:hover,.brand:visited,.brand:active,.brand:focus{color:var(--grey);text-decoration:none;}
 .brand-pipe{color:var(--rule);font-weight:300;}
 .hs-center{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:1.5px;text-transform:uppercase;text-align:center;}
-.hs-right{font-family:var(--mono);font-size:11px;color:var(--grey);text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:18px;}
+.hs-right{font-family:var(--mono);font-size:11px;color:var(--grey);text-align:right;display:flex;align-items:center;justify-content:flex-end;gap:18px;letter-spacing:1.5px;}
 .logout-btn{font-family:var(--mono);font-size:11px;color:var(--grey2);background:none;border:none;cursor:pointer;transition:color 0.15s;padding:0;}
 .logout-btn:hover{color:var(--grey);}
 
@@ -213,7 +214,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .cards-4{grid-template-columns:repeat(4,1fr);}
 .card{background:var(--white);padding:22px 22px 20px;transition:background 0.15s;display:flex;flex-direction:column;}
 .card:hover{background:var(--bg);}
-.card-label{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
+.card-label{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey);margin-bottom:10px;}
 .card-value{font-family:var(--serif);font-size:40px;font-weight:800;line-height:1;color:var(--ink);margin-bottom:5px;letter-spacing:-1px;transition:all 0.25s;}
 .card-value.accent{color:var(--red);}
 .card-sub{font-size:14px;font-weight:300;color:var(--grey);line-height:1.4;}
@@ -230,7 +231,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .vol-tabs-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
 .vol-tabs-label{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);white-space:nowrap;}
 .vol-tabs{display:flex;border:none;border-bottom:1px solid var(--rule);overflow:visible;}
-.vol-tab{padding:0 22px 10px;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;border-radius:0;}
+.vol-tab{padding:0 22px 10px;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;border-radius:0;}
 .vol-tab:last-child{border-right:none;}
 .vol-tab.active{background:none;color:var(--ink);border-bottom-color:var(--ink);}
 .vol-tab:hover:not(.active){background:none;color:var(--grey);}
@@ -239,7 +240,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px 52px;margin-bottom:32px;padding:24px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);}
 .ctrl-group{display:flex;flex-direction:column;gap:24px;}
 .ctrl-header{display:flex;justify-content:space-between;align-items:baseline;}
-.ctrl-label{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--grey);}
+.ctrl-label{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey);}
 .ctrl-val{font-family:var(--mono);font-size:14px;color:var(--ink);}
 .ctrl-group input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:2px;background:var(--rule);border-radius:2px;outline:none;cursor:pointer;}
 .ctrl-group input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--ink);cursor:pointer;border:2px solid var(--white);box-shadow:0 0 0 1px var(--ink);}
@@ -248,7 +249,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 /* Chart */
 .chart-legend{display:flex;gap:22px;margin-bottom:14px;flex-wrap:wrap;}
-.leg{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;color:var(--grey);}
+.leg{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;color:var(--grey);}
 .leg-bar{width:12px;height:12px;border-radius:0;flex-shrink:0;}
 .leg-line{width:22px;height:2px;border-radius:0;flex-shrink:0;background:var(--ink);}
 .leg-line.dashed{background:none;border-top:2px dashed var(--red);}
@@ -261,12 +262,12 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .view-switcher-wrap-right{display:flex;align-items:center;gap:12px;}
 /* sort buttons joined — no gaps, shared outer border, same pattern as view-switcher */
 .sort-group{display:flex;border:none;border-bottom:1px solid var(--rule);overflow:visible;}
-.sort-btn{font-family:var(--mono);font-size:11px;letter-spacing:1px;padding:0 14px 10px;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;text-transform:uppercase;border-radius:0;}
+.sort-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;padding:0 14px 10px;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;text-transform:uppercase;border-radius:0;}
 .sort-btn:last-child{border-right:none;}
 .sort-btn.active{background:none;color:var(--ink);border-bottom-color:var(--ink);}
 .sort-btn:hover:not(.active){background:none;color:var(--grey);}
 .view-switcher{display:flex;border:none;border-bottom:1px solid var(--rule);border-radius:0;overflow:visible;margin-left:auto;}
-.view-btn{padding:0 18px 10px;font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:0;}
+.view-btn{padding:0 18px 10px;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;margin-bottom:-1px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;gap:7px;border-radius:0;}
 .view-btn:last-child{border-right:none;}
 .view-btn.active{background:none;color:var(--ink);border-bottom-color:var(--ink);}
 .view-btn:hover:not(.active){background:none;color:var(--grey);}
@@ -296,18 +297,102 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .l-status{font-family:var(--mono);font-size:14px;color:var(--grey2);text-align:left;text-transform:lowercase;white-space:nowrap;padding-left:40px;}
 .l-status.nou{color:var(--ink);font-weight:400;}
 
-/* ══ SHARED TAGS — unified height ~24px ══ */
-.tag{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;white-space:nowrap;border:1px solid transparent;line-height:1.2;}
+/* ══ SHARED TAGS — unified height ~24px ══
+   v50 Bucket B status refactor: 4 visible statuses with 3 visual treatments.
+   NOU = solid ink (demands attention, just arrived).
+   ACTIV + PROGRAMAT = outlined ink (in your queue / appointment locked — text label distinguishes).
+   FINALIZAT = outlined grey-dim (done, archive).
+   The 3-treatment family (filled / outlined / dim-outlined) keeps the visual vocabulary tight. */
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;white-space:nowrap;border:1px solid transparent;line-height:1.2;}
 .tag-nou{background:var(--ink);color:var(--white);border-color:var(--ink);}
-.tag-lucru{background:transparent;color:var(--grey);border-color:var(--grey);}
-.tag-programat{background:transparent;color:var(--grey);border-color:var(--grey);}
+.tag-lucru{background:transparent;color:var(--ink);border-color:var(--ink);}
+.tag-programat{background:transparent;color:var(--ink);border-color:var(--ink);}
+.tag-finalizat{background:transparent;color:var(--grey2);border-color:var(--grey2);}
 .tag-ci{background:var(--red);color:var(--white);border-color:var(--red);}
 
 /* ══ DOC GENERATOR (v31) ══ */
 .btn-prep{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:var(--white);font-family:var(--sans);font-size:14px;font-weight:400;text-align:center;padding:12px 22px;border:none;cursor:pointer;transition:opacity 0.15s,transform 0.1s;border-radius:0;white-space:nowrap;line-height:1.2;}
 .btn-prep:hover{opacity:0.85;}
 .btn-prep:active{transform:scale(0.98);}
-.btn-prep.generating{background:var(--grey);pointer-events:none;}
+.btn-prep.generating{cursor:wait;pointer-events:none;}
+.btn-prep.generating:hover{opacity:1;}
+/* ══ v50 Bucket B Pieces 2+3 — success block shown when case is GATA (status=programat).
+   Replaces the Pregătește button slot in the same column position. The wrapper enforces a min-height
+   matching the natural button height so transitions (button → generating → success block) don't
+   cause vertical layout shift in the drawer. The success block uses btn-prep aesthetic for actions
+   (full-width 14px sans, primary ink-filled + secondary outlined-ink) split 50/50.
+   No new color/font/spacing tokens. */
+.prep-success{display:flex;flex-direction:column;gap:14px;animation:prepSuccessFade 0.35s ease-out;}
+@keyframes prepSuccessFade{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.prep-success-meta{display:flex;flex-direction:column;gap:2px;}
+.prep-success-lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);}
+.prep-success-when{font-size:14px;color:var(--ink);line-height:1.3;}
+.prep-success-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.prep-success-actions .btn-prep{width:100%;}
+.btn-prep-secondary{background:transparent;color:var(--ink);border:1px solid var(--ink);}
+.btn-prep-secondary:hover{background:var(--ink);color:var(--white);opacity:1;}
+/* ══ v50 Bucket B·4 — inline SVG icon for redo/retry buttons. Switched from Unicode ↻/⟳ glyphs
+   because browser font fallback at >1em sizes inconsistently flips CW↔CCW direction (verified on
+   macOS Safari with default font stack). SVG renders identically across browsers and OSes. Sized
+   to read at copy cap-height (~14px) with vertical-align:middle keeping it baseline-clean. */
+.btn-glyph{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-left:4px;flex-shrink:0;}
+/* ══ v50 Bucket B·4 — failure state shown when Pregătește act fails (mock: forced via Shift+F debug
+   toggle; production: any error path — network, validation, RPC failure, storage upload). Mirrors
+   .prep-success structure (label + sub-line + action) but uses the existing .discrepancy-dot primitive
+   inline with the label to signal trouble. Retry button uses .btn-prep-secondary aesthetic so it doesn't
+   compete visually with success-state primaries. No new tokens. */
+.prep-error{display:flex;flex-direction:column;gap:14px;animation:prepSuccessFade 0.35s ease-out;}
+.prep-error-meta{display:flex;flex-direction:column;gap:2px;}
+.prep-error-lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);display:inline-flex;align-items:center;}
+.prep-error-sub{font-size:14px;color:var(--ink);line-height:1.3;}
+/* ══ v50 Bucket B·1 — disabled state per locked decision 0d.B (only enabled when status=in_review).
+   Outlined-ink treatment (transparent fill, --ink border, --ink text). Stronger visual weight than
+   outlined-grey while still clearly "not a fillable button." Mirrors .tag-lucru (Programat tag) family.
+   Tooltip is CSS-driven via .btn-prep-wrap::after so it appears instantly (no browser title delay).
+   The native title= attribute remains for accessibility.
+   No new color/font/spacing tokens. */
+.btn-prep:disabled,.btn-prep[disabled]{
+  background:transparent;
+  color:var(--ink);
+  border:1px solid var(--ink);
+  padding:11px 21px;
+  cursor:not-allowed;
+}
+.btn-prep:disabled:hover,.btn-prep[disabled]:hover{
+  background:transparent;
+  color:var(--ink);
+  opacity:1;
+}
+/* Custom tooltip — instant appearance, no native delay. Wrap the disabled button in .btn-prep-wrap[data-tip]. */
+.btn-prep-wrap{position:relative;display:inline-block;}
+.btn-prep-wrap[data-tip]:hover::after{
+  content:attr(data-tip);
+  position:absolute;
+  bottom:calc(100% + 8px);
+  left:50%;
+  transform:translateX(-50%);
+  background:var(--ink);
+  color:var(--white);
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:0.8px;
+  padding:6px 10px;
+  white-space:nowrap;
+  pointer-events:none;
+  z-index:200;
+  line-height:1.3;
+}
+.btn-prep-wrap[data-tip]:hover::before{
+  content:"";
+  position:absolute;
+  bottom:calc(100% + 2px);
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:var(--ink);
+  pointer-events:none;
+  z-index:200;
+}
 .missing-draft{display:inline-flex;align-items:center;justify-content:center;font-family:var(--sans);font-size:14px;font-weight:400;color:var(--red);background:transparent;border:1px solid var(--red);padding:11px 21px;white-space:nowrap;line-height:1.2;}
 .dh-prep-wrap{display:flex;align-items:center;gap:12px;}
 
@@ -319,26 +404,51 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .fs-lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;color:var(--grey2);letter-spacing:0.8px;margin-bottom:4px;display:block;}
 .fs-val{font-size:14px;font-weight:400;color:var(--ink);display:block;line-height:1.3;}
 .fs-val.mono{font-family:var(--mono);font-size:14px;letter-spacing:0.5px;}
+/* ══ v50 — slot states for missing per-party fields (Bucket A·1, revised in C·4) ══
+   Empty fields universally show "—" in --grey2 via .fs-empty-opt. The previous .fs-empty-req
+   distinction (italic + red dot for missing required values) was dropped — Squarespace's
+   mandatory fields guarantee no required value is ever empty at intake, so the defensive UI
+   was unreachable. Red dots are now reserved for: new cases (NOU pulse) + C.I. inconsistencies. */
+.fs-empty-opt{color:var(--grey2);}
+.field-stacked.empty{cursor:default;}
+.field-stacked.empty:hover{background:transparent;}
+/* (.extras-subhdr deprecated v50 — extras heading now uses .detail-category .detail-category-spaced
+   directly via renderExtraFields, no separate class needed.) */
 /* role tag — filled ink rectangle, no rounding */
-.tag-role{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;background:var(--ink);color:var(--white);border:1px solid var(--ink);white-space:nowrap;margin:16px 0 14px;line-height:1.2;}
+.tag-role{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;background:var(--ink);color:var(--white);border:1px solid var(--ink);white-space:nowrap;margin:16px 0 14px;line-height:1.2;}
 /* detail column category headers */
-.detail-category{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey2);padding-bottom:10px;border-bottom:1px solid var(--rule);margin-bottom:0;}
-.detail-category-spaced{margin-top:20px;}
+/* ══ AMENDED 2026-04-26 (Phase 4b.0 user-approved lock amendment, revision 3 — final)
+   Original: padding-bottom:10px; margin-bottom:0; (no padding-top, no symmetry)
+   Original .detail-category-spaced: margin-top:20px;
+   Reason: with the 4-heading drawer (DATE DOSAR / CONTACT REZERVARE / DATE PĂRȚI / DETALII ACT)
+   introduced in v50, the text was visibly low-biased within its visual frame between rules.
+   Revision 1 (margin-top:14, padding:6 0 12): still low-biased.
+   Revision 2 (margin-top:8, padding:4 0 12): centered but cell felt cramped/cluttered.
+   Revision 3 (final): margin-top:8, padding:6 0 14 → above-text=14px, below-text=14px,
+   frame total ~42px (matches the spacious feel of the original). Token values untouched.
+   See notariat_dashboard_CANONICAL_LOCK_AMENDMENT_v50.md for sign-off. */
+.detail-category{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey2);padding:6px 0 14px;border-bottom:1px solid var(--rule);margin-bottom:0;}
+.detail-category-spaced{margin-top:8px;}
 .sub-lbl{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
+/* ══ v50 Bucket C·2 — formalized class for the "spacing between right-column subsections" gap.
+   Replaces inline `style="margin-top:24px"` on PROGRAMARE / ISTORIC sub-lbls. Pure margin only;
+   the experiment with adding a border-top was visually too busy (left column has it because
+   .field-stacked rows already provide rules; right column doesn't, so the extra rule just stacks).
+   The trailing border-bottom on each sub-lbl already segments sections enough on its own. */
 .sub-lbl-spaced{margin-top:24px;}
 .party-divider{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);padding:12px 0 8px;border-top:1px solid var(--rule);margin-top:8px;margin-bottom:2px;}
 .party-divider:first-child{border-top:none;margin-top:0;padding-top:0;}
-.ci-link{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--red);color:var(--white);border:1px solid var(--red);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
+.ci-link{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;background:var(--red);color:var(--white);border:1px solid var(--red);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
 .ci-link:hover{opacity:0.85;}
-.ci-link-neutral{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
+.ci-link-neutral{display:inline-flex;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);text-decoration:none;cursor:pointer;margin-top:16px;margin-bottom:16px;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
 .ci-link-neutral:hover{opacity:0.75;}
 
 /* ══ DOCUMENTE CHIPS (v47) ══ */
 /* Tag-sized solid chips placed inline under Subtip, not in a separate
    full-width grid. Physically separates the reveal actions from the
    terminating action (Pregătește act), preserving solid fill. */
-.doc-chip-row{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
-.doc-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);cursor:pointer;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
+.doc-chip-row{display:flex;gap:8px;padding:12px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap;}
+.doc-chip{display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);cursor:pointer;transition:opacity 0.15s;border-radius:0;white-space:nowrap;line-height:1.2;}
 .doc-chip:hover{opacity:0.85;}
 .doc-chip-alert{background:var(--red);color:var(--white);border-color:var(--red);}
 
@@ -361,24 +471,24 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .doc-menu-item:hover{background:var(--bg);}
 .doc-row-label-edit{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);background:var(--white);border:1px solid var(--ink);padding:4px 8px;margin:-5px -9px;width:calc(100% - 24px);outline:none;line-height:1.3;}
 
-.doc-preview-empty{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:1px;text-transform:uppercase;}
+.doc-preview-empty{font-family:var(--mono);font-size:11px;color:var(--grey);letter-spacing:0.8px;text-transform:uppercase;}
 .doc-preview-placeholder{text-align:center;color:var(--grey2);}
 .doc-preview-placeholder-glyph{font-family:var(--serif);font-size:56px;color:var(--grey);line-height:1;}
-.doc-preview-placeholder-meta{font-family:var(--mono);font-size:11px;color:var(--grey2);letter-spacing:1px;text-transform:uppercase;margin-top:24px;}
+.doc-preview-placeholder-meta{font-family:var(--mono);font-size:11px;color:var(--grey2);letter-spacing:0.8px;text-transform:uppercase;margin-top:24px;}
 /* ══ /DOCUMENTE ══ */
 
 /* CI modal diff row */
 .ci-diff{padding:32px 0 0 16px;}
 .ci-diff-row{display:flex;flex-direction:column;gap:4px;margin-top:16px;}
 .ci-diff-row:first-child{margin-top:0;}
-.ci-diff-mini-lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:0;}
+.ci-diff-mini-lbl{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;color:var(--grey2);margin-bottom:0;}
 .ci-diff-old{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--grey2);text-decoration:line-through;}
 .ci-diff-old.mono{font-family:var(--mono);font-size:14px;}
 .ci-diff-new{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);}
 .ci-diff-new.mono{font-family:var(--mono);font-size:14px;}
 .ci-diff-actions{display:flex;gap:8px;margin-top:16px;}
-.ci-diff-accept{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);cursor:pointer;flex-shrink:0;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
-.ci-diff-reject{font-family:var(--mono);font-size:11px;letter-spacing:0.5px;text-transform:uppercase;padding:4px 10px;background:transparent;color:var(--ink);border:1px solid var(--ink);cursor:pointer;flex-shrink:0;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
+.ci-diff-accept{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;background:var(--ink);color:var(--white);border:1px solid var(--ink);cursor:pointer;flex-shrink:0;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
+.ci-diff-reject{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:4px 10px;background:transparent;color:var(--ink);border:1px solid var(--ink);cursor:pointer;flex-shrink:0;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
 .ci-diff-accept:hover{opacity:0.8;}
 .ci-diff-reject:hover{background:var(--ink);color:var(--white);}
 /* discrepancy dot — red pulsing, right of field label, same spec as urgency-dot */
@@ -396,13 +506,44 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .pref-box{padding:8px 0 0;margin-bottom:24px;}
 .pref-main{font-size:14px;color:var(--ink);line-height:1.4;}
 .pref-alt{font-size:14px;color:var(--grey2);line-height:1.4;margin-top:4px;}
+/* ══ v50 Bucket C·2 — when the notary has confirmed the appointment (status !== 'nou' && c.date
+   && c.time), the client's preference is no longer the "live" record — the confirmed datetime is.
+   Dimming the Preferință client block to --grey2 creates a visual hierarchy: the readout below
+   ("Programare confirmată") reads as the active source-of-truth; the preference reads as the
+   historical request. To revert, remove .is-dimmed from the renderer's pref-box className logic. */
+.pref-box.is-dimmed .pref-line-val{color:var(--grey2);}
+/* ══ v50 Bucket C·2 — three-line Preferință layout. Each line is a mono label above its plain
+   value, mirroring the .fs-lbl / .fs-val pattern used in the left column for Date Părți. To
+   revert to plain stacked values without labels, drop the .pref-line-lbl spans from the renderer
+   in populateView's Preferință block (the values keep rendering correctly, labels just disappear). */
+.pref-line{display:flex;flex-direction:column;margin-bottom:14px;}
+.pref-line:last-child{margin-bottom:0;}
+.pref-line-lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:var(--grey2);margin-bottom:4px;display:block;}
+.pref-line-val{font-size:14px;font-weight:400;color:var(--ink);line-height:1.3;}
+/* ══ v50 Bucket C·2 — confirmed-appointment readout. Sits at the top of the "Programare" section,
+   above the date/time picker. Read-only display of c.date/c.time as the notary's commitment.
+   When status === 'nou', shows the "Neconfirmată" placeholder instead. Same visual treatment as
+   .pref-line (mono label above plain value, normal type — no larger). The .confirm-edit-lbl below
+   the readout is a small mono divider that prefaces the editable inputs, making it clear the
+   inputs are for *changing* the confirmed datetime, not for displaying it. */
+.confirm-readout{margin-bottom:24px;}
+.confirm-readout-empty{font-size:14px;color:var(--grey2);line-height:1.3;}
+.confirm-edit-lbl{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--rule);}
 .inp-lbl{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.8px;color:var(--grey2);margin-bottom:4px;display:block;}
-.inp-field{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--ink);border:none;border-bottom:1px solid var(--rule);background:transparent;padding:4px 0;outline:none;width:100%;transition:border-color 0.15s;margin-bottom:16px;}
+.inp-field{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);border:none;border-bottom:1px solid var(--rule);background:transparent;padding:4px 0;outline:none;width:100%;transition:border-color 0.15s;margin-bottom:16px;}
 .inp-field:focus{border-bottom-color:var(--ink);}
 .inp-field::placeholder{color:var(--grey2);}
-.notes-field{font-family:var(--sans);font-size:14px;font-weight:300;color:var(--ink);border:none;border-bottom:1px solid var(--rule);background:transparent;padding:3px 0 6px;outline:none;width:100%;resize:none;height:56px;line-height:1.5;}
+.notes-field{font-family:var(--sans);font-size:14px;font-weight:400;color:var(--ink);border:none;border-bottom:1px solid var(--rule);background:transparent;padding:3px 0 6px;outline:none;width:100%;resize:none;height:80px;line-height:1.5;}
 .notes-field::placeholder{color:var(--grey2);}
-.hist-item{font-size:14px;font-weight:300;color:var(--grey);padding:5px 0;border-bottom:1px solid var(--rule);line-height:1.5;}
+/* ══ v50 Bucket C·2 — Istoric rows. Asymmetric 8px top / 16px bottom padding lifts the visual
+   center of the glyph upward into actual row center; sans-serif baseline drift is more
+   pronounced than 4px so a stronger correction is needed. Total row height ~42px matches the
+   left column's .field-stacked geometry. */
+/* ══ v50 Bucket C·2 — Istoric rows. 6/18 asymmetric padding for vertical centering (sans-serif
+   baseline drift). Single-line rule: white-space:nowrap + overflow:hidden + text-overflow:ellipsis
+   so long entries truncate gracefully with "…" instead of wrapping. Convention: write history
+   entries short enough to fit on one line (~35 chars after the date stamp). */
+.hist-item{font-size:14px;font-weight:400;color:var(--grey2);padding:6px 0 18px;border-bottom:1px solid var(--rule);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .hist-item:last-child{border-bottom:none;}
 
 /* Confirm button — 24px breathing room above, symmetric internal padding */
@@ -413,6 +554,9 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 /* ══ COL ACTION — button embedded at bottom of a scrollable column ══ */
 .col-action{margin-top:32px;}
 .col-action .btn-prep,.col-action .btn-confirm{width:100%;margin-top:0;}
+/* v50 Bucket B·1 — wrap also full-width when used as a tooltip carrier */
+.col-action .btn-prep-wrap{width:100%;display:block;}
+.col-action .btn-prep-wrap .btn-prep{width:100%;}
 /* When col-action holds the prep button, the button is rendered inside it dynamically */
 .col-action:empty{display:none;}
 
@@ -436,11 +580,19 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .status-sel-wrap{margin-top:24px;}
 .status-sel-lbl{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:12px;padding-bottom:7px;border-bottom:1px solid var(--rule);display:block;}
 .status-sel{display:flex;gap:0;border-bottom:1px solid var(--rule);margin-bottom:0;}
-.status-sel-btn{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;padding:0 20px 10px;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all 0.15s;margin-bottom:-1px;border-radius:0;}
+.status-sel-btn{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;padding:0 20px 10px;background:none;color:var(--grey2);border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all 0.15s;margin-bottom:-1px;border-radius:0;}
 .status-sel-btn.active-nou{color:var(--ink);border-bottom-color:var(--ink);}
 .status-sel-btn.active-lucru{color:var(--ink);border-bottom-color:var(--ink);}
 .status-sel-btn.active-prog{color:var(--ink);border-bottom-color:var(--ink);}
-.status-sel-btn:hover:not(.active-nou):not(.active-lucru):not(.active-prog){color:var(--grey);}
+.status-sel-btn.active-fin{color:var(--ink);border-bottom-color:var(--ink);}
+.status-sel-btn:hover:not(.active-nou):not(.active-lucru):not(.active-prog):not(.active-fin){color:var(--grey);}
+/* v50 Bucket B — readonly status display: spans, no cursor pointer, no hover effects */
+.status-sel-readonly .status-sel-btn{cursor:default;}
+.status-sel-readonly .status-sel-btn:hover{color:var(--grey2);}
+.status-sel-readonly .status-sel-btn.active-nou:hover,
+.status-sel-readonly .status-sel-btn.active-lucru:hover,
+.status-sel-readonly .status-sel-btn.active-prog:hover,
+.status-sel-readonly .status-sel-btn.active-fin:hover{color:var(--ink);}
 
 /* ══ URGENCY DOT on case cards ══ */
 .urgency-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:inline-block;flex-shrink:0;margin-left:5px;vertical-align:middle;animation:pulse 1.4s ease-in-out infinite;}
@@ -508,7 +660,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .ci-download-btn:hover{border-color:var(--ink);color:var(--ink);}
 .ci-modal-body{display:grid;grid-template-columns:1fr 320px;overflow:hidden;flex:1;}
 .ci-img-pane{background:var(--ink);display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:400px;}
-.ci-img-placeholder{color:var(--grey);font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;text-align:center;line-height:2;}
+.ci-img-placeholder{color:var(--grey);font-family:var(--mono);font-size:11px;letter-spacing:0.8px;text-transform:uppercase;text-align:center;line-height:2;}
 .ci-fields-pane{border-left:1px solid var(--rule);overflow-y:auto;padding:20px 24px;scrollbar-width:none;}
 .ci-fields-pane::-webkit-scrollbar{display:none;}
 .ci-fields-title{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:24px;padding-bottom:7px;border-bottom:1px solid var(--rule);}
@@ -517,6 +669,13 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .card-pulse-dot{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;margin-left:6px;animation:pulse 1.4s ease-in-out infinite;vertical-align:middle;opacity:0;transition:opacity 0.3s;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.7)}}
 .card-pulse-dot.show{opacity:1;}
+/* ══ v50 Bucket C·1 — modifier for row-level pulse dots. Red — same family as the urgency-dot
+   and discrepancy-dot, since "new case" is one of the two scenarios where red is reserved
+   (alongside C.I. inconsistencies). Dimensions match .urgency-dot exactly (6px / 5px margin).
+   The .cc-num and .l-num elements use a mono font with a baseline lower than the dot's geometric
+   center; relative positioning with a 1px lift compensates so the dot sits visually centered on
+   the number's x-height rather than on its baseline. */
+.card-pulse-dot.row-pulse-ink{background:var(--red);width:6px;height:6px;margin-left:9px;position:relative;top:-1px;}
 .vb-open{display:none;flex-direction:column;flex:1;min-height:0;}
 .vb-open.show{display:flex;}
 .vb-dh{padding:18px 24px 16px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}
@@ -554,7 +713,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .fin-section{margin-top:0;}
 .fin-hdr{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
 .fin-title{font-family:var(--serif);font-size:24px;color:var(--ink);line-height:1;}
-.fin-badge{font-family:var(--mono);font-size:11px;letter-spacing:1px;color:var(--white);background:var(--red);padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
+.fin-badge{font-family:var(--mono);font-size:11px;letter-spacing:0.8px;color:var(--white);background:var(--red);padding:4px 10px;border-radius:0;display:inline-flex;align-items:center;line-height:1.2;}
 .fin-note{font-size:14px;font-weight:300;color:var(--grey);margin-bottom:20px;line-height:1.6;}
 .fin-note strong{font-weight:500;color:var(--ink);}
 .fin-tbl-hdr{display:grid;grid-template-columns:50px 240px 220px 1fr 240px 160px;padding:10px 20px;background:transparent;border-bottom:2px solid var(--ink);align-items:center;gap:24px;line-height:1;}
@@ -565,7 +724,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .fin-act{font-size:14px;font-weight:400;color:var(--ink);}
 .fin-client{font-size:14px;font-weight:400;color:var(--ink);}
 .fin-date{font-family:var(--mono);font-size:14px;color:var(--grey2);}
-.fin-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:var(--white);font-family:var(--mono);font-size:11px;letter-spacing:1px;padding:4px 10px;border:1px solid var(--red);cursor:pointer;transition:opacity 0.15s,transform 0.1s;text-align:center;text-transform:uppercase;line-height:1.2;}
+.fin-btn{display:inline-flex;align-items:center;justify-content:center;background:var(--red);color:var(--white);font-family:var(--mono);font-size:11px;letter-spacing:0.8px;padding:4px 10px;border:1px solid var(--red);cursor:pointer;transition:opacity 0.15s,transform 0.1s;text-align:center;text-transform:uppercase;line-height:1.2;}
 .fin-btn:hover{opacity:0.85;}
 .fin-btn:active{transform:scale(0.97);}
 .fin-row.done{opacity:0.3;pointer-events:none;}
@@ -574,7 +733,43 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 .footer{border-top:1px solid var(--rule);padding-top:14px;margin-top:48px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--grey2);}
 
 /* ══ TOAST ══ */
-.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#ffffff;font-family:var(--mono);font-size:11px;letter-spacing:0.5px;padding:10px 22px;opacity:0;transition:opacity 0.15s,transform 0.2s;pointer-events:none;white-space:nowrap;z-index:999;}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:var(--ink);color:#ffffff;font-family:var(--mono);font-size:11px;letter-spacing:0.8px;padding:10px 22px;opacity:0;transition:opacity 0.15s,transform 0.2s;pointer-events:none;white-space:nowrap;z-index:999;}
+/* ══ v50 Bucket B·5 — styled confirm modal. Replaces native browser confirm() so the regeneration
+   confirmation matches the dashboard aesthetic (mono header in --grey2, sans body copy in --ink,
+   btn-prep family CTAs). Single global instance mounted at body level; showConfirm() populates
+   and shows, helpers hide. Click on overlay or Esc cancels. Z-index above the toast (1000 > 999). */
+.confirm-modal{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.15s;z-index:1000;}
+.confirm-modal.is-open{opacity:1;pointer-events:auto;}
+.confirm-modal-box{background:var(--white);max-width:560px;width:calc(100% - 48px);padding:28px 28px 22px;transform:translateY(8px);transition:transform 0.15s ease-out;box-sizing:border-box;}
+.confirm-modal.is-open .confirm-modal-box{transform:translateY(0);}
+.confirm-modal-title{font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--grey2);margin-bottom:14px;}
+.confirm-modal-body{font-size:15px;color:var(--ink);line-height:1.45;margin-bottom:24px;}
+.confirm-modal-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.confirm-modal-actions .btn-prep{width:100%;}
+/* ══ v50 Bucket C·3 — De finalizat row-detail modal. Quick-look modal opened by clicking a fin-row
+   (anywhere except the FINALIZAT button). Shows the case's full party data + scheduled datetime
+   + internal notes, lets the notary verify before deciding to mark Finalizat or just download
+   the prepared act. Single column; modal scrolls internally if content exceeds 80vh. Esc / overlay-
+   click dismisses. Two action buttons in a sticky footer: Descarcă (solid ink) + Finalizat (solid
+   red, mirroring the row's fin-btn). The drawer is NOT used for this flow because it pulls focus
+   to the top of the page, away from the De finalizat section the notary is reading. */
+.fin-detail-modal{position:fixed;inset:0;background:rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.15s;z-index:1001;}
+.fin-detail-modal.is-open{opacity:1;pointer-events:auto;}
+.fin-detail-modal-box{background:var(--white);width:calc(100% - 48px);max-width:640px;max-height:80vh;display:flex;flex-direction:column;transform:translateY(8px);transition:transform 0.15s ease-out;}
+.fin-detail-modal.is-open .fin-detail-modal-box{transform:translateY(0);}
+.fin-detail-hdr{padding:24px 28px 14px;border-bottom:1px solid var(--rule);flex-shrink:0;}
+.fin-detail-eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:8px;}
+.fin-detail-name{font-family:var(--serif);font-size:24px;color:var(--ink);line-height:1.1;margin-bottom:8px;}
+.fin-detail-sub{font-size:14px;color:var(--grey2);line-height:1.4;}
+.fin-detail-body{padding:18px 28px 24px;overflow-y:auto;flex:1;}
+.fin-detail-section-lbl{font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--grey2);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--rule);margin-top:24px;}
+.fin-detail-section-lbl:first-child{margin-top:0;}
+.fin-detail-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 24px;margin-bottom:8px;}
+.fin-detail-notes-empty{font-size:14px;color:var(--grey2);}
+.fin-detail-actions{padding:18px 28px 22px;border-top:1px solid var(--rule);display:grid;grid-template-columns:1fr 1fr;gap:8px;flex-shrink:0;}
+.btn-fin-modal-finalize{display:flex;align-items:center;justify-content:center;width:100%;background:var(--red);color:var(--white);font-family:var(--sans);font-size:14px;font-weight:400;text-align:center;padding:12px 22px;border:1px solid var(--red);cursor:pointer;transition:opacity 0.15s,transform 0.1s;line-height:1.2;}
+.btn-fin-modal-finalize:hover{opacity:0.85;}
+.btn-fin-modal-finalize:active{transform:scale(0.98);}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
 .ctrl-divider{width:1px;height:16px;background:var(--rule);flex-shrink:0;}
 </style>
@@ -585,7 +780,7 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 <!-- ══ HEADER ══ -->
 <div class="header-strip">
   <div class="hs-left">
-    <span class="brand">notariat.co</span>
+    <a class="brand" href="https://www.acte.legal" target="_blank" rel="noopener noreferrer">acte.legal</a>
   </div>
   <div class="hs-center"></div>
   <div class="hs-right">
@@ -747,17 +942,19 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
             <!-- ══ /DOC GENERATOR ══ -->
           </div>
           <div class="va-db-col">
-            <div class="sub-lbl">Preferință</div>
+            <div class="sub-lbl">Preferință client</div>
             <div class="pref-box" id="va-pref">—</div>
-            <div class="sub-lbl" style="margin-top:24px;">Programare</div>
-            <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="va-date">
+            <div class="sub-lbl sub-lbl-spaced">Programare</div>
+            <div class="confirm-readout" id="va-confirm-readout"></div>
+            <div class="confirm-edit-lbl">Modifică</div>
+            <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="va-date" onchange="this.blur()">
             <span class="inp-lbl">Ora</span><input type="time" class="inp-field" id="va-time">
             <span class="inp-lbl">Notițe interne</span>
             <div class="notes-wrap"><textarea class="notes-field" id="va-notes" placeholder="Observații…" oninput="markDirty('va-dot')" onblur="saveNotes('va-dot',this)"></textarea><span class="notes-dirty-dot" id="va-dot"></span></div>
-            <div class="sub-lbl" style="margin-top:24px;">Istoric</div>
+            <div class="sub-lbl sub-lbl-spaced">Istoric</div>
             <div id="va-hist"></div>
             <div id="va-status-sel"></div>
-            <div class="col-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
+            <div class="col-action" id="va-confirm-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
           </div>
         </div>
       </div>
@@ -791,17 +988,19 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
             <!-- ══ /DOC GENERATOR ══ -->
           </div>
           <div class="vb-db-col">
-            <div class="sub-lbl">Preferință</div>
+            <div class="sub-lbl">Preferință client</div>
             <div class="pref-box" id="vb-pref">—</div>
-            <div class="sub-lbl" style="margin-top:24px;">Programare</div>
-            <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="vb-date">
+            <div class="sub-lbl sub-lbl-spaced">Programare</div>
+            <div class="confirm-readout" id="vb-confirm-readout"></div>
+            <div class="confirm-edit-lbl">Modifică</div>
+            <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="vb-date" onchange="this.blur()">
             <span class="inp-lbl">Ora</span><input type="time" class="inp-field" id="vb-time">
             <span class="inp-lbl">Notițe interne</span>
             <div class="notes-wrap"><textarea class="notes-field" id="vb-notes" placeholder="Observații…" oninput="markDirty('vb-dot')" onblur="saveNotes('vb-dot',this)"></textarea><span class="notes-dirty-dot" id="vb-dot"></span></div>
-            <div class="sub-lbl" style="margin-top:24px;">Istoric</div>
+            <div class="sub-lbl sub-lbl-spaced">Istoric</div>
             <div id="vb-hist"></div>
             <div id="vb-status-sel"></div>
-            <div class="col-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
+            <div class="col-action" id="vb-confirm-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
           </div>
         </div>
       </div>
@@ -842,32 +1041,33 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
       <!-- ══ /DOC GENERATOR ══ -->
     </div>
     <div class="vc-col">
-      <div class="sub-lbl">Preferință</div>
+      <div class="sub-lbl">Preferință client</div>
       <div class="pref-box" id="vc-pref">—</div>
-      <div class="sub-lbl" style="margin-top:24px;">Programare</div>
-      <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="vc-date">
+      <div class="sub-lbl sub-lbl-spaced">Programare</div>
+      <div class="confirm-readout" id="vc-confirm-readout"></div>
+      <div class="confirm-edit-lbl">Modifică</div>
+      <span class="inp-lbl">Data</span><input type="date" class="inp-field" id="vc-date" onchange="this.blur()">
       <span class="inp-lbl">Ora</span><input type="time" class="inp-field" id="vc-time">
       <span class="inp-lbl">Notițe interne</span>
       <div class="notes-wrap"><textarea class="notes-field" id="vc-notes" placeholder="Observații…" oninput="markDirty('vc-dot')" onblur="saveNotes('vc-dot',this)"></textarea><span class="notes-dirty-dot" id="vc-dot"></span></div>
-      <div class="sub-lbl" style="margin-top:24px;">Istoric</div>
+      <div class="sub-lbl sub-lbl-spaced">Istoric</div>
       <div id="vc-hist"></div>
       <div id="vc-status-sel"></div>
-      <div class="col-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
+      <div class="col-action" id="vc-confirm-action"><button class="btn-confirm" onclick="confirmProgramare()">Confirmă programarea →</button></div>
     </div>
   </div>
 </div>
 
-<!-- ══ DE FINALIZAT ══ -->
-<hr class="rule-hr">
-<div class="fin-section">
+<!-- ══ DE FINALIZAT (v50 Bucket C·3 — dynamic) ══ -->
+<hr class="rule-hr" id="fin-rule">
+<div class="fin-section" id="fin-section">
   <div class="fin-hdr">
     <div class="fin-title">De finalizat</div>
-    <span class="fin-badge" id="fin-count">2 dosare</span>
+    <span class="fin-badge" id="fin-count">0 dosare</span>
   </div>
   <p class="fin-note">Dosare cu programare trecută, în așteptarea confirmării semnării și achitării onorariului. <strong>Marcați manual</strong> după ce clientul a semnat și a plătit.</p>
   <div class="fin-tbl-hdr"><span>#</span><span>Act</span><span>Client</span><span></span><span>Programat</span><span></span></div>
-  <div class="fin-row" id="fr-3"><div class="fin-num">03</div><div><div class="fin-act">Împuternicire</div></div><div class="fin-client">Dumitrescu Ion</div><div></div><div class="fin-date">14 apr · 10:00</div><div><button class="fin-btn" onclick="markDone('fr-3',this)">Finalizat ⟶</button></div></div>
-  <div class="fin-row" id="fr-7"><div class="fin-num">07</div><div><div class="fin-act">Acord</div></div><div class="fin-client">Popa Daniela</div><div></div><div class="fin-date">14 apr · 11:30</div><div><button class="fin-btn" onclick="markDone('fr-7',this)">Finalizat ⟶</button></div></div>
+  <div id="fin-rows"></div>
 </div>
 
 <!-- ══ CI MODAL ══ -->
@@ -919,11 +1119,38 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 
 <!-- ══ FOOTER ══ -->
 <div class="footer">
-  <span>notariat.co · Cabinet Notarial Andreea Frumoasa</span>
+  <span>acte.legal · Cabinet Notarial Andreea Frumoasa</span>
   <span id="footer-date">—</span>
 </div>
 </div>
 <div class="toast" id="toast"></div>
+<!-- ══ v50 Bucket B·5 — global confirm modal mount. Single instance, populated via showConfirm() ══ -->
+<div class="confirm-modal" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+  <div class="confirm-modal-box">
+    <div class="confirm-modal-title" id="confirm-modal-title">CONFIRMARE</div>
+    <div class="confirm-modal-body" id="confirm-modal-body"></div>
+    <div class="confirm-modal-actions">
+      <button class="btn-prep btn-prep-secondary" id="confirm-modal-cancel">Anulează</button>
+      <button class="btn-prep" id="confirm-modal-ok">Confirmă</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ v50 Bucket C·3 — De finalizat row-detail modal ══ -->
+<div class="fin-detail-modal" id="fin-detail-modal" role="dialog" aria-modal="true" aria-labelledby="fin-detail-name">
+  <div class="fin-detail-modal-box">
+    <div class="fin-detail-hdr">
+      <div class="fin-detail-eyebrow" id="fin-detail-eyebrow">DOSAR DE FINALIZAT</div>
+      <div class="fin-detail-name" id="fin-detail-name"></div>
+      <div class="fin-detail-sub" id="fin-detail-sub"></div>
+    </div>
+    <div class="fin-detail-body" id="fin-detail-body"></div>
+    <div class="fin-detail-actions">
+      <button class="btn-prep" id="fin-detail-download">Descarcă ↓</button>
+      <button class="btn-fin-modal-finalize" id="fin-detail-finalize">Finalizat ⟶</button>
+    </div>
+  </div>
+</div>
 
 <script>
 // ══════════════════════════════════════════════════════════════════
@@ -933,10 +1160,40 @@ html,body{background:var(--white);color:var(--ink);font-family:var(--sans);-webk
 var ROLES_BY_ACT = {
   procuri: ['Mandant', 'Mandatar'],
   declaratii: ['Declarant'],
-  imputerniciri: ['Mandant', 'Împuternicit'],
+  imputerniciri: ['Mandant', 'Mandatar'],
   acorduri: ['Parte I', 'Parte II'],
   legalizari: ['Semnatar']
 };
+
+// ══ ROLE CANONICAL ↔ DISPLAY (v50) — Batch 5.5 schema uses canonical lowercase keys (act_type_roles.role_key)
+// for storage; UI renders Romanian display labels. Phase 4b will source canonical keys from get_case_with_parties()
+// — until then, the seed uses display labels and the expander adds a parallel role_key for forward compatibility.
+var ROLE_DISPLAY_LABELS = {
+  mandant:           'Mandant',
+  mandatar:          'Mandatar',
+  declarant:         'Declarant',
+  semnatar:          'Semnatar',
+  acord_parte_1:     'Parte I',
+  acord_parte_2:     'Parte II'
+};
+var ROLE_CANONICAL_FROM_DISPLAY = {
+  'Mandant':         'mandant',
+  'Mandatar':        'mandatar',
+  'Declarant':       'declarant',
+  'Semnatar':        'semnatar',
+  'Parte I':         'acord_parte_1',
+  'Parte II':        'acord_parte_2'
+};
+function roleDisplay(canonicalOrDisplay){
+  // Accept either canonical key or display label; always return display.
+  if(ROLE_DISPLAY_LABELS[canonicalOrDisplay]) return ROLE_DISPLAY_LABELS[canonicalOrDisplay];
+  return canonicalOrDisplay; // already display
+}
+function roleCanonical(canonicalOrDisplay){
+  if(ROLE_CANONICAL_FROM_DISPLAY[canonicalOrDisplay]) return ROLE_CANONICAL_FROM_DISPLAY[canonicalOrDisplay];
+  // already canonical (or unknown — pass through)
+  return canonicalOrDisplay;
+}
 
 var MAINTYPE_LABEL = {
   procuri: 'Procură',
@@ -946,15 +1203,164 @@ var MAINTYPE_LABEL = {
   legalizari: 'Legalizare'
 };
 
+// ══ FIELD_REGISTRY (v50) — 11 universal fields per Batch 5.5 schema (case_parties hard columns)
+// Phone/Email removed: case-level (booker), not per-party. Rendered in Contact block at top of left column.
 var FIELD_REGISTRY = [
-  {tokenSuffix: 'NAME',       fieldLabel: 'Nume complet'},
-  {tokenSuffix: 'CNP',        fieldLabel: 'CNP'},
-  {tokenSuffix: 'ID_SERIES',  fieldLabel: 'Serie C.I.'},
-  {tokenSuffix: 'BIRTH_DATE', fieldLabel: 'Data nașterii'},
-  {tokenSuffix: 'ADDRESS',    fieldLabel: 'Domiciliu'},
-  {tokenSuffix: 'PHONE',      fieldLabel: 'Telefon'},
-  {tokenSuffix: 'EMAIL',      fieldLabel: 'Email'}
+  {tokenSuffix: 'FULL_NAME',       fieldLabel: 'Nume complet',     m: false},
+  {tokenSuffix: 'CNP',             fieldLabel: 'CNP',              m: true },
+  {tokenSuffix: 'ID_SERIES',       fieldLabel: 'Serie C.I.',       m: true },
+  {tokenSuffix: 'ID_NUMBER',       fieldLabel: 'Număr C.I.',       m: true },
+  {tokenSuffix: 'ID_ISSUER',       fieldLabel: 'Emis de',          m: false},
+  {tokenSuffix: 'ID_ISSUE_DATE',   fieldLabel: 'Data emiterii',    m: false},
+  {tokenSuffix: 'BIRTH_DATE',      fieldLabel: 'Data nașterii',    m: false},
+  {tokenSuffix: 'BIRTH_PLACE',     fieldLabel: 'Locul nașterii',   m: false},
+  {tokenSuffix: 'ADDRESS',         fieldLabel: 'Domiciliu',        m: false},
+  {tokenSuffix: 'CITIZENSHIP',     fieldLabel: 'Cetățenie',        m: false},
+  {tokenSuffix: 'MARITAL_STATUS',  fieldLabel: 'Stare civilă',     m: false}
 ];
+
+// ══ FIELD_REQUIREMENTS (v50) — slot-state config: required / optional / hidden, keyed by (subtype × role × field)
+// MOCK ONLY for 4b.0 design. Phase 4b replaces this with a query against subtype_field_requirements (Batch 5.5 schema).
+// Default for any unspecified entry: 'required'. Use 'hidden' to omit a slot, 'optional' for empty-OK.
+//
+// Stare civilă policy (4b.0 v0 — Claude's best read of Romanian notarial practice; correctable post-launch via admin UI):
+//   Required: real-estate procuri (vânzare/cumpărare imobil), succession declarations, both acorduri
+//   Optional: generală-class subtypes where notary's judgment varies
+//   Hidden:   movable property, banking, lost-document declarations, legalizări (already hidden)
+var FIELD_REQUIREMENTS_DEFAULT = 'required';
+var FIELD_REQUIREMENTS = {
+  // Procuri
+  'Vânzare imobil':        { Mandant: {}, Mandatar: {} },                                              // all required (default) — real estate, marital status legally relevant
+  'Cumpărare imobil':      { Mandant: {}, Mandatar: {} },                                              // same
+  'Vânzare auto':          { Mandant: { 'Stare civilă': 'hidden' }, Mandatar: { 'Stare civilă': 'hidden' } }, // movable property
+  'Bancară':               { Mandant: { 'Stare civilă': 'hidden', 'Cetățenie': 'optional' },
+                             Mandatar:{ 'Stare civilă': 'hidden', 'Cetățenie': 'optional' } },         // banking ops, not standard preamble
+  'Generală':              { Mandant: { 'Stare civilă': 'optional' }, Mandatar: { 'Stare civilă': 'optional' } }, // varies
+  // Declarații
+  'Acceptare succesiune':  { Declarant: {} },                                                          // succession — marital status legally relevant
+  'Renunțare succesiune':  { Declarant: {} },                                                          // same
+  'Luare în spațiu':       { Declarant: { 'Stare civilă': 'hidden', 'Cetățenie': 'optional' } },       // not in preamble
+  'De notorietate':        { Declarant: { 'Stare civilă': 'optional' } },                              // varies
+  'Pierdere act':          { Declarant: { 'Stare civilă': 'hidden', 'Cetățenie': 'optional' } },       // lost-act declarations
+  // Acorduri — both parties always required, marital status is the whole point
+  'Partaj bunuri':         { 'Parte I': {}, 'Parte II': {} },
+  'Între soți — divorț':   { 'Parte I': {}, 'Parte II': {} },
+  // Împuterniciri (Generală covered above by exact-subtype match; Bancară covered above too)
+  // Legalizări — minimal data needed, marital + birth_place + citizenship hidden
+  'Semnătură':             { Semnatar: { 'Stare civilă': 'hidden', 'Cetățenie': 'hidden', 'Locul nașterii': 'hidden' } },
+  'Copie':                 { Semnatar: { 'Stare civilă': 'hidden', 'Cetățenie': 'hidden', 'Locul nașterii': 'hidden', 'Data nașterii': 'optional' } }
+};
+
+// Lookup: returns 'required' | 'optional' | 'hidden' for (subtype, role, fieldLabel)
+function fieldRequirement(subtype, role, fieldLabel){
+  var s = FIELD_REQUIREMENTS[subtype];
+  if(!s) return FIELD_REQUIREMENTS_DEFAULT;
+  var r = s[role];
+  if(!r) return FIELD_REQUIREMENTS_DEFAULT;
+  return r[fieldLabel] || FIELD_REQUIREMENTS_DEFAULT;
+}
+
+// ══ EXTRA_FIELDS_CONFIG (v50) — act-specific extras catalog: subtype → role → ordered list of extra fields
+// Each entry: {key, label, mono?, required?}  — key is what the field stores into party.extra_fields[key].
+// MOCK ONLY for 4b.0 design. Phase 4b replaces with a query against field_definitions + subtype_field_requirements
+// (only rows where field_definition.is_universal = false).
+//
+// Rendered in a separate "Detalii act" block under the universal-fields block, scoped per role.
+// Empty state behavior: same as universal fields — required+empty → warning dot, optional+empty → "—".
+var EXTRA_FIELDS_CONFIG = {
+  // ── Procuri ──
+  'Vânzare imobil': {
+    Mandant: [
+      {key:'adresa_imobil',     label:'Adresa imobil',       required:true},
+      {key:'numar_cf',          label:'Număr CF',            mono:true,  required:true},
+      {key:'numar_cadastral',   label:'Număr cadastral',     mono:true,  required:false},
+      {key:'suprafata',         label:'Suprafață',           mono:true,  required:false},
+      {key:'pret_lei',          label:'Preț (lei)',          mono:true,  required:false}
+    ]
+  },
+  'Cumpărare imobil': {
+    Mandant: [
+      {key:'adresa_imobil',     label:'Adresa imobil',       required:true},
+      {key:'numar_cf',          label:'Număr CF',            mono:true,  required:false},
+      {key:'pret_lei',          label:'Preț (lei)',          mono:true,  required:false}
+    ]
+  },
+  'Vânzare auto': {
+    Mandant: [
+      {key:'marca',             label:'Marca',               required:true},
+      {key:'model',             label:'Model',               required:true},
+      {key:'serie_sasiu',       label:'Serie șasiu',         mono:true,  required:true},
+      {key:'numar_inmatriculare',label:'Număr înmatriculare',mono:true,  required:true},
+      {key:'an_fabricatie',     label:'An fabricație',       mono:true,  required:false}
+    ]
+  },
+  'Bancară': {
+    Mandant: [
+      {key:'banca',             label:'Banca',               required:true},
+      {key:'iban',              label:'IBAN',                mono:true,  required:true},
+      {key:'tip_operatiune',    label:'Tip operațiune',      required:false}
+    ]
+  },
+  // 'Generală' → no extras
+  // ── Declarații ──
+  'Acceptare succesiune': {
+    Declarant: [
+      {key:'nume_defunct',      label:'Nume defunct',        required:true},
+      {key:'data_deces',        label:'Data decesului',      required:true},
+      {key:'locul_deschiderii', label:'Locul deschiderii succesiunii', required:false}
+    ]
+  },
+  'Renunțare succesiune': {
+    Declarant: [
+      {key:'nume_defunct',      label:'Nume defunct',        required:true},
+      {key:'data_deces',        label:'Data decesului',      required:true}
+    ]
+  },
+  'Luare în spațiu': {
+    Declarant: [
+      {key:'adresa_imobil',     label:'Adresa imobilului',   required:true},
+      {key:'persoana_gazduita', label:'Persoana găzduită',   required:true},
+      {key:'cnp_gazduita',      label:'CNP persoană găzduită',mono:true, required:true}
+    ]
+  },
+  'De notorietate': {
+    Declarant: [
+      {key:'fapt_declarat',     label:'Fapt declarat',       required:true}
+    ]
+  },
+  'Pierdere act': {
+    Declarant: [
+      {key:'tip_act_pierdut',   label:'Tip act pierdut',     required:true},
+      {key:'numar_act',         label:'Număr act',           mono:true,  required:false},
+      {key:'data_emiterii_act', label:'Data emiterii actului',required:false}
+    ]
+  },
+  // ── Împuterniciri ──
+  // 'Generală' → no extras (covered above by name match)
+  // 'Bancară' → covered above (same shape as Procuri Bancară)
+  // ── Acorduri ──
+  'Partaj bunuri': {
+    'Parte I': [
+      {key:'descriere_bunuri',  label:'Descriere bunuri partaj', required:true}
+    ]
+  },
+  'Între soți — divorț': {
+    'Parte I': [
+      {key:'data_casatoriei',   label:'Data căsătoriei',     required:true},
+      {key:'locul_casatoriei',  label:'Locul căsătoriei',    required:true},
+      {key:'copii_minori',      label:'Copii minori',        required:false}
+    ]
+  }
+  // ── Legalizări ──
+  // No extras — minimal data acts
+};
+
+// Lookup: returns array of extra field defs for (subtype, role), or [] if none.
+function extraFieldsFor(subtype, role){
+  var s = EXTRA_FIELDS_CONFIG[subtype];
+  if(!s) return [];
+  return s[role] || [];
+}
 
 var SEEDED_DRAFTS = [
   {id:'s1', actType:'procuri',      subtype:'Vânzare imobil',            name:'Procură — Vânzare imobil'},
@@ -994,10 +1400,19 @@ function buildCaseData(c){
       var matched = party.fields.find(function(pf){ return pf.l === f.fieldLabel; });
       data[prefix + '_' + f.tokenSuffix] = matched ? matched.v : '';
     });
+    // Extras → uppercase the key, prefix with role (v50 Change 3)
+    var extras = party.extra_fields || {};
+    Object.keys(extras).forEach(function(k){
+      var tokenKey = prefix + '_' + k.toUpperCase();
+      data[tokenKey] = extras[k] || '';
+    });
   });
+  // Case-level tokens (unprefixed per 0g)
   data.CASE_REF = c.ref || '';
   data.ACT_TYPE = c.act || '';
   data.APPOINTMENT_DATE = (c.date || '') + (c.time ? ' ' + c.time : '');
+  data.CLIENT_PHONE = c.client_phone || '';
+  data.CLIENT_EMAIL = c.client_email || '';
   return data;
 }
 
@@ -1089,6 +1504,11 @@ function seedLibrary(){
 function prepareAct(){
   var c = CASES.find(function(x){ return x.id === currentOpenCase; });
   if(!c){ showToast('Niciun dosar activ'); return; }
+  // ══ v50 Bucket B·1 — server-side gate: refuse if status is still 'submitted' (mock label 'nou')
+  // per locked decision 0d.B. Defense-in-depth — UI also disables the button via the disabled attribute,
+  // but a manipulated DOM should not bypass the rule. The real Phase 4c Edge Function enforces this
+  // server-side via transition_case_status; this client-side check matches that behavior.
+  if(c.status === 'nou'){ showToast('Confirmați programarea pentru a prepara actul.'); return; }
   var draft = findDraftForCase(c);
   if(!draft){ showToast('Șablon indisponibil pentru acest subtip'); return; }
   var buf = DRAFT_BLOBS[draft.id];
@@ -1100,7 +1520,37 @@ function prepareAct(){
 
   var data = buildCaseData(c);
 
+  // ══ v50 Bucket B·2/3 — simulated latency. Phase 4c Edge Function takes ~1-3s end-to-end:
+  // fill .docx, upload to case-files bucket, call record_document_prepared RPC, queue email.
+  // Mock it at 1500ms so the click-feedback state ("Se generează…") is actually visible.
+  // IMPORTANT: in production, Pregătește act does NOT trigger a download to the notary's machine.
+  // The doc lives in the storage bucket. The notary uses Descarcă from the success block to pull
+  // it down explicitly. The mock mirrors this — we generate the blob and stash it on c.prepared,
+  // then redownloadAct() retrieves it when the notary clicks Descarcă.
+  // ══ v50 Bucket B·4 — debug-toggleable failure injection. When window.__forceFailNext is true
+  // (set by Shift+F while a drawer is open), the next prepareAct() call simulates a generation
+  // failure: c.prepError is set, the error block renders, no status transition, no email. The
+  // toggle clears itself after one use so it doesn't compound. Production replaces this with the
+  // Edge Function's real error responses (network, auth, validation, RPC failure).
+  var forceFail = !!window.__forceFailNext;
+  if(forceFail){ window.__forceFailNext = false; }
   setTimeout(function(){
+    if(forceFail){
+      // Simulated failure path — no doc generated, no transition, no email
+      c.prepError = true;
+      showToast('Pregătirea a eșuat · încercați din nou');
+      if(typeof soundFail === 'function') soundFail();
+      refreshStatusVisuals(c);
+      // ══ v50 Bucket B·4 — match the success-path auto-scroll. The error block is taller than the
+      // generating button it replaces, so without scroll-into-view the user may not see it if their
+      // viewport had the button near the bottom of the visible area. Mirrors line ~1466 below.
+      var activePrefix = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+      var prepEl = document.getElementById(activePrefix + '-prep');
+      if(prepEl && prepEl.scrollIntoView){
+        setTimeout(function(){ prepEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+      }
+      return;
+    }
     try {
       var zip = new PizZip(buf.slice(0));
       var doc = new window.docxtemplater(zip, {
@@ -1114,16 +1564,57 @@ function prepareAct(){
         mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
       });
       var outName = c.ref + ' · ' + draft.name + ' · ' + timestampForFilename() + '.docx';
-      saveAs(out, outName);
-      showToast('Descărcat · ' + outName);
+      // Stash in mock storage on the case (production: Edge Function uploads to case-files bucket)
+      c.prepared = {
+        filename: outName,
+        generatedAt: (new Date()).toISOString(),
+        blob: out
+      };
+      // Defensive: a successful generation always clears any prior error state, even if the renderer
+      // wouldn't have shown the error block (because c.prepared was already set somehow).
+      c.prepError = false;
+      showToast('Act pregătit · disponibil pentru descărcare');
       if(typeof soundFinalizat === 'function') soundFinalizat();
+
+      // ══ v50 Bucket B·1+3 — auto status transition. Phase 4c replaces with record_document_prepared
+      // RPC (atomic per 0e.2). Skips if already 'programat' (regen — Piece 5 handles properly).
+      if(c.status === 'in-lucru'){
+        c.status = 'programat';
+        var months = ['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+        var now = new Date();
+        c.hist = c.hist || [];
+        c.hist.push(histStamp(now) + ' — act pregătit');
+        refreshStatusVisuals(c);
+        rebuildAllLists();
+        // ══ v50 Bucket B·3 — auto-scroll the success block into view so it isn't chopped off
+        // below the fold. Only after a fresh generation (in-lucru → programat); pre-seeded GATA
+        // cases that opened directly to the success block don't need this.
+        var activePrefix = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+        var prepEl = document.getElementById(activePrefix + '-prep');
+        if(prepEl && prepEl.scrollIntoView){
+          setTimeout(function(){ prepEl.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+        }
+      } else {
+        // Was already programat (regen path) — refresh the slot to update the timestamp
+        refreshStatusVisuals(c);
+      }
     } catch(err){
       console.error(err);
-      showToast('Eroare la generare');
-    } finally {
-      if(btn){ btn.classList.remove('generating'); btn.textContent = 'Pregătește act ↓'; }
+      // ══ v50 Bucket B·4 — real failure path (e.g. malformed template, docxtemplater throws).
+      // Same surface as the debug-forced failure: set c.prepError, let renderPrepSlot render the
+      // error block. No status transition, no email. The button class cleanup is implicit via
+      // the slot innerHTML replacement in refreshStatusVisuals. Matches success-path auto-scroll.
+      c.prepError = true;
+      showToast('Pregătirea a eșuat · încercați din nou');
+      if(typeof soundFail === 'function') soundFail();
+      refreshStatusVisuals(c);
+      var activePrefixErr = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+      var prepElErr = document.getElementById(activePrefixErr + '-prep');
+      if(prepElErr && prepElErr.scrollIntoView){
+        setTimeout(function(){ prepElErr.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+      }
     }
-  }, 20);
+  }, 1500);
 }
 // ══ END DOC GENERATOR ══════════════════════════════════════════════
 
@@ -1186,6 +1677,8 @@ function soundCopy(){playTone([1047],0.12,'sine',0.1);}
 function soundConfirm(){playTone([523,659],0.2,'sine',0.12);}
 // finalizat: three-note resolution chord
 function soundFinalizat(){playTone([392,494,659],0.35,'sine',0.1);}
+// fail: descending two-note (mirror of soundConfirm's ascending) — softer volume so it doesn't startle
+function soundFail(){playTone([392,294],0.22,'sine',0.09);}
 // view switch: very subtle click
 function soundSwitch(){playTone([880],0.06,'sine',0.06);}
 // case select: gentle low tap
@@ -1221,66 +1714,87 @@ const RO_M=['ianuarie','februarie','martie','aprilie','mai','iunie','iulie','aug
 const RO_M_SHORT=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','noi','dec'];
 function fmtDate(iso){if(!iso)return null;const[y,m,d]=iso.split('-');return d+' '+RO_M[+m-1]+' '+y;}
 function fmtDateShort(iso){if(!iso)return null;const[y,m,d]=iso.split('-');return d+' '+RO_M_SHORT[+m-1]+' '+y;}
+// ══ v50 Bucket C·2 — uniform timestamp prefix for history entries. Format: "DD <ron-month> YYYY".
+// Used for all dynamically appended hist[] lines so the year is always visible (matches the seed
+// data updated to include 2026).
+function histStamp(d){
+  d = d || new Date();
+  return d.getDate()+' '+RO_M_SHORT[d.getMonth()]+' '+d.getFullYear();
+}
+
+// ══ v50 Bucket C·2 — interval/slot catalog. Single source of truth for the appointment-time
+// taxonomy used by the public Squarespace booking form and reflected here in the dashboard.
+// Three named intervals (each with two concrete slots) plus one flexible interval (single
+// "fără preferință" slot). The form forces the client to pick interval + slot; both are
+// mandatory and stored on the case as prefInterval + prefSlotRange. Display order matters
+// (matches form display order). When the form ships, this catalog must stay in lockstep with
+// the form's option lists; treat any change as a Phase 4b admin task that updates both.
+const INTERVAL_SLOTS = {
+  'dimineața':   ['09:00 – 10:30', '10:30 – 12:00'],
+  'prânz':       ['12:00 – 13:00', '13:00 – 14:00'],
+  'după-amiaza': ['14:00 – 15:30', '15:30 – 17:00'],
+  'orice oră':   ['fără preferință']
+};
 
 // parties: array of {role, fields[]}  — used for multi-party acts (procuri, acorduri, imputerniciri)
 // fields: flat array — used for single-party acts (declaratii, legalizari)
 const CASES=[
   {id:1,type:'procuri',subtype:'Vânzare imobil',act:'Procură',ref:'NOT-2026-0041',client:'Popescu Maria-Elena',status:'nou',flag:true,
-   pref:'24 apr, după-amiaza',prefDate:'2026-04-24',prefSlot:'după-amiaza',alt:'alternativ: 26 apr, dimineața',
+   pref:'24 apr, după-amiaza',prefDate:'2026-04-24',prefInterval:'după-amiaza',prefSlotRange:'14:00 – 15:30',prefSlot:'după-amiaza',
    date:'2026-04-24',time:'14:00',notes:'',created:'10 apr',urgent:true,
-   hist:['10 apr — creat (sistem)','11 apr — CI verificat, diferențe identificate'],
+   hist:['10 apr 2026 — dosar primit','11 apr 2026 — CI verificat'],
    disc:[{f:'Nume complet',party:'Mandant',o:'Popescu Maria Elena',n:'Popescu Maria-Elena'},{f:'CNP',party:'Mandant',o:'2 780 415 350 041',n:'2 780 415 350 042'}],
    parties:[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Popescu Maria Elena',m:false,cp:'Popescu Maria Elena'},{l:'CNP',v:'2 780 415 350 041',m:true,cp:'2780415350041'},{l:'Serie C.I.',v:'IF 123456',m:true,cp:'IF123456'},{l:'Data nașterii',v:'15.04.1978',m:false,cp:'15.04.1978'},{l:'Domiciliu',v:'Str. Mihai Eminescu nr. 12, ap. 4, sector 2',m:false,cp:'Str. Mihai Eminescu nr. 12'},{l:'Telefon',v:'0722 345 678',m:false,cp:'0722345678'}]},
      {role:'Mandatar',fields:[{l:'Nume complet',v:'Popescu Alexandru',m:false,cp:'Popescu Alexandru'},{l:'CNP',v:'1 750 820 350 011',m:true,cp:'1750820350011'},{l:'Serie C.I.',v:'IF 654321',m:true,cp:'IF654321'},{l:'Data nașterii',v:'20.08.1975',m:false,cp:'20.08.1975'},{l:'Domiciliu',v:'Str. Victoriei nr. 3, sector 1',m:false,cp:'Str. Victoriei nr. 3'},{l:'Telefon',v:'0744 111 222',m:false,cp:'0744111222'}]}
    ]},
   {id:2,type:'declaratii',subtype:'Luare în spațiu',act:'Declarație',ref:'NOT-2026-0039',client:'Gheorghe Andrei',status:'in-lucru',flag:false,
-   pref:'22 apr, dimineața',prefDate:'2026-04-22',prefSlot:'dimineața',alt:'',date:'2026-04-22',time:'09:30',
+   pref:'22 apr, dimineața',prefDate:'2026-04-22',prefInterval:'dimineața',prefSlotRange:'09:00 – 10:30',prefSlot:'dimineața',date:'2026-04-22',time:'09:30',
    notes:'Aduce certificatul de deces original.',created:'9 apr',urgent:false,
-   hist:['9 apr — creat (sistem)','12 apr — status: Activ'],disc:[],
+   hist:['9 apr 2026 — dosar primit','12 apr 2026 — programat, 22 apr 2026 09:30'],disc:[],
    parties:[
      {role:'Declarant',fields:[{l:'Nume complet',v:'Gheorghe Andrei',m:false,cp:'Gheorghe Andrei'},{l:'CNP',v:'1 650 823 210 045',m:true,cp:'1650823210045'},{l:'Serie C.I.',v:'B 543210',m:true,cp:'B543210'},{l:'Data nașterii',v:'23.08.1965',m:false,cp:'23.08.1965'},{l:'Domiciliu',v:'Bd. Unirii nr. 45, bl. D2, ap. 18, sector 4',m:false,cp:'Bd. Unirii nr. 45'},{l:'Telefon',v:'0744 112 233',m:false,cp:'0744112233'},{l:'Email',v:'andrei.gheorghe@gmail.com',m:false,cp:'andrei.gheorghe@gmail.com'}]}
    ]},
   {id:3,type:'imputerniciri',subtype:'Bancară',act:'Împuternicire',ref:'NOT-2026-0037',client:'Dumitrescu Ion',status:'programat',flag:false,
-   pref:'14 apr, 10:00',prefDate:'2026-04-14',prefSlot:'10:00',alt:'',date:'2026-04-14',time:'10:00',
+   pref:'14 apr, 10:00',prefDate:'2026-04-14',prefInterval:'dimineața',prefSlotRange:'09:00 – 10:30',prefSlot:'10:00',date:'2026-04-14',time:'10:00',
    notes:'',created:'8 apr',urgent:false,
-   hist:['8 apr — creat (sistem)','11 apr — programat: 14 apr 10:00'],disc:[],
+   hist:['8 apr 2026 — dosar primit','11 apr 2026 — programat, 14 apr 2026 10:00'],disc:[],
    parties:[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Dumitrescu Ion',m:false,cp:'Dumitrescu Ion'},{l:'CNP',v:'1 550 312 440 033',m:true,cp:'1550312440033'},{l:'Serie C.I.',v:'CJ 987654',m:true,cp:'CJ987654'},{l:'Data nașterii',v:'12.03.1955',m:false,cp:'12.03.1955'},{l:'Domiciliu',v:'Str. Florilor nr. 3, Cluj-Napoca',m:false,cp:'Str. Florilor nr. 3'},{l:'Telefon',v:'0766 987 001',m:false,cp:'0766987001'}]},
      {role:'Împuternicit',fields:[{l:'Nume complet',v:'Dumitrescu Elena',m:false,cp:'Dumitrescu Elena'},{l:'CNP',v:'2 580 714 440 044',m:true,cp:'2580714440044'},{l:'Serie C.I.',v:'CJ 112233',m:true,cp:'CJ112233'},{l:'Data nașterii',v:'14.07.1958',m:false,cp:'14.07.1958'},{l:'Domiciliu',v:'Str. Florilor nr. 3, Cluj-Napoca',m:false,cp:'Str. Florilor nr. 3'},{l:'Telefon',v:'0755 321 001',m:false,cp:'0755321001'}]}
    ]},
   {id:4,type:'acorduri',subtype:'Partaj bunuri',act:'Acord',ref:'NOT-2026-0036',client:'Stancu Ioana',status:'nou',flag:false,
-   pref:'flexibil',prefDate:null,prefSlot:'21–25 apr',alt:'',date:'',time:'',notes:'',created:'11 apr',urgent:true,
-   hist:['11 apr — creat (sistem)'],disc:[],
+   pref:'22 apr, orice oră',prefDate:'2026-04-22',prefInterval:'orice oră',prefSlotRange:'fără preferință',prefSlot:'orice oră',date:'',time:'',notes:'',created:'11 apr',urgent:true,
+   hist:['11 apr 2026 — dosar primit'],disc:[],
    parties:[
      {role:'Parte I',fields:[{l:'Nume complet',v:'Stancu Ioana',m:false,cp:'Stancu Ioana'},{l:'CNP',v:'2 900 719 350 088',m:true,cp:'2900719350088'},{l:'Serie C.I.',v:'MM 445566',m:true,cp:'MM445566'},{l:'Data nașterii',v:'19.07.1990',m:false,cp:'19.07.1990'},{l:'Domiciliu',v:'Str. Victoriei nr. 88, sector 1',m:false,cp:'Str. Victoriei nr. 88'},{l:'Telefon',v:'0733 009 876',m:false,cp:'0733009876'}]},
      {role:'Parte II',fields:[{l:'Nume complet',v:'Stancu Radu',m:false,cp:'Stancu Radu'},{l:'CNP',v:'1 880 314 350 022',m:true,cp:'1880314350022'},{l:'Serie C.I.',v:'MM 778899',m:true,cp:'MM778899'},{l:'Data nașterii',v:'14.03.1988',m:false,cp:'14.03.1988'},{l:'Domiciliu',v:'Str. Victoriei nr. 88, sector 1',m:false,cp:'Str. Victoriei nr. 88'},{l:'Telefon',v:'0722 445 001',m:false,cp:'0722445001'}]}
    ]},
   {id:5,type:'legalizari',subtype:'Semnătură',act:'Legalizare',ref:'NOT-2026-0034',client:'Moldovan Cristian',status:'in-lucru',flag:false,
-   pref:'17 apr, dimineața',prefDate:'2026-04-17',prefSlot:'dimineața',alt:'',date:'2026-04-17',time:'09:00',
+   pref:'17 apr, dimineața',prefDate:'2026-04-17',prefInterval:'dimineața',prefSlotRange:'09:00 – 10:30',prefSlot:'dimineața',date:'2026-04-17',time:'09:00',
    notes:'',created:'7 apr',urgent:false,
-   hist:['7 apr — creat (sistem)','10 apr — status: Activ'],disc:[],
+   hist:['7 apr 2026 — dosar primit','10 apr 2026 — programat, 17 apr 2026 09:00'],disc:[],
    parties:[
      {role:'Semnatar',fields:[{l:'Nume complet',v:'Moldovan Cristian',m:false,cp:'Moldovan Cristian'},{l:'CNP',v:'1 880 517 260 077',m:true,cp:'1880517260077'},{l:'Serie C.I.',v:'CJ 334455',m:true,cp:'CJ334455'},{l:'Data nașterii',v:'17.05.1988',m:false,cp:'17.05.1988'},{l:'Domiciliu',v:'Aleea Mureșului nr. 7, Cluj-Napoca',m:false,cp:'Aleea Mureșului nr. 7'},{l:'Telefon',v:'0756 441 220',m:false,cp:'0756441220'},{l:'Email',v:'cristian.moldovan@gmail.com',m:false,cp:'cristian.moldovan@gmail.com'}]}
    ]},
   {id:6,type:'declaratii',subtype:'Pierdere act',act:'Declarație',ref:'NOT-2026-0033',client:'Niculescu Vasile',status:'nou',flag:false,
-   pref:'flexibil',prefDate:null,prefSlot:'orice zi',alt:'',date:'',time:'',notes:'',created:'12 apr',urgent:true,
-   hist:['12 apr — creat (sistem)'],disc:[],
+   pref:'15 apr, orice oră',prefDate:'2026-04-15',prefInterval:'orice oră',prefSlotRange:'fără preferință',prefSlot:'orice oră',date:'',time:'',notes:'',created:'12 apr',urgent:true,
+   hist:['12 apr 2026 — dosar primit'],disc:[],
    parties:[
      {role:'Declarant',fields:[{l:'Nume complet',v:'Niculescu Vasile',m:false,cp:'Niculescu Vasile'},{l:'CNP',v:'1 470 302 350 061',m:true,cp:'1470302350061'},{l:'Serie C.I.',v:'BV 221133',m:true,cp:'BV221133'},{l:'Data nașterii',v:'02.03.1947',m:false,cp:'02.03.1947'},{l:'Domiciliu',v:'Str. Republicii nr. 22, Brașov',m:false,cp:'Str. Republicii nr. 22'},{l:'Telefon',v:'0722 001 002',m:false,cp:'0722001002'}]}
    ]},
   {id:7,type:'acorduri',subtype:'Între soți — divorț',act:'Acord',ref:'NOT-2026-0031',client:'Popa Daniela',status:'programat',flag:false,
-   pref:'14 apr, 11:30',prefDate:'2026-04-14',prefSlot:'11:30',alt:'',date:'2026-04-14',time:'11:30',
+   pref:'14 apr, 11:30',prefDate:'2026-04-14',prefInterval:'dimineața',prefSlotRange:'10:30 – 12:00',prefSlot:'11:30',date:'2026-04-14',time:'11:30',
    notes:'',created:'9 apr',urgent:false,
-   hist:['9 apr — creat (sistem)','11 apr — programat: 14 apr 11:30'],disc:[],
+   hist:['9 apr 2026 — dosar primit','11 apr 2026 — programat, 14 apr 2026 11:30'],disc:[],
    parties:[
      {role:'Parte I',fields:[{l:'Nume complet',v:'Popa Daniela',m:false,cp:'Popa Daniela'},{l:'CNP',v:'2 830 614 180 099',m:true,cp:'2830614180099'},{l:'Serie C.I.',v:'IS 556677',m:true,cp:'IS556677'},{l:'Data nașterii',v:'14.06.1983',m:false,cp:'14.06.1983'},{l:'Domiciliu',v:'Str. Lăpușneanu nr. 14, Iași',m:false,cp:'Str. Lăpușneanu nr. 14'},{l:'Telefon',v:'0788 345 001',m:false,cp:'0788345001'}]},
      {role:'Parte II',fields:[{l:'Nume complet',v:'Popa Gheorghe',m:false,cp:'Popa Gheorghe'},{l:'CNP',v:'1 810 220 180 033',m:true,cp:'1810220180033'},{l:'Serie C.I.',v:'IS 998877',m:true,cp:'IS998877'},{l:'Data nașterii',v:'20.02.1981',m:false,cp:'20.02.1981'},{l:'Domiciliu',v:'Str. Lăpușneanu nr. 14, Iași',m:false,cp:'Str. Lăpușneanu nr. 14'},{l:'Telefon',v:'0744 002 003',m:false,cp:'0744002003'}]}
    ]},
   {id:8,type:'imputerniciri',subtype:'Generală',act:'Împuternicire',ref:'NOT-2026-0029',client:'Bălan Mihai',status:'in-lucru',flag:false,
-   pref:'14 apr, după-amiaza',prefDate:'2026-04-14',prefSlot:'după-amiaza',alt:'',date:'2026-04-14',time:'15:00',
+   pref:'14 apr, după-amiaza',prefDate:'2026-04-14',prefInterval:'după-amiaza',prefSlotRange:'14:00 – 15:30',prefSlot:'după-amiaza',date:'2026-04-14',time:'15:00',
    notes:'',created:'13 apr',urgent:false,
-   hist:['13 apr — creat (sistem)','14 apr — status: Activ'],disc:[],
+   hist:['13 apr 2026 — dosar primit','14 apr 2026 — programat, 14 apr 2026 15:00'],disc:[],
    parties:[
      {role:'Mandant',fields:[{l:'Nume complet',v:'Bălan Mihai',m:false,cp:'Bălan Mihai'},{l:'CNP',v:'1 991 204 400 055',m:true,cp:'1991204400055'},{l:'Serie C.I.',v:'PH 778899',m:true,cp:'PH778899'},{l:'Data nașterii',v:'04.12.1999',m:false,cp:'04.12.1999'},{l:'Domiciliu',v:'Str. Gării nr. 5, Ploiești',m:false,cp:'Str. Gării nr. 5'},{l:'Telefon',v:'0799 112 334',m:false,cp:'0799112334'}]},
      {role:'Împuternicit',fields:[{l:'Nume complet',v:'Bălan Ana',m:false,cp:'Bălan Ana'},{l:'CNP',v:'2 010 915 400 066',m:true,cp:'2010915400066'},{l:'Serie C.I.',v:'PH 334455',m:true,cp:'PH334455'},{l:'Data nașterii',v:'15.09.2001',m:false,cp:'15.09.2001'},{l:'Domiciliu',v:'Str. Gării nr. 5, Ploiești',m:false,cp:'Str. Gării nr. 5'},{l:'Telefon',v:'0755 667 001',m:false,cp:'0755667001'}]}
@@ -1304,6 +1818,150 @@ const DOCS_EXTRA={
 CASES.forEach(function(c){
   c.docs=(DOCS_EXTRA[c.id]||[]).slice();
 });
+
+// ══ v50 Bucket B Pieces 2+3 — pre-seed prepared-doc records for cases already in 'programat' status
+// (status=booked in schema). Phase 4b reads this from the prepared_documents table seeded by
+// record_document_prepared RPC. Each entry: {filename, generatedAt:ISO}
+(function seedPreparedRecords(){
+  CASES.forEach(function(c){
+    if(c.status === 'programat'){
+      var draft = SEEDED_DRAFTS.find(function(d){ return d.actType === c.type && d.subtype === c.subtype; });
+      if(draft){
+        // Synthesize a plausible past timestamp (1-3 days ago) so the timestamp display reads naturally
+        var daysAgo = 1 + (c.id % 3);
+        var t = new Date(Date.now() - daysAgo*24*60*60*1000);
+        c.prepared = {
+          filename: c.ref + ' · ' + draft.name + ' · 0930.docx',
+          generatedAt: t.toISOString()
+        };
+      }
+    }
+  });
+})();
+
+// ══ SEED EXPANSION (v50) — bring v49 mock data up to Batch 5.5 schema shape:
+//   1. Move Telefon/Email from per-party to case-level (c.client_phone, c.client_email)
+//   2. Add the 6 new universal fields per party (Număr C.I., Emis de, Data emiterii,
+//      Locul nașterii, Cetățenie, Stare civilă) with mock values + intentional gaps to
+//      exercise slot states (filled / empty-required / empty-optional)
+//   3. Normalize legacy 'Împuternicit' role label → 'Mandatar' per locked decision 0f.2
+// In production this data comes from get_case_with_parties() RPC (Batch 5.5). The on-init
+// patch keeps v49's inline seed unchanged on disk (cleaner diff) and applies the shape shift.
+(function expandSeedToBatch55Shape(){
+  var ISSUERS = ['SPCLEP Sector 1','SPCLEP Sector 2','SPCLEP Cluj-Napoca','SPCLEP Iași','SPCLEP Brașov','SPCLEP Ploiești','SPCLEP Sector 4'];
+  var BIRTH_PLACES = ['București','Cluj-Napoca','Iași','Brașov','Timișoara','Ploiești','Constanța'];
+  var MARITAL = ['căsătorit','căsătorită','necăsătorit','necăsătorită','divorțat','divorțată'];
+
+  function pick(arr, seed){ return arr[Math.abs(seed) % arr.length]; }
+  function pseudoSeed(s){ var h=0; for(var i=0;i<s.length;i++) h=(h*31 + s.charCodeAt(i))|0; return h; }
+
+  // Sample empties — these party (caseId, role, fieldLabel) tuples will have the field MISSING
+  // to demonstrate empty-required (warning dot) and empty-optional ("—") states in the drawer.
+  var INTENTIONAL_EMPTIES = {
+    '4|Parte II|Cetățenie': true,           // optional → "—"
+    '4|Parte II|Stare civilă': true,        // optional → "—"
+    '6|Declarant|Cetățenie': true,          // optional → "—"
+    '8|Mandatar|Emis de': true,             // required + missing → warning dot
+    '8|Mandatar|Data emiterii': true        // required + missing → warning dot
+  };
+
+  // Mock extras seed — keyed by (caseId, role) → {extra_field_key: value}
+  // Some entries have intentional empties (omitted keys) to demonstrate state rendering.
+  var EXTRAS_SEED = {
+    // Case 1 — Procură Vânzare imobil — Mandant has full extras except numar_cadastral (optional, empty)
+    '1|Mandant':   {adresa_imobil:'Str. Doamnei nr. 14, ap. 7, sector 3, București', numar_cf:'CF 218845', suprafata:'78 m²', pret_lei:'420 000'},
+    // Case 2 — Declarație Luare în spațiu — Declarant has all extras
+    '2|Declarant': {adresa_imobil:'Bd. Unirii nr. 45, bl. D2, ap. 18, sector 4', persoana_gazduita:'Vasilescu Andreea', cnp_gazduita:'2950412350011'},
+    // Case 3 — Împuternicire Bancară — Mandant has banca + iban filled, tip_operatiune missing (optional)
+    '3|Mandant':   {banca:'Banca Transilvania', iban:'RO49AAAA1B31007593840000'},
+    // Case 4 — Acord Partaj bunuri — Parte I has descriere_bunuri filled
+    '4|Parte I':   {descriere_bunuri:'Apartament 3 camere, sector 1; autoturism Dacia Logan 2018'},
+    // Case 5 — Legalizare Semnătură — no extras config (none seeded)
+    // Case 6 — Declarație Pierdere act — Declarant has tip_act_pierdut, missing numar_act + data_emiterii_act (optional)
+    '6|Declarant': {tip_act_pierdut:'Carte de identitate'},
+    // Case 7 — Acord divorț — Parte I has all extras
+    '7|Parte I':   {data_casatoriei:'14.06.2010', locul_casatoriei:'Iași', copii_minori:'2 (Popa Maria, 8 ani; Popa Andrei, 5 ani)'},
+    // Case 8 — Împuternicire Generală — no extras config (none seeded)
+  };
+
+  CASES.forEach(function(c){
+    // (1) Lift phone/email to case-level from first party that has them; remove from all parties
+    var lifted = {phone:'', email:''};
+    (c.parties||[]).forEach(function(p){
+      var newFields = [];
+      (p.fields||[]).forEach(function(f){
+        if(f.l === 'Telefon'){ if(!lifted.phone) lifted.phone = f.v; return; }
+        if(f.l === 'Email'){   if(!lifted.email) lifted.email = f.v; return; }
+        newFields.push(f);
+      });
+      p.fields = newFields;
+    });
+    c.client_phone = lifted.phone || '';
+    c.client_email = lifted.email || '';
+
+    // (2) Normalize role names per 0f.2 (împuterniciri uses Mandant + Mandatar)
+    if(c.type === 'imputerniciri'){
+      (c.parties||[]).forEach(function(p){ if(p.role === 'Împuternicit') p.role = 'Mandatar'; });
+    }
+
+    // (2b) Add canonical role_key alongside display label (Batch 5.5 schema uses canonical keys)
+    (c.parties||[]).forEach(function(p){
+      p.role_key = roleCanonical(p.role);
+    });
+
+    // (2c) Attach extra_fields JSON per party (from mock EXTRAS_SEED — Phase 4b reads from case_parties.extra_fields)
+    (c.parties||[]).forEach(function(p){
+      var seedKey = c.id + '|' + p.role;
+      p.extra_fields = EXTRAS_SEED[seedKey] || {};
+    });
+
+    // (3) For each party, add the 6 new universal fields if missing, with mock values
+    //     (or intentionally empty per INTENTIONAL_EMPTIES)
+    (c.parties||[]).forEach(function(p){
+      var seedKey = c.id + '|' + p.role;
+      var seed = pseudoSeed(seedKey);
+      var existingLabels = {};
+      p.fields.forEach(function(f){ existingLabels[f.l] = true; });
+
+      // Derive Număr C.I. from existing Serie C.I. (the v49 seed put both in one string like "IF 123456")
+      var idSeriesField = p.fields.find(function(f){ return f.l === 'Serie C.I.'; });
+      var seriesOnly = '', numberOnly = '';
+      if(idSeriesField){
+        var parts = idSeriesField.v.split(/\s+/);
+        if(parts.length >= 2){
+          seriesOnly = parts[0];
+          numberOnly = parts.slice(1).join('');
+          idSeriesField.v = seriesOnly;
+          idSeriesField.cp = seriesOnly;
+        }
+      }
+
+      function emptyKey(label){ return INTENTIONAL_EMPTIES[c.id + '|' + p.role + '|' + label] === true; }
+      function pushField(label, value, mono){
+        if(existingLabels[label]) return;
+        var v = emptyKey(label) ? '' : value;
+        p.fields.push({l: label, v: v, m: !!mono, cp: v});
+      }
+
+      // Build the 11-field block in canonical order. Existing fields stay in place; missing ones are appended.
+      pushField('Număr C.I.',     numberOnly || ('1' + (Math.abs(seed)%900000 + 100000)), true);
+      pushField('Emis de',        pick(ISSUERS, seed), false);
+      pushField('Data emiterii',  ['12.05.2018','03.11.2019','22.07.2020','08.02.2021','17.09.2017','30.04.2022'][Math.abs(seed)%6], false);
+      pushField('Locul nașterii', pick(BIRTH_PLACES, seed+1), false);
+      pushField('Cetățenie',      'română', false);
+      pushField('Stare civilă',   pick(MARITAL, seed+2), false);
+
+      // (4) Sort fields into canonical FIELD_REGISTRY order so the drawer renders consistently
+      var orderMap = {};
+      FIELD_REGISTRY.forEach(function(f, i){ orderMap[f.fieldLabel] = i; });
+      p.fields.sort(function(a,b){
+        var ai = (a.l in orderMap) ? orderMap[a.l] : 999;
+        var bi = (b.l in orderMap) ? orderMap[b.l] : 999;
+        return ai - bi;
+      });
+    });
+  });
+})();
 
 // ══ DEMO BLOBS — a real 1-page PDF and a 1×1 PNG used for all stub downloads ══
 var DEMO_PDF_B64='JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2JqCjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2JqCjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA2MTIgNzkyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4gPj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1NiA+PgpzdHJlYW0KQlQgL0YxIDEyIFRmIDcyIDcyMCBUZCAobm90YXJpYXQuY28gZGVtbyBkb2N1bWVudCkgVGogRVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBlMSAvQmFzZUZvbnQgL0NvdXJpZXIgPj4KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAwMDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAwMDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwMzQ3IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAvUm9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNDE1CiUlRU9GCg==';
@@ -1346,14 +2004,19 @@ const ACT_INFO={
 
 const TAGS={
   'nou':'<span class="tag tag-nou">Nou</span>',
-  'in-lucru':'<span class="tag tag-lucru">Activ</span>',
-  'programat':'<span class="tag tag-programat">Programat</span>',
+  'in-lucru':'<span class="tag tag-lucru">Programat</span>',
+  'programat':'<span class="tag tag-programat">Gata</span>',
+  'finalizat':'<span class="tag tag-finalizat">Finalizat</span>'
 };
 
 function dateCell(c){
-  const main=c.prefDate?fmtDate(c.prefDate):'flexibil';
-  const slot=c.prefSlot||'';
-  const sep=slot?' · ':'';
+  // ══ v50 Bucket C·2 — list-cell display of client's preferred date + interval. Always shows
+  // the date (every case has prefDate per the Squarespace form contract). Interval is shown
+  // compact: just the interval name (e.g. "după-amiaza", "orice oră"); the precise slot range
+  // appears in the drawer's Preferință block, not in the list.
+  const main = c.prefDate ? fmtDate(c.prefDate) : 'flexibil';
+  const slot = c.prefInterval || c.prefSlot || '';
+  const sep = slot ? ' · ' : '';
   return '<div class="l-date"><span class="l-date-main">'+main+'</span>'+sep+'<span class="l-date-slot">'+slot+'</span></div>';
 }
 
@@ -1370,50 +2033,137 @@ let currentFilter='toate',currentView=localStorage.getItem('notariat_view')||'a'
 
 // ══ RENDERERS ══
 
-// Render a single party group
-function renderPartyFields(fields){
-  const pairs=[];
-  for(let i=0;i<fields.length;i+=2){
-    if(i+1<fields.length){
-      pairs.push('<div class="field-grid-2">'+renderField(fields[i])+renderField(fields[i+1])+'</div>');
+// Render a single party group — slot-state logic per FIELD_REQUIREMENTS (v50)
+// Hidden fields are omitted entirely. Empty + required → subtle warning dot. Empty + optional → "—".
+function renderPartyFields(fields, subtype, role){
+  // Filter out hidden slots up front; keep input field order (already sorted to FIELD_REGISTRY canonical order)
+  var visible = fields.filter(function(f){
+    return fieldRequirement(subtype, role, f.l) !== 'hidden';
+  });
+  var pairs=[];
+  for(var i=0;i<visible.length;i+=2){
+    if(i+1<visible.length){
+      pairs.push('<div class="field-grid-2">'+renderField(visible[i], subtype, role)+renderField(visible[i+1], subtype, role)+'</div>');
     } else {
-      pairs.push(renderField(fields[i]));
+      pairs.push(renderField(visible[i], subtype, role));
     }
   }
   return pairs.join('');
 }
-function renderField(f){
-  return '<div class="field-stacked" onclick="cp(\''+f.cp+'\',\''+f.l+' copiat\')">'
+function renderField(f, subtype, role){
+  var req = fieldRequirement(subtype, role, f.l);
+  var isEmpty = !f.v;
+  var monoClass = f.m ? ' mono' : '';
+  var emptyClass = isEmpty ? ' empty' : '';
+  var displayVal, indicator = '';
+
+  if(isEmpty){
+    // ══ v50 Bucket C·4 (revised) — empty fields uniformly show "—" in --grey2. The previous
+    // distinction between empty-required (italic "lipsește" + red discrepancy dot) and empty-
+    // optional ("—") was dropped because Squarespace's mandatory form fields guarantee required
+    // values are always present at intake. Red dots are reserved for the two scenarios that can
+    // genuinely happen at runtime: new cases (NOU pulse) and C.I. inconsistencies.
+    displayVal = '<span class="fs-empty-opt">—</span>';
+  } else {
+    displayVal = f.v;
+  }
+
+  var clickable = !isEmpty;
+  return '<div class="field-stacked'+emptyClass+'"'+(clickable?(' onclick="cp(\''+f.cp+'\',\''+f.l+' copiat\')"'):'')+'>'
     +'<div class="field-stacked-inner">'
-    +'<span class="fs-lbl">'+f.l+'</span>'
-    +'<span class="fs-val'+(f.m?' mono':'')+'">' +f.v+'</span>'
+    +'<span class="fs-lbl">'+f.l+indicator+'</span>'
+    +'<span class="fs-val'+monoClass+'">'+displayVal+'</span>'
     +'</div>'
     +'</div>';
 }
 
-// Render all parties with role tags
+// Render all parties with role tags + universal fields + extras block (v50 Change 3)
 function renderParties(c){
   if(!c.parties||!c.parties.length)return '';
   return c.parties.map(function(p){
     var roleTag=c.parties.length>1?'<div class="tag-role">'+p.role+'</div>':'';
-    return roleTag+renderPartyFields(p.fields);
+    return roleTag
+      + renderPartyFields(p.fields, c.subtype, p.role)
+      + renderExtraFields(p, c.subtype);
   }).join('');
+}
+
+// ══ EXTRA FIELDS RENDERER (v50 Change 3)
+// Renders the "Detalii act" block below the universal-fields block, per party.
+// Driven by EXTRA_FIELDS_CONFIG (mock) — Phase 4b sources from field_definitions where is_universal=false.
+// Same slot states as universal: filled / empty-required (warning dot) / empty-optional ("—").
+// Returns '' if no extras configured for this subtype/role (block omitted entirely).
+function renderExtraFields(party, subtype){
+  var defs = extraFieldsFor(subtype, party.role);
+  if(!defs.length) return '';
+  var values = party.extra_fields || {};
+  var rows = defs.map(function(def){
+    var val = values[def.key];
+    var isEmpty = !val;
+    var monoClass = def.mono ? ' mono' : '';
+    var emptyClass = isEmpty ? ' empty' : '';
+    var displayVal, indicator = '';
+
+    if(isEmpty){
+      // v50 Bucket C·4 (revised) — see comment in renderPartyFields. No required/optional split.
+      displayVal = '<span class="fs-empty-opt">—</span>';
+    } else {
+      displayVal = val;
+    }
+
+    var clickable = !isEmpty;
+    return '<div class="field-stacked'+emptyClass+'"'+(clickable?(' onclick="cp(\''+String(val).replace(/'/g,"\\'")+'\',\''+def.label+' copiat\')"'):'')+'>'
+      +'<div class="field-stacked-inner">'
+      +'<span class="fs-lbl">'+def.label+indicator+'</span>'
+      +'<span class="fs-val'+monoClass+'">'+displayVal+'</span>'
+      +'</div>'
+      +'</div>';
+  });
+
+  // Pair rows 2-by-2 like universal fields, but only if there are 2+ rows.
+  // Single-row extras render full-width to avoid the visual orphan we discussed.
+  var bodyHtml;
+  if(rows.length === 1){
+    bodyHtml = rows[0];
+  } else {
+    var pairs=[];
+    for(var i=0;i<rows.length;i+=2){
+      if(i+1<rows.length){
+        pairs.push('<div class="field-grid-2">'+rows[i]+rows[i+1]+'</div>');
+      } else {
+        pairs.push(rows[i]);
+      }
+    }
+    bodyHtml = pairs.join('');
+  }
+
+  return '<div class="detail-category detail-category-spaced">Detalii act</div>' + bodyHtml;
 }
 
 function renderDisc(disc,prefix,caseId){return '';}
 
+// v50 Bucket B status refactor: status display is now READ-ONLY per locked decision 0d.
+// Status changes flow exclusively through the three notary action buttons:
+//   Confirmă programarea (nou → in-lucru) — fires case_in_review email per 0c.3
+//   Pregătește act       (in-lucru → programat) — fires case_booked email + records prepared doc
+//   Finalizat            (programat → finalizat) — fires case_completed email
+// The drawer's segmented status display shows the current state but is not clickable —
+// removes the inconsistency where notary could jump statuses arbitrarily, bypassing email triggers
+// and the locked transition gates. Phase 4b admin UI may still allow manual overrides for support.
 function statusSelHTML(prefix,status){
-  var states=['nou','in-lucru','programat'];
-  var labels=['Nou','Activ','Programat'];
-  var classes=['active-nou','active-lucru','active-prog'];
+  var states=['nou','in-lucru','programat','finalizat'];
+  var labels=['Nou','Programat','Gata','Finalizat'];
+  var classes=['active-nou','active-lucru','active-prog','active-fin'];
   return '<div class="status-sel-wrap">'
     +'<span class="status-sel-lbl">Status dosar</span>'
-    +'<div class="status-sel">'+states.map(function(s,i){
-      return '<button class="status-sel-btn'+(status===s?' '+classes[i]:'')+'" onclick="changeStatus(\''+prefix+'\',\''+s+'\',this)">'+labels[i]+'</button>';
+    +'<div class="status-sel status-sel-readonly">'+states.map(function(s,i){
+      return '<span class="status-sel-btn'+(status===s?' '+classes[i]:'')+'">'+labels[i]+'</span>';
     }).join('')+'</div>'
     +'</div>';
 }
 
+// v50 Bucket B — DEPRECATED: status selector is now readonly per locked decision 0d.
+// Function kept for potential Phase 4b admin-side support override use; no current callers.
 function changeStatus(prefix,newStatus,btn){
   soundSelect();
   if(!currentOpenCase)return;
@@ -1422,34 +2172,457 @@ function changeStatus(prefix,newStatus,btn){
   c.status=newStatus;
   // Update selector buttons
   const sel=btn.closest('.status-sel');  if(sel){
-    const classes=['active-nou','active-lucru','active-prog'];
-    const states=['nou','in-lucru','programat'];
+    const classes=['active-nou','active-lucru','active-prog','active-fin'];
+    const states=['nou','in-lucru','programat','finalizat'];
     sel.querySelectorAll('.status-sel-btn').forEach(function(b,i){
       b.className='status-sel-btn'+(newStatus===states[i]?' '+classes[i]:'');
     });
   }
-  // Update tags in all open panels
-  ['va','vb','vc'].forEach(function(pfx){
-    const el=document.getElementById(pfx+'-tags');
-    if(el)el.innerHTML=TAGS[c.status]+(c.flag?'<span class="tag tag-ci">! C.I.</span>':'');
-  });
+  // v50 Bucket B·1 — surgical update across all panels (no full re-render, no scroll jump)
+  refreshStatusVisuals(c);
   rebuildAllLists();
   showToast('Status actualizat');
 }
 
-function populateView(prefix,c){
+// ══ v50 Bucket B Pieces 2+3+4 — renderPrepSlot is the single renderer for the doc-gen slot in
+// the drawer's left column. Five states:
+//   no draft           → "Șablon indisponibil" (existing .missing-draft)
+//   status='nou'       → outlined-ink disabled button + instant tooltip (Piece 1)
+//   c.prepError set    → failure block: "Pregătirea a eșuat" + sub-line + retry (Piece 4)
+//   status='in-lucru'  → solid black enabled button "Pregătește act ↓"
+//   status='programat' → success block: filename + timestamp + Descarcă/Regenerează chips (Piece 3)
+// During generation, prepareAct() temporarily replaces the button with a .generating loading state
+// (Piece 2). The success block is re-rendered after generation completes.
+function renderPrepSlot(prefix, c){
+  var slot = document.getElementById(prefix + '-prep');
+  if(!slot) return;
+  var draft = findDraftForCase(c);
+  if(!draft){
+    slot.innerHTML = '<div class="missing-draft">Șablon indisponibil</div>';
+    return;
+  }
+  // ERROR state — last prepareAct/regenerate attempt failed. Checked BEFORE success because a
+  // regen failure on an already-PROGRAMAT case has both c.prepared and c.prepError set; in that
+  // case the error UX wins (the notary needs to see the failure, not the stale success block).
+  // The error state is sticky until cleared by retryPrepareAct or a successful generation.
+  if(c.prepError){
+    slot.innerHTML =
+      '<div class="prep-error">'
+      +   '<div class="prep-error-meta">'
+      +     '<div class="prep-error-lbl">Pregătirea a eșuat<span class="discrepancy-dot"></span></div>'
+      +     '<div class="prep-error-sub">Încercați din nou</div>'
+      +   '</div>'
+      +   '<button class="btn-prep btn-prep-secondary" onclick="retryPrepareAct()" title="Încearcă din nou">Încearcă din nou<svg class="btn-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 3v3.5H10"/><path d="M13.2 6.4A5.5 5.5 0 1 0 13.5 10"/></svg></button>'
+      + '</div>';
+    return;
+  }
+  // SUCCESS state — doc has been prepared (status=programat with prepared metadata)
+  if(c.status === 'programat' && c.prepared){
+    var when = formatRelativeTime(c.prepared.generatedAt);
+    slot.innerHTML =
+      '<div class="prep-success">'
+      +   '<div class="prep-success-meta">'
+      +     '<div class="prep-success-lbl">Act pregătit</div>'
+      +     '<div class="prep-success-when">'+when+'</div>'
+      +   '</div>'
+      +   '<div class="prep-success-actions">'
+      +     '<button class="btn-prep" onclick="redownloadAct()" title="Descarcă actul deja generat">Descarcă ↓</button>'
+      +     '<button class="btn-prep btn-prep-secondary" onclick="regenerateAct()" title="Regenerează actul cu datele actuale">Regenerează<svg class="btn-glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 3v3.5H10"/><path d="M13.2 6.4A5.5 5.5 0 1 0 13.5 10"/></svg></button>'
+      +   '</div>'
+      + '</div>';
+    return;
+  }
+  // FINALIZAT state — case is closed. If a doc was prepared, show a read-only success block with
+  // Descarcă but no Regenerează (no actions allowed on a closed case). If no doc was prepared
+  // (rare edge), show a quiet placeholder. Per Bucket C·3 lock (α): finalizat cases reappear in
+  // the main list with the drawer in a locked state — Confirmă programarea is gated separately
+  // by toast in confirmProgramare().
+  if(c.status === 'finalizat'){
+    if(c.prepared){
+      var whenF = formatRelativeTime(c.prepared.generatedAt);
+      slot.innerHTML =
+        '<div class="prep-success">'
+        +   '<div class="prep-success-meta">'
+        +     '<div class="prep-success-lbl">Act pregătit</div>'
+        +     '<div class="prep-success-when">'+whenF+'</div>'
+        +   '</div>'
+        +   '<div class="prep-success-actions" style="grid-template-columns:1fr;">'
+        +     '<button class="btn-prep" onclick="redownloadAct()" title="Descarcă actul">Descarcă ↓</button>'
+        +   '</div>'
+        + '</div>';
+    } else {
+      slot.innerHTML = '<div class="missing-draft">Dosar finalizat</div>';
+    }
+    return;
+  }
+  // DISABLED state — case still NOU, notary hasn't confirmed
+  if(c.status === 'nou'){
+    var tip = 'Confirmați programarea pentru a prepara actul.';
+    slot.innerHTML =
+      '<span class="btn-prep-wrap" data-tip="'+tip+'">'
+      +   '<button class="btn-prep" id="'+prefix+'-prep-btn" disabled title="'+tip+'" onclick="prepareAct()">Pregătește act ↓</button>'
+      + '</span>';
+    return;
+  }
+  // ENABLED state — status=in-lucru (PROGRAMAT label)
+  slot.innerHTML = '<button class="btn-prep" id="'+prefix+'-prep-btn" onclick="prepareAct()">Pregătește act ↓</button>';
+}
+
+// Relative-time formatter for the success block
+function formatRelativeTime(iso){
+  var t = new Date(iso);
+  var diffMs = Date.now() - t.getTime();
+  var diffMin = Math.floor(diffMs / 60000);
+  if(diffMin < 1) return 'acum câteva secunde';
+  if(diffMin < 60) return 'acum ' + diffMin + ' min';
+  var diffHr = Math.floor(diffMin / 60);
+  if(diffHr < 24) return 'acum ' + diffHr + (diffHr === 1 ? ' oră' : ' ore');
+  var diffDay = Math.floor(diffHr / 24);
+  if(diffDay < 7) return 'acum ' + diffDay + (diffDay === 1 ? ' zi' : ' zile');
+  // Older — show date
+  var months = ['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+  return t.getDate() + ' ' + months[t.getMonth()];
+}
+
+// Re-download the existing prepared doc. Production: signed URL fetch from case-files bucket.
+// Mock: uses the stashed blob if present (real generation happened earlier), or generates
+// fresh from the template for pre-seeded GATA cases that don't have a blob yet.
+function redownloadAct(){
+  var c = CASES.find(function(x){ return x.id === currentOpenCase; });
+  if(!c || !c.prepared){ return; }
+  if(c.prepared.blob){
+    // Already have the blob — just download
+    saveAs(c.prepared.blob, c.prepared.filename);
+    showToast('Descărcat · ' + c.prepared.filename);
+    return;
+  }
+  // No blob in mock storage (pre-seeded case) — regenerate from template once and stash
+  var draft = findDraftForCase(c);
+  if(!draft){ showToast('Șablon indisponibil'); return; }
+  var buf = DRAFT_BLOBS[draft.id];
+  if(!buf){ showToast('Șablon încă se încarcă'); return; }
+  try {
+    var zip = new PizZip(buf.slice(0));
+    var doc = new window.docxtemplater(zip, {paragraphLoop:true, linebreaks:true, delimiters:{start:'{', end:'}'}});
+    doc.render(buildCaseData(c));
+    var out = doc.getZip().generate({type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+    c.prepared.blob = out;
+    saveAs(out, c.prepared.filename);
+    showToast('Descărcat · ' + c.prepared.filename);
+  } catch(err){
+    console.error(err);
+    showToast('Eroare la descărcare');
+  }
+}
+
+// Stub — Piece 5 will design the proper regeneration UX (overwrite vs version vs confirm)
+// ══ v50 Bucket B·5 — styled confirm modal helper. Replaces native browser confirm(). Single global
+// instance in DOM (mounted in markup near the toast). showConfirm(opts) populates + shows; the user
+// clicks Confirmă or Anulează (or Esc / overlay click). The chosen path is reported via callbacks.
+//
+// opts shape:
+//   { title?: string,         // mono header, defaults to 'CONFIRMARE'
+//     body: string,           // body copy
+//     confirmLabel?: string,  // primary button label, defaults to 'Confirmă'
+//     cancelLabel?: string,   // secondary button label, defaults to 'Anulează'
+//     onConfirm: function,    // called when user confirms
+//     onCancel?: function }   // optional, called when user cancels
+var _confirmCurrent = null;
+function showConfirm(opts){
+  var modal = document.getElementById('confirm-modal');
+  if(!modal){ if(opts && opts.onConfirm) opts.onConfirm(); return; }
+  document.getElementById('confirm-modal-title').textContent = (opts.title || 'CONFIRMARE').toUpperCase();
+  document.getElementById('confirm-modal-body').textContent = opts.body || '';
+  var okBtn = document.getElementById('confirm-modal-ok');
+  var cancelBtn = document.getElementById('confirm-modal-cancel');
+  okBtn.textContent = opts.confirmLabel || 'Confirmă';
+  cancelBtn.textContent = opts.cancelLabel || 'Anulează';
+  // ══ v50 Bucket B·5 — view-specific modal positioning. Different views have different slot
+  // geometries, so a one-size-fits-all anchor strategy looks off. Per-view rules:
+  //   View A (Paralel) — slot lives in a narrow 268px column, far from viewport center. Anchor
+  //     the modal to the slot's bounding rect (horizontally + vertically) so it visually attaches
+  //     to the panel that triggered it.
+  //   View B (Sus-jos) — drawer takes the full width; slot sits low. Center horizontally in the
+  //     viewport, but keep it near the slot vertically so it still feels related.
+  //   View C (Panou) — slot is below the fold in a wide central panel. Center the modal fully in
+  //     the viewport (the natural place to look for a confirmation), with width matched to the slot.
+  // If no slot is active (fallback), CSS flexbox centering handles layout.
+  var box = modal.querySelector('.confirm-modal-box');
+  if(box){
+    var activePrefix = (typeof currentView !== 'undefined') ? ((currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc')) : null;
+    var anchor = activePrefix ? document.getElementById(activePrefix + '-prep') : null;
+    if(anchor){
+      var rect = anchor.getBoundingClientRect();
+      var slotW = rect.width;
+      var minReadable = 420;
+      var w = Math.max(slotW, minReadable);
+      var maxW = window.innerWidth - 32;
+      if(w > maxW) w = maxW;
+
+      var left, topY;
+      if(currentView === 'a'){
+        // Paralel: anchor horizontally + vertically on the slot
+        var slotCenter = rect.left + rect.width / 2;
+        left = slotCenter - w / 2;
+        topY = rect.top + rect.height / 2;
+      } else if(currentView === 'b'){
+        // Sus-jos: center horizontally in viewport, anchor vertically on slot
+        left = (window.innerWidth - w) / 2;
+        topY = rect.top + rect.height / 2;
+      } else {
+        // Panou: center fully in viewport
+        left = (window.innerWidth - w) / 2;
+        topY = window.innerHeight / 2;
+      }
+      // Clamp horizontal
+      if(left < 16) left = 16;
+      if(left + w > window.innerWidth - 16) left = window.innerWidth - 16 - w;
+      // Clamp vertical so the box doesn't push off-screen at the top (we use translateY(-50%) below)
+      var minTopY = 100;
+      var maxTopY = window.innerHeight - 100;
+      if(topY < minTopY) topY = minTopY;
+      if(topY > maxTopY) topY = maxTopY;
+
+      box.style.position = 'fixed';
+      box.style.width = Math.round(w) + 'px';
+      box.style.maxWidth = Math.round(w) + 'px';
+      box.style.left = Math.round(left) + 'px';
+      box.style.top = Math.round(topY) + 'px';
+      box.style.transform = 'translateY(calc(-50% + 8px))';
+      modal.style.alignItems = 'flex-start';
+      modal.style.justifyContent = 'flex-start';
+      requestAnimationFrame(function(){
+        requestAnimationFrame(function(){
+          box.style.transform = 'translateY(-50%)';
+        });
+      });
+    } else {
+      // No active slot — clear inline styles, fall back to CSS flexbox centering
+      box.style.position = '';
+      box.style.width = '';
+      box.style.maxWidth = '';
+      box.style.left = '';
+      box.style.top = '';
+      box.style.transform = '';
+      modal.style.alignItems = '';
+      modal.style.justifyContent = '';
+    }
+  }
+  _confirmCurrent = opts;
+  modal.classList.add('is-open');
+}
+function _confirmClose(viaConfirm){
+  var modal = document.getElementById('confirm-modal');
+  if(!modal) return;
+  modal.classList.remove('is-open');
+  // Clear inline positioning so the next open starts from a known state. CSS handles the rest.
+  var box = modal.querySelector('.confirm-modal-box');
+  if(box){
+    // Defer the cleanup until after the closing transition finishes; otherwise the box snaps
+    // to a different position visibly while fading out.
+    setTimeout(function(){
+      if(modal.classList.contains('is-open')) return; // re-opened in the meantime
+      box.style.position = '';
+      box.style.width = '';
+      box.style.maxWidth = '';
+      box.style.left = '';
+      box.style.top = '';
+      box.style.transform = '';
+      modal.style.alignItems = '';
+      modal.style.justifyContent = '';
+    }, 200);
+  }
+  var opts = _confirmCurrent;
+  _confirmCurrent = null;
+  if(!opts) return;
+  if(viaConfirm && typeof opts.onConfirm === 'function') opts.onConfirm();
+  else if(!viaConfirm && typeof opts.onCancel === 'function') opts.onCancel();
+}
+(function(){
+  var modal = document.getElementById('confirm-modal');
+  if(!modal) return;
+  document.getElementById('confirm-modal-ok').addEventListener('click', function(){ _confirmClose(true); });
+  document.getElementById('confirm-modal-cancel').addEventListener('click', function(){ _confirmClose(false); });
+  modal.addEventListener('click', function(e){ if(e.target === modal) _confirmClose(false); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('is-open')){ _confirmClose(false); }
+  });
+})();
+
+// ══ v50 Bucket B·5 — regeneration UX. Locked design (a) Overwrite-on-confirm:
+// click Regenerează → confirm modal → on confirm, run the same docxtemplater pipeline as a fresh
+// prepareAct, but skip the status transition + email firing (case is already PROGRAMAT, the
+// case_booked email already went out). The previous c.prepared.blob is overwritten in place.
+// Production (Phase 4c) supersedes the prior prepared_documents row in the bucket — no version
+// trail, per locked decision (no client-facing email of the doc, signed in-person only).
+function regenerateAct(){
+  var c = CASES.find(function(x){ return x.id === currentOpenCase; });
+  if(!c){ showToast('Niciun dosar activ'); return; }
+  if(c.status !== 'programat' || !c.prepared){ showToast('Nimic de regenerat'); return; }
+  showConfirm({
+    title: 'Regenerare act',
+    body: 'Generați din nou? Actul curent va fi înlocuit.',
+    confirmLabel: 'Generează din nou',
+    cancelLabel: 'Anulează',
+    onConfirm: function(){ _runRegeneration(c); }
+  });
+}
+
+// Internal: runs the docxtemplater pipeline for an already-PROGRAMAT case. Same shape as
+// prepareAct's success path but no status transition, no email side-effect, no auto-scroll
+// (the success block is already in view by definition — the notary just clicked its button).
+function _runRegeneration(c){
+  var draft = findDraftForCase(c);
+  if(!draft){ showToast('Șablon indisponibil pentru acest subtip'); return; }
+  var buf = DRAFT_BLOBS[draft.id];
+  if(!buf){ showToast('Șablon încă se încarcă — reîncearcă'); return; }
+  // Honor the same Shift+F debug toggle as prepareAct so the failure UX is testable from regenerate too.
+  var forceFail = !!window.__forceFailNext;
+  if(forceFail){ window.__forceFailNext = false; }
+  // Render a transient "generating" state inside the success block. Reuses the active prep slot
+  // by replacing it with the regular generating button so the existing CSS animation applies;
+  // on completion we re-render the success block via refreshStatusVisuals.
+  var activePrefix = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+  var slot = document.getElementById(activePrefix + '-prep');
+  if(slot){
+    slot.innerHTML = '<button class="btn-prep generating" disabled>Se generează…</button>';
+  }
+  setTimeout(function(){
+    if(forceFail){
+      c.prepError = true;
+      // Note: with the renderer's ERROR-before-SUCCESS branch order, the error block now correctly
+      // wins even though c.prepared still has the prior blob. Retry from the error state routes
+      // back through retryPrepareAct → _runRegeneration (because status stays programat).
+      showToast('Pregătirea a eșuat · încercați din nou');
+      if(typeof soundFail === 'function') soundFail();
+      refreshStatusVisuals(c);
+      // Auto-scroll into view so the error block isn't chopped off below the fold.
+      var prepElF = document.getElementById(activePrefix + '-prep');
+      if(prepElF && prepElF.scrollIntoView){
+        setTimeout(function(){ prepElF.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+      }
+      return;
+    }
+    try {
+      var data = buildCaseData(c);
+      var zip = new PizZip(buf.slice(0));
+      var doc = new window.docxtemplater(zip, {
+        paragraphLoop: true,
+        linebreaks: true,
+        delimiters: {start: '{', end: '}'}
+      });
+      doc.render(data);
+      var out = doc.getZip().generate({
+        type:'blob',
+        mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      });
+      var outName = c.ref + ' · ' + draft.name + ' · ' + timestampForFilename() + '.docx';
+      // Overwrite — locked decision (a). The old blob/filename is gone, only the new one persists.
+      c.prepared = {
+        filename: outName,
+        generatedAt: (new Date()).toISOString(),
+        blob: out
+      };
+      c.prepError = false;
+      // History line so the audit trail remembers the regenerate happened (production: audit_log row).
+      var months = ['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
+      var now = new Date();
+      c.hist = c.hist || [];
+      c.hist.push(histStamp(now) + ' — act regenerat');
+      showToast('Act regenerat · disponibil pentru descărcare');
+      if(typeof soundFinalizat === 'function') soundFinalizat();
+      refreshStatusVisuals(c);
+      // Auto-scroll into view — the success block is taller than the transient generating button,
+      // so without scroll-into-view the buttons get chopped if the slot was near the viewport edge.
+      var prepElS = document.getElementById(activePrefix + '-prep');
+      if(prepElS && prepElS.scrollIntoView){
+        setTimeout(function(){ prepElS.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+      }
+    } catch(err){
+      console.error(err);
+      c.prepError = true;
+      showToast('Pregătirea a eșuat · încercați din nou');
+      if(typeof soundFail === 'function') soundFail();
+      refreshStatusVisuals(c);
+      var prepElC = document.getElementById(activePrefix + '-prep');
+      if(prepElC && prepElC.scrollIntoView){
+        setTimeout(function(){ prepElC.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
+      }
+    }
+  }, 1500);
+}
+
+// ══ v50 Bucket B·4 — retry from the error state. Clears c.prepError and re-runs the appropriate
+// pipeline:
+//   - if status is in-lucru (initial prepareAct failed) → re-run prepareAct (will transition to
+//     programat + fire email on success)
+//   - if status is programat (regen failed on already-prepared case) → re-run _runRegeneration
+//     (no transition, no email re-fire, "act regenerat" history line)
+// The renderPrepSlot order (ERROR before SUCCESS) ensures the error block stays visible even when
+// c.prepared exists (regen-failure case); clearing prepError + re-rendering returns to the
+// success block until the next attempt resolves.
+function retryPrepareAct(){
+  var c = CASES.find(function(x){ return x.id === currentOpenCase; });
+  if(!c){ showToast('Niciun dosar activ'); return; }
+  c.prepError = false;
+  refreshStatusVisuals(c);
+  // Tiny delay so the slot visibly transitions error → enabled/success → generating.
+  setTimeout(function(){
+    if(c.status === 'programat' && c.prepared){
+      _runRegeneration(c);
+    } else {
+      prepareAct();
+    }
+  }, 60);
+}
+
+// ══ v50 Bucket B·4 — debug toggle for the failure state. Shift+F (while a drawer is open) flips
+// window.__forceFailNext. The next prepareAct() call simulates a generation failure regardless of
+// whether the template/data would actually succeed. Production has no equivalent — real failures
+// surface via Edge Function error responses. This handler is design-mode only.
+window.addEventListener('keydown', function(e){
+  if(e.shiftKey && (e.key === 'F' || e.key === 'f') && !e.ctrlKey && !e.metaKey && !e.altKey){
+    if(currentOpenCase == null) return;
+    var t = e.target;
+    var tag = t && t.tagName;
+    if(tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || (t && t.isContentEditable)) return;
+    window.__forceFailNext = !window.__forceFailNext;
+    showToast(window.__forceFailNext
+      ? 'Debug: următoarea pregătire va eșua'
+      : 'Debug: pregătire normală reactivată');
+    e.preventDefault();
+  }
+});
+
+function populateView(prefix,c,preserveScroll){
   currentOpenCase=c.id;
+  // ══ v50 Bucket B·1 — preserveScroll captures pre-render scroll positions so in-place updates
+  // (status changes via Confirmă programarea or the status selector) don't yank the user back to top.
+  // Default behavior (no flag, or false) resets scroll — appropriate for case navigation.
+  var savedScrolls = null;
+  if(preserveScroll){
+    savedScrolls = {};
+    if(prefix==='va'){
+      document.querySelectorAll('#view-a .va-db-col').forEach(function(el,i){ savedScrolls['va-col-'+i] = el.scrollTop; });
+    } else if(prefix==='vb'){
+      var vbDb = document.querySelector('#vb-open .vb-db');
+      if(vbDb) savedScrolls['vb-db'] = vbDb.scrollTop;
+      document.querySelectorAll('#vb-open .vb-db-col').forEach(function(el,i){ savedScrolls['vb-col-'+i] = el.scrollTop; });
+      var vbOpen = document.getElementById('vb-open');
+      if(vbOpen) savedScrolls['vb-open'] = vbOpen.scrollTop;
+    } else if(prefix==='vc'){
+      var vcBody = document.querySelector('#vc-drawer .vc-body');
+      if(vcBody) savedScrolls['vc-body'] = vcBody.scrollTop;
+      document.querySelectorAll('#vc-drawer .vc-col').forEach(function(el,i){ savedScrolls['vc-col-'+i] = el.scrollTop; });
+    }
+  }
+
   const refEl=document.getElementById(prefix+'-ref');
   if(refEl)refEl.style.display='none';
   document.getElementById(prefix+'-name').textContent=c.client;
   document.getElementById(prefix+'-tags').innerHTML=TAGS[c.status]+(c.flag?'<span class="tag tag-ci">! C.I.</span>':'');
   const prepSlot=document.getElementById(prefix+'-prep');
-  if(prepSlot){
-    const draft=findDraftForCase(c);
-    prepSlot.innerHTML=draft
-      ?'<button class="btn-prep" id="'+prefix+'-prep-btn" onclick="prepareAct()">Pregătește act ↓</button>'
-      :'<div class="missing-draft">Șablon indisponibil</div>';
-  }
+  if(prepSlot){ renderPrepSlot(prefix, c); }
 
   // Left column: Date dosar (category) + copyable fields + Date părți (category) + parties + Documente (category)
   const partiesLabel=c.parties&&c.parties.length>1?'Date părți':null;
@@ -1475,6 +2648,17 @@ function populateView(prefix,c){
     +'<div class="field-stacked" onclick="cp(\''+c.subtype+'\',\'Subtip copiat\')">'
     +'<div class="field-stacked-inner"><span class="fs-lbl">Subtip</span><span class="fs-val">'+c.subtype+'</span></div>'
     +'</div>'
+    // ══ CASE-LEVEL CONTACT (v50) — phone + email attached to booking, not per-party ══
+    +'<div class="detail-category detail-category-spaced">Contact rezervare</div>'
+    +'<div class="field-grid-2">'
+      +'<div class="field-stacked'+(c.client_phone?'':' empty')+'"'+(c.client_phone?(' onclick="cp(\''+c.client_phone+'\',\'Telefon copiat\')"'):'')+'>'
+        +'<div class="field-stacked-inner"><span class="fs-lbl">Telefon</span><span class="fs-val mono">'+(c.client_phone||'<span class="fs-empty-opt">—</span>')+'</span></div>'
+      +'</div>'
+      +'<div class="field-stacked'+(c.client_email?'':' empty')+'"'+(c.client_email?(' onclick="cp(\''+c.client_email+'\',\'Email copiat\')"'):'')+'>'
+        +'<div class="field-stacked-inner"><span class="fs-lbl">Email</span><span class="fs-val">'+(c.client_email||'<span class="fs-empty-opt">—</span>')+'</span></div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="detail-category detail-category-spaced">Documente client</div>'
     +chipsBlock
     +(partiesLabel?'<div class="detail-category detail-category-spaced">'+partiesLabel+'</div>':'<div style="height:8px;"></div>')
     +renderParties(c);
@@ -1482,9 +2666,62 @@ function populateView(prefix,c){
 
   document.getElementById(prefix+'-disc').innerHTML=renderDisc(c.disc,prefix+'-d-'+c.id,c.id);
 
-  var prefMain=c.prefDate?fmtDateShort(c.prefDate)+(c.prefSlot?' · '+c.prefSlot:''):(c.pref||'flexibil');
-  var prefAlt=c.alt?c.alt.replace(/^alternativ:\s*/i,''):'';
-  document.getElementById(prefix+'-pref').innerHTML='<div class="pref-main">'+prefMain+'</div>'+(prefAlt?'<div class="pref-alt">alternativ · '+prefAlt+'</div>':'');
+  // ══ v50 Bucket C·2 — Preferință block. Three stacked lines (DATA / INTERVAL / INTERVAL ORAR),
+  // each mono label above its plain value. Mirrors the .fs-lbl/.fs-val pattern used in the left
+  // column. The block is a READ-ONLY display of the client's request from the Squarespace form;
+  // notary's commitment is the picker below this block. To revert to plain stacked values without
+  // mono labels, remove the .pref-line-lbl spans (values keep rendering).
+  // The previously-rendered "alternativ · …" line is REMOVED (the form does not capture an
+  // alternative date — that field was leftover from an earlier mock and was misleading).
+  var prefHTML = '';
+  if(c.prefDate){
+    prefHTML =
+      '<div class="pref-line"><span class="pref-line-lbl">Data</span><span class="pref-line-val">' + fmtDateShort(c.prefDate) + '</span></div>' +
+      (c.prefInterval ? '<div class="pref-line"><span class="pref-line-lbl">Interval</span><span class="pref-line-val">' + c.prefInterval + '</span></div>' : '') +
+      (c.prefSlotRange ? '<div class="pref-line"><span class="pref-line-lbl">Interval orar</span><span class="pref-line-val">' + c.prefSlotRange + '</span></div>' : '');
+  } else {
+    // Legacy fallback (shouldn't fire post-Bucket C·2 reformat).
+    prefHTML = '<div class="pref-line"><span class="pref-line-val">' + (c.pref || 'flexibil') + '</span></div>';
+  }
+  document.getElementById(prefix+'-pref').innerHTML = prefHTML;
+  // ══ v50 Bucket C·2 — once the notary has committed (status past nou + date+time set), dim the
+  // Preferință client block to --grey2. The active source of truth is the readout below.
+  var prefBoxEl = document.getElementById(prefix+'-pref');
+  if(prefBoxEl){
+    if(c.status !== 'nou' && c.date && c.time){ prefBoxEl.classList.add('is-dimmed'); }
+    else{ prefBoxEl.classList.remove('is-dimmed'); }
+  }
+  // ══ v50 Bucket C·3 — drawer locked state for FINALIZAT cases. The Confirmă programarea action
+  // div is hidden entirely (no point disabling — there's nothing to confirm on a closed case).
+  // The picker inputs and notes textarea become read-only too — no further edits on a closed case.
+  // The Pregătește act slot's renderer (renderPrepSlot) handles its own finalizat branch.
+  var confirmActionEl = document.getElementById(prefix+'-confirm-action');
+  if(confirmActionEl){
+    confirmActionEl.style.display = (c.status === 'finalizat') ? 'none' : '';
+  }
+  var dateInpEl = document.getElementById(prefix+'-date');
+  var timeInpEl = document.getElementById(prefix+'-time');
+  var notesElLock = document.getElementById(prefix+'-notes');
+  var locked = (c.status === 'finalizat');
+  if(dateInpEl){ dateInpEl.disabled = locked; }
+  if(timeInpEl){ timeInpEl.disabled = locked; }
+  if(notesElLock){ notesElLock.disabled = locked; }
+
+  // ══ v50 Bucket C·2 — confirm-readout: the notary's committed appointment, shown as a read-only
+  // 3-line block (DATA / ORA, mono labels above plain values). Visible whenever the case is past
+  // status 'nou' AND has a committed date+time. For 'nou' cases the readout shows a "Neconfirmată"
+  // italic placeholder so the slot is never empty (would otherwise collapse the layout below).
+  var confEl = document.getElementById(prefix+'-confirm-readout');
+  if(confEl){
+    var hasCommit = (c.status !== 'nou') && c.date && c.time;
+    if(hasCommit){
+      confEl.innerHTML =
+        '<div class="pref-line"><span class="pref-line-lbl">Data</span><span class="pref-line-val">' + fmtDateShort(c.date) + '</span></div>' +
+        '<div class="pref-line"><span class="pref-line-lbl">Ora</span><span class="pref-line-val">' + c.time + '</span></div>';
+    } else {
+      confEl.innerHTML = '<div class="confirm-readout-empty">Neconfirmată</div>';
+    }
+  }
   document.getElementById(prefix+'-date').value=c.date;
   document.getElementById(prefix+'-time').value=c.time;
   if(document.getElementById(prefix+'-notes'))document.getElementById(prefix+'-notes').value=c.notes;
@@ -1493,29 +2730,73 @@ function populateView(prefix,c){
   const statusEl=document.getElementById(prefix+'-status-sel');
   if(statusEl)statusEl.innerHTML=statusSelHTML(prefix,c.status);
 
-  // Reset scroll position of the detail pane to the top on case switch
-  if(prefix==='va'){
-    document.querySelectorAll('#view-a .va-db-col').forEach(function(el){el.scrollTop=0;});
-  } else if(prefix==='vb'){
-    const vbDb=document.querySelector('#vb-open .vb-db');
-    if(vbDb)vbDb.scrollTop=0;
-    document.querySelectorAll('#vb-open .vb-db-col').forEach(function(el){el.scrollTop=0;});
-    const vbOpen=document.getElementById('vb-open');
-    if(vbOpen)vbOpen.scrollTop=0;
-  } else if(prefix==='vc'){
-    const vcBody=document.querySelector('#vc-drawer .vc-body');
-    if(vcBody)vcBody.scrollTop=0;
-    document.querySelectorAll('#vc-drawer .vc-col').forEach(function(el){el.scrollTop=0;});
+  // ══ v50 Bucket B·1 — restore-or-reset scroll based on preserveScroll flag
+  if(savedScrolls){
+    // Restore captured scroll positions (in-place update path)
+    if(prefix==='va'){
+      document.querySelectorAll('#view-a .va-db-col').forEach(function(el,i){
+        if(typeof savedScrolls['va-col-'+i] === 'number') el.scrollTop = savedScrolls['va-col-'+i];
+      });
+    } else if(prefix==='vb'){
+      var vbDbR = document.querySelector('#vb-open .vb-db');
+      if(vbDbR && typeof savedScrolls['vb-db'] === 'number') vbDbR.scrollTop = savedScrolls['vb-db'];
+      document.querySelectorAll('#vb-open .vb-db-col').forEach(function(el,i){
+        if(typeof savedScrolls['vb-col-'+i] === 'number') el.scrollTop = savedScrolls['vb-col-'+i];
+      });
+      var vbOpenR = document.getElementById('vb-open');
+      if(vbOpenR && typeof savedScrolls['vb-open'] === 'number') vbOpenR.scrollTop = savedScrolls['vb-open'];
+    } else if(prefix==='vc'){
+      var vcBodyR = document.querySelector('#vc-drawer .vc-body');
+      if(vcBodyR && typeof savedScrolls['vc-body'] === 'number') vcBodyR.scrollTop = savedScrolls['vc-body'];
+      document.querySelectorAll('#vc-drawer .vc-col').forEach(function(el,i){
+        if(typeof savedScrolls['vc-col-'+i] === 'number') el.scrollTop = savedScrolls['vc-col-'+i];
+      });
+    }
+  } else {
+    // Reset scroll position of the detail pane to the top on case switch (default path)
+    if(prefix==='va'){
+      document.querySelectorAll('#view-a .va-db-col').forEach(function(el){el.scrollTop=0;});
+    } else if(prefix==='vb'){
+      const vbDb=document.querySelector('#vb-open .vb-db');
+      if(vbDb)vbDb.scrollTop=0;
+      document.querySelectorAll('#vb-open .vb-db-col').forEach(function(el){el.scrollTop=0;});
+      const vbOpen=document.getElementById('vb-open');
+      if(vbOpen)vbOpen.scrollTop=0;
+    } else if(prefix==='vc'){
+      const vcBody=document.querySelector('#vc-drawer .vc-body');
+      if(vcBody)vcBody.scrollTop=0;
+      document.querySelectorAll('#vc-drawer .vc-col').forEach(function(el){el.scrollTop=0;});
+    }
   }
+}
+
+// ══ v50 Bucket C·1 — pulsing red dot for unconfirmed (NOU) cases. The visual signal:
+// "this case still needs your first action." Disappears the moment status leaves NOU
+// (Confirmă programarea fires nou → in-lucru, which kills the dot via the next list rebuild).
+// Reuses the existing .card-pulse-dot primitive; .before-num modifier flips margin direction.
+// To revert placement to AFTER the number, change the call sites in sharedRow and buildListA
+// (move the helper output below the number element) and drop the .before-num class.
+function casePulseDot(c){
+  if(c.status !== 'nou') return '';
+  return '<span class="card-pulse-dot show row-pulse-ink" title="Caz nou — necesită confirmare"></span>';
 }
 
 // Shared row HTML for B and C
 function sharedRow(c,i,clickFn){
-  var statusLabel=c.status==='nou'?'Nou':c.status==='in-lucru'?'Activ':'Programat';
+  // v50 Bucket B status refactor: 4 visible labels (Nou / Programat / Pregătit / Finalizat)
+  // Mock keys (nou / in-lucru / programat / finalizat) preserved for code stability;
+  // only the user-facing labels changed.
+  var statusLabel = (
+    c.status==='nou'         ? 'Nou' :
+    c.status==='in-lucru'    ? 'Programat' :
+    c.status==='programat'   ? 'Gata' :
+    c.status==='finalizat'   ? 'Finalizat' :
+    c.status
+  );
   var urg=isUrgent(c)?'<span class="urgency-dot"></span>':'';
   var flag=c.flag?' <span class="l-flag">! C.I.</span>':'';
   return '<div class="list-row-shared" data-id="'+c.id+'" data-idx="'+i+'" onclick="'+clickFn+'">'
-    +'<div class="l-num">'+String(c.id).padStart(2,'0')+'</div>'
+    +'<div class="l-num">'+String(c.id).padStart(2,'0')+casePulseDot(c)+'</div>'
     +'<div><div class="l-act">'+c.act+urg+flag+'</div></div>'
     +'<div class="l-client">'+c.client+'</div>'
     +'<div></div>'
@@ -1529,10 +2810,16 @@ function buildListA(cases){
   document.getElementById('va-list-scroll').innerHTML=cases.map(function(c){
     var urg=isUrgent(c)?'<span class="urgency-dot" title="Necesită atenție"></span>':'';
     return '<div class="case-card" data-id="'+c.id+'" onclick="selA('+c.id+')">'
-      +'<span class="cc-num">'+String(c.id).padStart(2,'0')+'</span>'
+      +'<span class="cc-num">'+String(c.id).padStart(2,'0')+casePulseDot(c)+'</span>'
       +'<div class="cc-act-row"><span class="cc-act">'+c.act+'</span>'+urg+'</div>'
       +'<div class="cc-client">'+c.client+'</div>'
-      +'<div class="cc-status">'+(c.status==='nou'?'nou':c.status==='in-lucru'?'activ':'programat')+(c.flag?' · <span class="cc-flag">! C.I.</span>':'')+'</div>'
+      +'<div class="cc-status">'+(
+        c.status==='nou'         ? 'nou' :
+        c.status==='in-lucru'    ? 'programat' :
+        c.status==='programat'   ? 'gata' :
+        c.status==='finalizat'   ? 'finalizat' :
+        c.status
+      )+(c.flag?' · <span class="cc-flag">! C.I.</span>':'')+'</div>'
       +'</div>';
   }).join('');
   document.getElementById('va-count').textContent=cases.length;
@@ -1611,13 +2898,38 @@ document.addEventListener('keydown',e=>{
 });
 
 // ══ FILTER + SORT ══
+// ══ v50 Bucket C·3 — qualifiesForFinalizat: a case belongs in the De finalizat section if
+// status === 'programat' (GATA — act pregătit) AND its scheduled appointment datetime is in the
+// past. The case has been prepared and the appointment time has come and gone; the notary needs
+// to manually confirm whether the client showed up, signed, and paid (the system has no signal
+// for these — the appointment is offline). Locked decision (α): GATA-past-due cases are EXCLUSIVE
+// to De finalizat — they DO NOT appear in the main list while in this state. Once Finalizat is
+// clicked, status flips to 'finalizat' and the case rejoins the main list (with its drawer in
+// the locked state — no actionable buttons).
+function qualifiesForFinalizat(c){
+  if(c.status !== 'programat') return false;
+  if(!c.date) return false;
+  // Build the scheduled datetime. If c.time is missing, treat as midnight (effectively the start
+  // of the day); a case scheduled for today with no time is past-due if today < now (rare edge case).
+  var schedISO = c.date + 'T' + (c.time || '00:00');
+  var sched = new Date(schedISO);
+  if(isNaN(sched)) return false;
+  return sched.getTime() < Date.now();
+}
 function getFiltered(){
   const base=currentFilter==='toate'?CASES:CASES.filter(c=>c.type===currentFilter);
-  return sortCases(base);
+  // Locked decision (α) — exclude GATA-past-due cases from the main list. They live exclusively
+  // in De finalizat until the notary clicks Finalizat (which flips them to 'finalizat' and
+  // returns them to the main list with a locked drawer).
+  const visible = base.filter(c => !qualifiesForFinalizat(c));
+  return sortCases(visible);
 }
 function rebuildAllLists(){
   const f=getFiltered();
   buildListA(f);buildListB(f);buildListC(f);
+  // De finalizat refreshes off the unfiltered CASES (it's not subject to the type filter — the
+  // notary needs to see all overdue cases regardless of which act-type tab they're on).
+  rebuildFinalizat();
   const nou=f.filter(c=>c.status==='nou').length;
   const lucru=f.filter(c=>c.status==='in-lucru').length;
   const prog=f.filter(c=>c.status==='programat').length;
@@ -1662,7 +2974,7 @@ function switchView(v){
 
 // ══ SORT ══
 let currentSort='pref';
-const STATUS_ORDER={'nou':0,'in-lucru':1,'programat':2};
+const STATUS_ORDER={'nou':0,'in-lucru':1,'programat':2,'finalizat':3};
 function sortCases(cases){
   const c=[...cases];
   if(currentSort==='pref') return c.sort((a,b)=>{
@@ -1688,22 +3000,199 @@ function markDirty(dotId){const d=document.getElementById(dotId);if(d)d.classLis
 function saveNotes(dotId,el){const d=document.getElementById(dotId);if(d)d.classList.remove('show');showToast('Notițe salvate');}
 
 // ══ DISC BLOCK AUTO-REMOVE + FIELD APPLY ══
-// ══ DE FINALIZAT + COLLAPSE ══
-let finN=2;
-function markDone(id,btn){
-  soundFinalizat();
-  document.getElementById(id).classList.add('done');
-  btn.textContent='Marcat ✓';
-  finN=Math.max(0,finN-1);
-  document.getElementById('fin-count').textContent=finN+(finN===1?' dosar':' dosare');
-  showToast('Dosar marcat finalizat');
-  if(finN===0){
-    setTimeout(()=>{
-      const sec=document.querySelector('.fin-section');
-      const hr=sec&&sec.previousElementSibling;
-      if(sec){sec.style.transition='opacity 0.5s';sec.style.opacity='0';setTimeout(()=>{sec.remove();if(hr&&hr.classList.contains('rule-hr'))hr.remove();},500);}
-    },700);
+// ══ DE FINALIZAT (v50 Bucket C·3 — dynamic) ══
+// Locked criteria (Bucket C·3): GATA-past-due cases (status='programat' AND scheduled_at<now()).
+// They are EXCLUSIVE to this section — excluded from the main list via getFiltered(). Once
+// Finalizat is clicked, status flips to 'finalizat' and the case rejoins the main list (with
+// drawer locked — no actionable buttons). When the section empties, the whole block fades out.
+function rebuildFinalizat(){
+  var sec = document.getElementById('fin-section');
+  var hr  = document.getElementById('fin-rule');
+  var rowsHost = document.getElementById('fin-rows');
+  var countEl  = document.getElementById('fin-count');
+  if(!sec || !rowsHost || !countEl) return;
+  var pending = CASES.filter(qualifiesForFinalizat);
+  // Sort: oldest scheduled first (most overdue at top)
+  pending.sort(function(a,b){
+    var ta = new Date(a.date+'T'+(a.time||'00:00')).getTime();
+    var tb = new Date(b.date+'T'+(b.time||'00:00')).getTime();
+    return ta - tb;
+  });
+  if(pending.length === 0){
+    // No qualifying cases — section is hidden. Caller may have just emptied it (animated path
+    // handled in markDone); for cold rebuilds (filter changes, page load with no GATA-past-due
+    // cases) we just hide synchronously.
+    if(sec) sec.style.display = 'none';
+    if(hr)  hr.style.display  = 'none';
+    countEl.textContent = '0 dosare';
+    rowsHost.innerHTML = '';
+    return;
   }
+  // Has cases — ensure visible
+  sec.style.display = '';
+  if(hr) hr.style.display = '';
+  sec.style.opacity = '1';
+  countEl.textContent = pending.length + (pending.length === 1 ? ' dosar' : ' dosare');
+  // Render rows. Click-anywhere-on-row opens the drawer (per locked decision A); the Finalizat
+  // button has stopPropagation to avoid double-firing.
+  rowsHost.innerHTML = pending.map(function(c){
+    var dateStr = fmtDate(c.date) + (c.time ? ' · ' + c.time : '');
+    return '<div class="fin-row" id="fr-'+c.id+'" onclick="openFinalizatDetail('+c.id+')">'
+      + '<div class="fin-num">'+String(c.id).padStart(2,'0')+'</div>'
+      + '<div><div class="fin-act">'+c.act+'</div></div>'
+      + '<div class="fin-client">'+c.client+'</div>'
+      + '<div></div>'
+      + '<div class="fin-date">'+dateStr+'</div>'
+      + '<div><button class="fin-btn" onclick="event.stopPropagation();markDone('+c.id+',this)">Finalizat ⟶</button></div>'
+      + '</div>';
+  }).join('');
+}
+
+// ══ v50 Bucket C·3 — Row click → quick-look modal (NOT the drawer). The drawer pulls focus to
+// the top of the page, away from the De finalizat section the notary is reading; a small modal
+// next to the row preserves spatial context. Modal shows the case's full party data + scheduled
+// datetime + notes, with two action buttons (Descarcă, Finalizat).
+function openFinalizatDetail(caseId){
+  var c = CASES.find(function(x){ return x.id === caseId; });
+  if(!c) return;
+  var modal = document.getElementById('fin-detail-modal');
+  if(!modal) return;
+  // Header — name (serif) + meta sub-line (act + scheduled time)
+  var nameEl = document.getElementById('fin-detail-name');
+  var subEl  = document.getElementById('fin-detail-sub');
+  nameEl.textContent = c.client;
+  var subParts = [];
+  if(c.act){ subParts.push(c.act + (c.subtype ? ' · ' + c.subtype : '')); }
+  if(c.date){
+    var dt = fmtDateShort(c.date);
+    if(c.time){ dt += ' · ' + c.time; }
+    subParts.push(dt);
+  }
+  if(c.ref){ subParts.push(c.ref); }
+  subEl.textContent = subParts.join(' · ');
+
+  // Body — re-uses the same party renderer the drawer uses, so visual treatment is identical.
+  // Wrapped in fin-detail-section-lbl headings so the notary scans quickly.
+  var body = '';
+  body += '<div class="fin-detail-section-lbl">Părți</div>';
+  body += renderParties(c);
+  // Notițe interne — surfaced because the notary's question at this moment is often "did I jot
+  // down anything about this case during onboarding?" (e.g. "client a confirmat la telefon").
+  body += '<div class="fin-detail-section-lbl">Notițe interne</div>';
+  if(c.notes && c.notes.trim()){
+    body += '<div style="font-size:14px;color:var(--ink);line-height:1.45;white-space:pre-wrap;">' + escapeHtml(c.notes) + '</div>';
+  } else {
+    body += '<div class="fin-detail-notes-empty">—</div>';
+  }
+  document.getElementById('fin-detail-body').innerHTML = body;
+  // Reset scroll to top each open (in case the previous open scrolled deep)
+  document.getElementById('fin-detail-body').scrollTop = 0;
+
+  // Wire action buttons. Re-bind onclick each open so caseId is correctly captured.
+  document.getElementById('fin-detail-download').onclick = function(){
+    if(c.prepared && c.prepared.blob){
+      saveAs(c.prepared.blob, c.prepared.filename);
+      showToast('Descărcat · ' + c.prepared.filename);
+    } else {
+      // Pre-seeded GATA case without a blob — generate fresh from template (same fallback as
+      // redownloadAct() in the drawer success block).
+      var draft = findDraftForCase(c);
+      if(!draft){ showToast('Șablon indisponibil'); return; }
+      var buf = DRAFT_BLOBS[draft.id];
+      if(!buf){ showToast('Șablon încă se încarcă — reîncearcă'); return; }
+      try {
+        var data = buildCaseData(c);
+        var zip = new PizZip(buf.slice(0));
+        var doc = new window.docxtemplater(zip, {paragraphLoop:true,linebreaks:true,delimiters:{start:'{',end:'}'}});
+        doc.render(data);
+        var out = doc.getZip().generate({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+        var outName = c.ref + ' · ' + draft.name + ' · ' + timestampForFilename() + '.docx';
+        c.prepared = {filename:outName, generatedAt:(new Date()).toISOString(), blob:out};
+        saveAs(out, outName);
+        showToast('Descărcat · ' + outName);
+      } catch(err){
+        console.error(err);
+        showToast('Eroare la descărcare');
+      }
+    }
+  };
+  document.getElementById('fin-detail-finalize').onclick = function(){
+    closeFinalizatDetail();
+    // Slight delay so modal close animation finishes before the row fade kicks in
+    setTimeout(function(){ markDone(caseId, null); }, 180);
+  };
+
+  modal.classList.add('is-open');
+}
+
+function closeFinalizatDetail(){
+  var modal = document.getElementById('fin-detail-modal');
+  if(!modal) return;
+  modal.classList.remove('is-open');
+}
+
+// Wire overlay click + Esc to close
+(function(){
+  var modal = document.getElementById('fin-detail-modal');
+  if(!modal) return;
+  modal.addEventListener('click', function(e){
+    if(e.target === modal) closeFinalizatDetail();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && modal.classList.contains('is-open')){
+      closeFinalizatDetail();
+    }
+  });
+})();
+
+// Tiny HTML escape helper for notes (notes can contain user-typed content)
+function escapeHtml(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function markDone(caseId, btn){
+  var c = CASES.find(function(x){ return x.id === caseId; });
+  if(!c) return;
+  soundFinalizat();
+  // Flip status and add history line. The drawer (if open on this case) re-renders below via
+  // refreshStatusVisuals + populateView so it shows the locked finalizat state.
+  c.status = 'finalizat';
+  c.hist = c.hist || [];
+  c.hist.push(histStamp() + ' — finalizat');
+  // Brief visual confirmation on the row before the section re-renders.
+  var rowEl = document.getElementById('fr-'+caseId);
+  if(rowEl){
+    rowEl.classList.add('done');
+    if(btn) btn.textContent = 'Marcat ✓';
+  }
+  showToast('Dosar marcat finalizat');
+  // After a beat, re-render: the case rejoins the main list as FINALIZAT and leaves De finalizat.
+  setTimeout(function(){
+    rebuildAllLists();
+    refreshStatusVisuals(c);
+    // If drawer is open on this case, re-populate to reflect the locked state.
+    if(currentOpenCase === caseId){
+      var activePrefix = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+      populateView(activePrefix, c, true);
+    }
+    // Check if this was the last GATA-past-due. If so, fade the section out before re-rendering.
+    var stillPending = CASES.filter(qualifiesForFinalizat);
+    if(stillPending.length === 0){
+      var sec = document.getElementById('fin-section');
+      var hr  = document.getElementById('fin-rule');
+      if(sec){
+        sec.style.transition = 'opacity 0.5s';
+        sec.style.opacity = '0';
+        setTimeout(function(){
+          rebuildFinalizat(); // hides section + rule
+        }, 500);
+      } else {
+        rebuildFinalizat();
+      }
+    } else {
+      rebuildFinalizat();
+    }
+  }, 700);
 }
 
 // ══ VOLUME EXPLORER TOGGLE ══
@@ -1721,7 +3210,87 @@ function toggleVolExplorer(){
     initVolChart();
   }
 }
-function confirmProgramare(){soundConfirm();showToast('Programare salvată');}
+// ══ v50 Bucket B·1 — Confirmă programarea handles two cases:
+//   (a) status='nou' (submitted): first confirmation. Transitions nou → in-lucru, fires case_in_review email.
+//   (b) status='in-lucru' or 'programat': RE-CONFIRMATION (reschedule). The notary office picked a
+//       new date/time and is re-issuing the appointment confirmation. Status stays where it is
+//       (no point demoting back to nou — emails were already sent for the original confirmation),
+//       but a new email goes out with the updated date/time. Phase 4c uses the same RPC for both
+//       paths via an idempotency-aware confirm_case_booking; here we just simulate the flow.
+// Status='finalizat' is a no-op — the case is closed, no rescheduling possible.
+function confirmProgramare(){
+  soundConfirm();
+  if(!currentOpenCase){ return; }
+  var c = CASES.find(function(x){ return x.id === currentOpenCase; });
+  if(!c){ return; }
+  if(c.status === 'finalizat'){
+    showToast('Dosar finalizat — programare nu poate fi modificată.');
+    return;
+  }
+  // ══ v50 Bucket C·2 — read the active picker values into the case so re-confirm flows see the
+  // notary's commitment, not the stale c.date/c.time from initial seed. The active prefix is
+  // derived from currentView (matches refreshStatusVisuals' scheme). If both inputs have values,
+  // they overwrite; if either is empty, we keep the existing committed value (Squarespace + the
+  // form-mandatory contract guarantee it's never empty in production, but for the mock we want
+  // to be defensive).
+  var activePrefix = (currentView === 'a') ? 'va' : (currentView === 'b' ? 'vb' : 'vc');
+  var dateInp = document.getElementById(activePrefix + '-date');
+  var timeInp = document.getElementById(activePrefix + '-time');
+  if(dateInp && dateInp.value){ c.date = dateInp.value; }
+  if(timeInp && timeInp.value){ c.time = timeInp.value; }
+  // Build the datetime suffix that gets appended to the history line — production version will
+  // format from the canonical scheduled_at column. Empty values produce no suffix. Format: ", DD
+  // <ron-month> YYYY HH:MM" (no colon prefix — keeps the line short enough to fit on a single
+  // hist-item row, per the C·2 single-row rule).
+  var dtSuffix = '';
+  if(c.date && c.time){
+    var d = new Date(c.date + 'T' + c.time);
+    if(!isNaN(d)){
+      dtSuffix = ', ' + d.getDate() + ' ' + RO_M_SHORT[d.getMonth()] + ' ' + d.getFullYear() + ' ' + c.time;
+    }
+  }
+  if(c.status === 'nou'){
+    // First confirmation
+    c.status = 'in-lucru';
+    c.hist = c.hist || [];
+    c.hist.push(histStamp() + ' — programat' + dtSuffix);
+    refreshStatusVisuals(c);
+    // ══ v50 Bucket C·2 — populate-side state changed (status pill + readout), so re-render via
+    // populateView. refreshStatusVisuals only touches pills + Pregătește slot + status selector,
+    // not the readout or history — so we run a full populateView for the active prefix.
+    populateView(activePrefix, c, true);
+    rebuildAllLists();
+    showToast('Programare confirmată — actul poate fi pregătit.');
+  } else {
+    // Re-confirmation (reschedule). Status unchanged, history entry added, email re-fired.
+    c.hist = c.hist || [];
+    c.hist.push(histStamp() + ' — reprogramat' + dtSuffix);
+    populateView(activePrefix, c, true);
+    showToast('Programare re-confirmată — clientul a fost notificat.');
+  }
+}
+
+// ══ v50 Bucket B·1 — surgical DOM updates for an in-place status change (no scroll jump)
+// Updates: 1) status tag pill in all 3 view headers, 2) Pregătește act button (re-renders with new
+// disabled state and tooltip), 3) status selector in the open drawer (re-renders with active button).
+// Does NOT touch the rest of the drawer, so scroll position is naturally preserved.
+function refreshStatusVisuals(c){
+  // 1) Status pills in all panels
+  ['va','vb','vc'].forEach(function(pfx){
+    var tagEl = document.getElementById(pfx+'-tags');
+    if(tagEl) tagEl.innerHTML = TAGS[c.status]+(c.flag?'<span class="tag tag-ci">! C.I.</span>':'');
+  });
+  // 2) Pregătește act block — re-render via the shared renderPrepSlot
+  ['va','vb','vc'].forEach(function(pfx){
+    var prepSlot = document.getElementById(pfx+'-prep');
+    if(prepSlot) renderPrepSlot(pfx, c);
+  });
+  // 3) Status selector
+  ['va','vb','vc'].forEach(function(pfx){
+    var statusEl = document.getElementById(pfx+'-status-sel');
+    if(statusEl) statusEl.innerHTML = statusSelHTML(pfx, c.status);
+  });
+}
 
 // ══ CI MODAL ══
 let currentOpenCase=null;
@@ -1973,7 +3542,7 @@ function saveCICorrections(){
   c.disc=[];c.flag=false;
   var now=new Date();
   var months=['ian','feb','mar','apr','mai','iun','iul','aug','sep','oct','nov','dec'];
-  c.hist.push(now.getDate()+' '+months[now.getMonth()]+' \u2014 CI verificat, corecții aplicate');
+  c.hist.push(histStamp(now) + ' \u2014 CI corectat');
   closeCI();
   soundFinalizat();
   ['va','vb','vc'].forEach(function(pfx){
@@ -1990,7 +3559,7 @@ function saveCICorrections(){
       }
       var tagsEl=document.getElementById(pfx+'-tags');
       if(tagsEl)tagsEl.innerHTML=TAGS[c.status];
-      populateView(pfx,c);
+      populateView(pfx,c,true);
       var detailView=document.getElementById(pfx+'-view');if(detailView)detailView.classList.add('show');
       var openEl=document.getElementById(pfx+'-open');if(openEl)openEl.classList.add('show');
       var emptyEl=document.getElementById(pfx+'-empty');if(emptyEl)emptyEl.style.display='none';
